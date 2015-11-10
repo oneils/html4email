@@ -12,6 +12,10 @@ class HomeController {
     @RequestMapping("/")
     @ResponseBody
     fun index() = "HTML4Email Kotlin"
+
+    @RequestMapping("/test")
+    @ResponseBody
+    fun test() = "Hello from test url"
 }
 
 fun main(args: Array<String>) {
