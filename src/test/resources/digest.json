@@ -1,125 +1,36 @@
 {
-  "title": "BACKEND DIGEST #15",
+  "title": "Digest #4",
+  "contributeTo": "your_company@mail.com",
   "topics": [
     {
       "topic": "NEWS",
       "articles": [
         {
-          "title": "The Kotlin Language: 1.0 Beta is Here!",
-          "description": "Доступна Beta 1й версии языка программирования Kotlin. Kotlin - это современный JVM-based язык программирования, разрабатываемый компанией JetBrains.",
-          "url": "http://blog.jetbrains.com/kotlin/2015/11/the-kotlin-language-1-0-beta-is-here/"
+          "title": "First NEWS title",
+          "description": "First article NEWS Description",
+          "url": "http://localhost/articles/first"
         },
         {
-          "title": "Обзор основных изменений в новой версии Intellij IDEA",
-          "description": "В статье вкратце рассказывается (и показываются) про основные изменения",
-          "url": "http://habrahabr.ru/company/JetBrains/blog/270471/"
-        },
-        {
-          "title": "Доступна интегрированная среда разработки NetBeans IDE 8.1",
-          "description": "омпания Oracle опубликовала релиз интегрированной среды разработки приложений NetBeans IDE 8.1, поддерживающей разработку на языках Java, JavaFX, PHP, JavaScript/HTML5, Groovy и C/C++. Обзор основных изменений",
-          "url": "http://www.opennet.ru/opennews/art.shtml?num=43269"
-        },
-        {
-          "title": "Announcing Docker 1.9: Production-ready Swarm and Multi-host Networking",
-          "description": "Обзор основных изменений в Docker версии 1.9",
-          "url": "http://blog.docker.com/2015/11/docker-1-9-production-ready-swarm-multi-host-networking/"
-        },
-        {
-          "title": "Announcing MongoDB 3.2",
-          "description": "Обзор основных изменений в новой версии Mongo",
-          "url": "https://www.mongodb.com/blog/post/announcing-mongodb-3-2?jmp=community-hub"
-        },
-        {
-          "title": "Red Hat объединяет усилия с Microsoft для работы над .NET",
-          "description": "Согласно опубликованному пресс-релизу компания Red Hat объявляет о начале сотрудничества с компанией Microsoft в сфере облачных технологий и корпоративных приложений.",
-          "url": "https://www.linux.org.ru/news/redhat/12082405"
-        },
-        {
-          "title": "Открыт код системы машинного обучения TensorFlow, разработанной командой Google Brain",
-          "description": "Компания Google опубликовала новый открытый проект - TensorFlow, в рамках которого подготовлена практическая реализация алгоритмов глубокого машинного обучения, созданная командой Google Brain, занимающейся исследованиями в области искусственного интеллекта, нейронных сетей и машинного обучения. В настоящее время технологии TensorFlow уже используются Google в таких областях, как распознавание речи, выделение лиц на фотографиях, определение схожести изображений, отсеивание спама в Gmail и определение смысла в сервисе перевода. Код системы написан на языках С++ и Python и распространяется под лицензией Apache.",
-          "url": "http://www.opennet.ru/opennews/art.shtml?num=43285"
-        },
-        {
-          "title": "Выпуск Pyston 0.4, реализации языка Python с JIT-компилятором",
-          "description": "Представлен четвёртый выпуск проекта Pyston, в рамках которого компанией Dropbox, в которой работает Гвидо ван Россум, развивается высокопроизводительная реализация языка Python, созданная с использованием наработок проекта LLVM. Реализация примечательна применением современных технологий JIT-компиляции и нацелена на достижение высокой производительности, близкой к производительности традиционных системных языков, таких как C++. Код Pyston написан на языке C++ и распространяется под лицензией Apache.",
-          "url": "http://www.opennet.ru/opennews/art.shtml?num=43257"
+          "title": "Second NEWS title",
+          "description": "Second article NEWS Description",
+          "url": "http://localhost/articles/second"
         }
       ]
     },
     {
-      "topic": "Разное интересное и полезное",
+      "topic": "PEOPLE",
       "articles": [
         {
-          "title": "Role of Testers in Agile Teams",
-          "description": "Интервью с Karen Greaves и Sam Laing о том, как Agile влияет на роль тестировщиков на проектах",
-          "url": "http://www.infoq.com/news/2015/11/testers-agile-teams?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
+          "title": "First PEOPLE title",
+          "description": "First article PEOPLE Description",
+          "url": "http://localhost/people/first"
         },
         {
-          "title": "Контейнер для Java приложений c поддержкой LXC",
-          "description": "Capsule - инструмент с открытым исходным кодом для сборки и развертывания JVM-based приложений",
-          "url": "http://www.capsule.io/"
-        },
-        {
-          "title": "Создатель Ruby on Rails: теория заговора в мире стартапов",
-          "description": "В современном мире стартапов что-то пошло не так. Сегодня никто не хочет создавать что-то новое и полезное — все хотят только поднимать миллиарды венчурных денег и появляться на обложке Wired. Создатель Ruby on Rails, основатель и CTO Basecamp (в прошлом 37signals), автор бестселлеров «Rework» и «Remote» Дэвид Хайнемьер Ханссон написал об этом колонку на Medium.",
-          "url": "https://dev.by/lenta/main/teoriya-zagovora-v-mire-startapov"
-        },
-        {
-          "title": "Next Generation Session Management with Spring Session",
-          "description": "Session management был частью корпоративной разработки на Java долгое время без каких-либо инноваций. Spring Session вносит инновации в Spring Session и позволяет делать  некоторые вещи намного проще.",
-          "url": "http://www.infoq.com/articles/Next-Generation-Session-Management-with-Spring-Session?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global"
-        },
-        {
-          "title": "Основатель C++: «Я не предполагал такого невероятного роста языка»",
-          "description": " октябре один из самых востребованных и широко используемых языков программирования в мире — C++ — отметил 30-летие. Об истории создания и перспективах развития языка проект cpp-lang.io поговорил с его основателем Бьёрном Страуструпом.",
-          "url": "https://dev.by/lenta/main/osnovatel-c-ya-ne-predpolagal-takogo-neveroyatnogo-rosta-yazyka"
-        },
-        {
-          "title": "Один год с Go",
-          "description": "перевод статьи опытного разработчика о его опыте практического применения Go.",
-          "url": "http://habrahabr.ru/post/268411/"
-        },
-        {
-          "title": "Программист на node.js пробует Go",
-          "description": "Впечатления NodeJS разработчика от языка программирования Go",
-          "url": "http://antjanus.com/blog/web-development-tutorials/when-i-tried-out-go/"
+          "title": "Second PEOPLE title",
+          "description": "Second article PEOPLE Description",
+          "url": "http://localhost/people/second"
         }
       ]
-    },
-    {
-      "topic": "Что посмотреть",
-      "articles": [
-        {
-          "title": "Часть докладов с JavaOne 2015",
-          "description": "Часть докладов с прошедшего Java One 2015 доступен для публичного просмотра. Список докладов представлен в удобноом виде на Reddit",
-          "url": "https://www.reddit.com/r/java/comments/3requx/javaone_2015_sessions/"
-        },
-        {
-          "title": "Mouseless Driven Development by Hadi Hariri",
-          "description": "В данном видео рассказывается о том, как наиболее эффективно использовать горячие клавиши IDE (intellij IDEA) максимально продуктивно, не пользуясь при этом мышью. ",
-          "url": "https://vimeo.com/98922030"
-        },
-        {
-          "title": "Java Concurrency Under the Hood",
-          "description": "В данном видео Глеб Смирнов очень подробно расскажет про тонкости многопоточности",
-          "url": "https://www.youtube.com/watch?v=H9CCFf6XgyQ"
-        }
-      ]
-    },
-    {
-      "topic": "Куда сходить (митапы и конференции)",
-      "articles": [
-        {
-          "title": "Big Data Meetup",
-          "description": "28 ноября в Минске состоится второй Big Data Meetup, организуемый сообществом Java-разработчиков Беларуси «Belarus Java User Group»",
-          "url": "http://www.belarusjug.org/articles/big-data-meetup-28-noyabrya--2"
-        },
-        {
-          "title": "f(by) – конференция по функциональному программированию",
-          "description": "28 ноября в Минске состоится конференция по функциональному программированию. Конференция будет состоять из двух потоков.",
-          "url": "http://fby.by/"
-        }
-        ]
     }
   ]
 }
