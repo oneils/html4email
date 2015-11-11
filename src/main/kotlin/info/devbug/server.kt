@@ -1,5 +1,10 @@
+package info.devbug
+
+import info.devbug.api.Digest
+import info.devbug.digest.DigestParser
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
@@ -7,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 @EnableAutoConfiguration
+@ComponentScan (basePackages = arrayOf("info.devbug.*"))
 class HomeController {
 
     @RequestMapping("/")
@@ -19,5 +25,5 @@ class HomeController {
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(arrayOf(HomeController::class.java), args)
+    SpringApplication.run(arrayOf(info.devbug.HomeController::class.java), args)
 }

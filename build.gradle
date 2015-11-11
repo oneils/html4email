@@ -14,10 +14,12 @@ dependencies {
 
     //srping boot
     compile("org.springframework.boot:spring-boot-starter-web:$spring_boot_version")
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-freemarker")
 
     compile 'com.github.salomonbrys.kotson:kotson:1.6.0'
     compile 'org.codehaus.groovy:groovy:2.4.5'
+
+    compile 'org.freemarker:freemarker:2.3.23'
 }
 buildscript {
     ext.kotlin_version = '1.0.0-beta-1103'
@@ -31,7 +33,7 @@ buildscript {
     }
 }
 sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
+    main.java.srcDirs += 'src/main/kotlin/info/devbug'
 }
 
 task wrapper(type: Wrapper) {
