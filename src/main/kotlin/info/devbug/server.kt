@@ -1,7 +1,5 @@
 package info.devbug
 
-import info.devbug.api.Digest
-import info.devbug.digest.DigestParser
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.ComponentScan
@@ -16,8 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody
 class HomeController {
 
     @RequestMapping("/")
-    @ResponseBody
-    fun index() = "HTML4Email Kotlin"
+    fun index(): String {
+        return "index"
+    }
 
     @RequestMapping("/test")
     @ResponseBody
