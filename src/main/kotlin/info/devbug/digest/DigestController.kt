@@ -17,6 +17,7 @@ class DigestController {
 
         val digest = digestParser.getDigest(filePath)
         val digestMap = hashMapOf("title" to digest.title, "contributeTo" to digest.contributeTo,
+                "companyName" to digest.companyName,
                 "topics" to digest.topics);
 
         model.addAllAttributes(digestMap)

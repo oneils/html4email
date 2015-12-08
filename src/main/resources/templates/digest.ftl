@@ -494,8 +494,7 @@
                                                                                                     <p style="margin: 0;line-height: 22px;font-size: 12px;text-align: right; color: #afd9ee">
                                                                                                         <a style="color : #c0c0c0 ;"
                                                                                                            href="mailto:${contributeTo}">2015
-                                                                                                            Company/Group
-                                                                                                            name</a>
+                                                                                                            ${companyName}</a>
                                                                                                     </p></div>
                                                                                             </div>
                                                                                         </td>
