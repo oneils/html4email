@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 
-    <title>${title}</title>
+    <title>${digest.title}</title>
 
 </head>
 <body style="width: 100% !important;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100% !important;margin: 0;padding: 0;background-color: #FFFFFF">
@@ -116,7 +116,6 @@
         }
     }
 </style>
-
 
 <div style="width:650px; margin: auto">
     <table class="body"
@@ -266,7 +265,7 @@
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
                                                                                             <div style="color:#555555;line-height:120%;font-family:Verdana;">
                                                                                                 <div style="font-size: 18px; line-height: 21px; text-align: right;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
-                                                                                                    <strong>${title}</strong>
+                                                                                                    <strong>${digest.title}</strong>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </td>
@@ -315,7 +314,7 @@
                                     <td>
                             <![endif]-->
 
-                        <#list topics as t>
+                        <#list digest.topics as t>
 
 
                             <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: transparent"
@@ -493,8 +492,8 @@
                                                                                                 <div style="line-height: 21px; font-size: 14px; text-align: right;color: #FFFFFF;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
                                                                                                     <p style="margin: 0;line-height: 22px;font-size: 12px;text-align: right; color: #afd9ee">
                                                                                                         <a style="color : #c0c0c0 ;"
-                                                                                                           href="mailto:${contributeTo}">2015
-                                                                                                            ${companyName}</a>
+                                                                                                           href="mailto:${digest.contributeTo}">2015
+                                                                                                            ${digest.companyName}</a>
                                                                                                     </p></div>
                                                                                             </div>
                                                                                         </td>
