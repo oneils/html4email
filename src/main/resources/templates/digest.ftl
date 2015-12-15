@@ -163,7 +163,7 @@
                                                                width="100%" border="0">
                                                             <tbody>
                                                             <tr style="vertical-align: top">
-                                                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 15px;padding-right: 0px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 0px;padding-right: 0px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
                                                                     <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top"
                                                                            cellpadding="0" cellspacing="0" width="100%"
                                                                            border="0" align="center fullwidth">
