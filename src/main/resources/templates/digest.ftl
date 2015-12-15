@@ -177,7 +177,7 @@
                                                                                          style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 650px;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px"
                                                                                          border="0" width="650px"
                                                                                          align="center fullwidth"
-                                                                                         src="logo.png" alt="Image"
+                                                                                         src="/logo.png" alt="Image"
                                                                                          title="Image">
                                                                                 </div>
                                                                             </td>
