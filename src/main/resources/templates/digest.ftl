@@ -351,7 +351,7 @@
                                                                         <tbody>
                                                                         <tr style="vertical-align: top">
                                                                             <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;border-top: 0px none transparent;border-right: 0px none transparent;border-bottom: 0px none transparent;border-left: 0px none transparent">
-                                                                                <table style="background-color: #F9F9F9; border-spacing: 0;border-collapse: collapse;vertical-align: top"
+                                                                                <table style="background-color: #F9F9F9; border-spacing: 0;border-collapse: collapse;vertical-align: top; margin-bottom: 15px;"
                                                                                        cellpadding="0" cellspacing="0"
                                                                                        width="100%">
                                                                                     <tbody>
