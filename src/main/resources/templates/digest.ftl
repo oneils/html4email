@@ -15,7 +15,7 @@
     <title>${digest.title}</title>
 
 </head>
-<body style="width: 100% !important;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100% !important;margin: 0;padding: 0;background-color: #FFFFFF">
+<body style="width: 100% !important;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100% !important;margin: 0;padding: 0;background-color: #F5F3F3">
 <style id="media-query">
     /*  Media Queries */
     @
@@ -124,7 +124,7 @@
         <tbody>
         <tr style="vertical-align: top">
             <td class="center"
-                style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;text-align: center;background-color: #FFFFFF"
+                style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;text-align: center;background-color: #FFFFFF;"
                 align="center" valign="top">
 
                 <!--[if (gte mso 9)|(IE)]>
@@ -219,8 +219,8 @@
 
 
                 <!-- news and digest title tables -->
-
-                <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
+                <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0"
+                style="padding: 15px">
                     <tr>
                         <td>
                             <![endif]-->
@@ -387,8 +387,7 @@
                                                                                                         ${article.title}
                                                                                                         </a>
                                                                                                     </div>
-                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
-                                                                                                        <br></div>
+
                                                                                                     <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
                                                                                 <span style="font-family:'Verdana', , sans-serifpx; font-size:14px; line-height:19px;">
                                                                                 ${article.description}
