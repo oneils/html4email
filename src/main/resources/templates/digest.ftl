@@ -263,8 +263,8 @@
                                                                                     <tbody>
                                                                                     <tr style="vertical-align: top">
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
-                                                                                            <div style="color:#555555;line-height:120%;font-family:Verdana;">
-                                                                                                <div style="font-size: 18px; line-height: 21px; text-align: right;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
+                                                                                            <div style="color:#555555;line-height:120%;font-family:Arial;">
+                                                                                                <div style="font-size: 18px; line-height: 21px; text-align: right;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
                                                                                                     <strong>${digest.title}</strong>
                                                                                                 </div>
                                                                                             </div>
@@ -359,9 +359,9 @@
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
 
                                                                                             <!-- Div with topics title-->
-                                                                                            <div style="color:#555555;line-height:200%;font-family:Verdana;">
-                                                                                                <div style="border-bottom: solid 1px #2b6e44 ;font-size: 18px; line-height: 36px; text-align: center;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 36px">
-                                                                                    <span style="font-size:20px;font-family:'Verdana', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif'; line-height:36px;">
+                                                                                            <div style="color:#555555;line-height:200%;font-family:Arial;">
+                                                                                                <div style="border-bottom: solid 1px #2b6e44 ;font-size: 18px; line-height: 36px; text-align: center;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 36px">
+                                                                                    <span style="font-size:20px;font-family:'Arial', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif'; line-height:36px;">
                                                                                         <strong>${t.topic}</strong>
                                                                                     </span>
                                                                                                 </div>
@@ -379,8 +379,8 @@
                                                                                         <tbody>
                                                                                         <tr style="vertical-align: top">
                                                                                             <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px">
-                                                                                                <div style="color:#555555;line-height:120%;font-family:Verdana;">
-                                                                                                    <div style="font-size: 16px; line-height: 21px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 22px">
+                                                                                                <div style="color:#555555;line-height:120%;font-family:Arial;">
+                                                                                                    <div style="font-size: 18px;; line-height: 21px;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 22px; font-weight:bold;">
                                                                                                         <a style="color:#0A74A2"
                                                                                                            href="${article.url}"
                                                                                                            target="_blank">
@@ -388,12 +388,12 @@
                                                                                                         </a>
                                                                                                     </div>
 
-                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
-                                                                                <span style="font-family:'Verdana', , sans-serifpx; font-size:14px; line-height:19px;">
+                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
+                                                                                <span style="font-family:'Arial', , sans-serifpx; font-size:14px; line-height:20px;;">
                                                                                 ${article.description}
                                                                                 </span></div>
-                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
-                                                                            <span style="font-size:16px; line-height:19px;font-family:'Verdana', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif';"
+                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
+                                                                            <span style="font-size:16px; line-height:20px;;font-family:'Arial', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif';"
                                                                                   mce-data-marked="1">
                                                                                 <br data-mce-bogus="1">
                                                                             </span>
@@ -487,8 +487,8 @@
                                                                                     <tbody>
                                                                                     <tr style="vertical-align: top">
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 20px;padding-right: 20px;padding-bottom: 20px;padding-left: 20px">
-                                                                                            <div style="color:#FFFFFF;line-height:180%;font-family:Verdana;">
-                                                                                                <div style="line-height: 21px; font-size: 14px; text-align: right;color: #FFFFFF;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
+                                                                                            <div style="color:#FFFFFF;line-height:180%;font-family:Arial;">
+                                                                                                <div style="line-height: 21px; font-size: 14px; text-align: right;color: #FFFFFF;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
                                                                                                     <p style="margin: 0;line-height: 22px;font-size: 12px;text-align: right; color: #afd9ee">
                                                                                                         <a style="color : #c0c0c0 ;"
                                                                                                            href="mailto:${digest.contributeTo}">2015
