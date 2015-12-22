@@ -380,7 +380,7 @@
                                                                                         <tr style="vertical-align: top">
                                                                                             <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px">
                                                                                                 <div style="color:#555555;line-height:120%;font-family:Arial;">
-                                                                                                    <div style="font-size: 18px; color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 22px; font-weight:bold;">
+                                                                                                    <div style="font-size: 16px; color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 22px; font-weight:bold;">
                                                                                                         <a style="color:#0A74A2"
                                                                                                            href="${article.url}"
                                                                                                            target="_blank">
