@@ -117,7 +117,7 @@
     }
 </style>
 
-<div style="width:650px; margin: auto">
+<div style="width:600px; margin: auto">
     <table class="body"
            style="border-spacing: 0;border-collapse: collapse;vertical-align: top;height: 100%;width: 100%;table-layout: fixed"
            cellpadding="0" cellspacing="0" width="100%" border="0">
@@ -174,8 +174,8 @@
                                                                                 <div style="max-width: 100%;"
                                                                                      align="center fullwidth">
                                                                                     <img class="center fullwidth"
-                                                                                         style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 650px;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px"
-                                                                                         border="0" width="650px"
+                                                                                         style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 600px;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 600px"
+                                                                                         border="0" width="600px"
                                                                                          align="center fullwidth"
                                                                                          src="/logo.png" alt="Image"
                                                                                          title="Image">
@@ -219,7 +219,7 @@
 
 
                 <!-- news and digest title tables -->
-                <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0"
+                <table width='600' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0"
                 style="padding: 15px">
                     <tr>
                         <td>
@@ -231,14 +231,14 @@
                                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                         width="100%">
                                         <table class="container"
-                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit"
+                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 600px;margin: 0 auto;text-align: inherit"
                                                cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                                             <tbody>
                                             <tr style="vertical-align: top">
                                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                                     width="100%">
                                                     <table class="block-grid"
-                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 645px;color: #333;background-color: transparent"
+                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 600px;color: #333;background-color: transparent"
                                                            cellpadding="0" cellspacing="0" width="100%"
                                                            bgcolor="transparent">
                                                         <tbody>
@@ -309,7 +309,7 @@
 
                             <!--[if (gte mso 9)|(IE)]>
 
-                            <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <table width='600' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td>
                             <![endif]-->
@@ -324,14 +324,14 @@
                                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                         width="100%">
                                         <table class="container"
-                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit"
+                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 600px;margin: 0 auto;text-align: inherit"
                                                cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                                             <tbody>
                                             <tr style="vertical-align: top">
                                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                                     width="100%">
                                                     <table class="block-grid"
-                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 645px;color: #333;background-color: transparent"
+                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 600px;color: #333;background-color: transparent"
                                                            cellpadding="0" cellspacing="0" width="100%"
                                                            bgcolor="transparent">
                                                         <tbody>
@@ -444,7 +444,7 @@
 
 
                             <!--[if (gte mso 9)|(IE)]>
-                            <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <table width='600' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td>
                             <![endif]-->
@@ -455,14 +455,14 @@
                                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                         width="100%">
                                         <table class="container"
-                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit"
+                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 600px;margin: 0 auto;text-align: inherit"
                                                cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                                             <tbody>
                                             <tr style="vertical-align: top">
                                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                                     width="100%">
                                                     <table class="block-grid"
-                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 645px;color: #000000;background-color: transparent"
+                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 600px;color: #000000;background-color: transparent"
                                                            cellpadding="0" cellspacing="0" width="100%"
                                                            bgcolor="transparent">
                                                         <tbody>
