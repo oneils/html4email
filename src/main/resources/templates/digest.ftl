@@ -12,10 +12,10 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 
-    <title>${digest.title}</title>
+    <title>${title}</title>
 
 </head>
-<body style="width: 100% !important;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100% !important;margin: 0;padding: 0;background-color: #F5F3F3">
+<body style="width: 100% !important;min-width: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100% !important;margin: 0;padding: 0;background-color: #FFFFFF">
 <style id="media-query">
     /*  Media Queries */
     @
@@ -117,14 +117,15 @@
     }
 </style>
 
-<div style="width:600px; margin: auto">
+
+<div style="width:650px; margin: auto">
     <table class="body"
            style="border-spacing: 0;border-collapse: collapse;vertical-align: top;height: 100%;width: 100%;table-layout: fixed"
            cellpadding="0" cellspacing="0" width="100%" border="0">
         <tbody>
         <tr style="vertical-align: top">
             <td class="center"
-                style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;text-align: center;background-color: #FFFFFF;"
+                style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;text-align: center;background-color: #FFFFFF"
                 align="center" valign="top">
 
                 <!--[if (gte mso 9)|(IE)]>
@@ -163,7 +164,7 @@
                                                                width="100%" border="0">
                                                             <tbody>
                                                             <tr style="vertical-align: top">
-                                                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 0px;padding-right: 0px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
+                                                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 15px;padding-right: 0px;padding-left: 0px;border-top: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-left: 0px solid transparent">
                                                                     <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top"
                                                                            cellpadding="0" cellspacing="0" width="100%"
                                                                            border="0" align="center fullwidth">
@@ -174,10 +175,10 @@
                                                                                 <div style="max-width: 100%;"
                                                                                      align="center fullwidth">
                                                                                     <img class="center fullwidth"
-                                                                                         style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 600px;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 600px"
-                                                                                         border="0" width="600px"
+                                                                                         style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 650px;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px"
+                                                                                         border="0" width="650px"
                                                                                          align="center fullwidth"
-                                                                                         src="/logo.png" alt="Image"
+                                                                                         src="logo.png" alt="Image"
                                                                                          title="Image">
                                                                                 </div>
                                                                             </td>
@@ -219,8 +220,8 @@
 
 
                 <!-- news and digest title tables -->
-                <table width='600' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0"
-                style="padding: 15px">
+
+                <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td>
                             <![endif]-->
@@ -231,14 +232,14 @@
                                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                         width="100%">
                                         <table class="container"
-                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 600px;margin: 0 auto;text-align: inherit"
+                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit"
                                                cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                                             <tbody>
                                             <tr style="vertical-align: top">
                                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                                     width="100%">
                                                     <table class="block-grid"
-                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 600px;color: #333;background-color: transparent"
+                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 645px;color: #333;background-color: transparent"
                                                            cellpadding="0" cellspacing="0" width="100%"
                                                            bgcolor="transparent">
                                                         <tbody>
@@ -263,9 +264,9 @@
                                                                                     <tbody>
                                                                                     <tr style="vertical-align: top">
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
-                                                                                            <div style="color:#555555;line-height:120%;font-family:Arial;">
-                                                                                                <div style="font-size: 18px; line-height: 21px; text-align: right;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
-                                                                                                    <strong>${digest.title}</strong>
+                                                                                            <div style="color:#555555;line-height:120%;font-family:Verdana;">
+                                                                                                <div style="font-size: 18px; line-height: 21px; text-align: right;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
+                                                                                                    <strong>${title}</strong>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </td>
@@ -309,12 +310,12 @@
 
                             <!--[if (gte mso 9)|(IE)]>
 
-                            <table width='600' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td>
                             <![endif]-->
 
-                        <#list digest.topics as t>
+                        <#list topics as t>
 
 
                             <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: transparent"
@@ -324,14 +325,14 @@
                                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                         width="100%">
                                         <table class="container"
-                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 600px;margin: 0 auto;text-align: inherit"
+                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit"
                                                cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                                             <tbody>
                                             <tr style="vertical-align: top">
                                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                                     width="100%">
                                                     <table class="block-grid"
-                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 600px;color: #333;background-color: transparent"
+                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 645px;color: #333;background-color: transparent"
                                                            cellpadding="0" cellspacing="0" width="100%"
                                                            bgcolor="transparent">
                                                         <tbody>
@@ -351,7 +352,7 @@
                                                                         <tbody>
                                                                         <tr style="vertical-align: top">
                                                                             <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;border-top: 0px none transparent;border-right: 0px none transparent;border-bottom: 0px none transparent;border-left: 0px none transparent">
-                                                                                <table style="background-color: #F9F9F9; border-spacing: 0;border-collapse: collapse;vertical-align: top; margin-bottom: 15px;"
+                                                                                <table style="background-color: #F9F9F9; border-spacing: 0;border-collapse: collapse;vertical-align: top"
                                                                                        cellpadding="0" cellspacing="0"
                                                                                        width="100%">
                                                                                     <tbody>
@@ -359,9 +360,9 @@
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
 
                                                                                             <!-- Div with topics title-->
-                                                                                            <div style="color:#555555;line-height:200%;font-family:Arial;">
-                                                                                                <div style="border-bottom: solid 1px #2b6e44 ;font-size: 18px; line-height: 36px; text-align: center;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;">
-                                                                                    <span style="font-size:20px;font-family:'Arial', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif'; line-height:36px;">
+                                                                                            <div style="color:#555555;line-height:200%;font-family:Verdana;">
+                                                                                                <div style="border-bottom: solid 1px #2b6e44 ;font-size: 18px; line-height: 36px; text-align: center;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 36px">
+                                                                                    <span style="font-size:20px;font-family:'Verdana', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif'; line-height:36px;">
                                                                                         <strong>${t.topic}</strong>
                                                                                     </span>
                                                                                                 </div>
@@ -379,21 +380,22 @@
                                                                                         <tbody>
                                                                                         <tr style="vertical-align: top">
                                                                                             <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px">
-                                                                                                <div style="color:#555555;line-height:120%;font-family:Arial;">
-                                                                                                    <div style="font-size: 16px; color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 22px; font-weight:bold;">
+                                                                                                <div style="color:#555555;line-height:120%;font-family:Verdana;">
+                                                                                                    <div style="font-size: 16px; line-height: 21px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 22px">
                                                                                                         <a style="color:#0A74A2"
                                                                                                            href="${article.url}"
                                                                                                            target="_blank">
                                                                                                         ${article.title}
                                                                                                         </a>
                                                                                                     </div>
-
-                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;">
-                                                                                <span style="font-family:'Arial', , sans-serifpx; font-size:14px; line-height:20px;;">
+                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
+                                                                                                        <br></div>
+                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
+                                                                                <span style="font-family:'Verdana', , sans-serifpx; font-size:14px; line-height:19px;">
                                                                                 ${article.description}
                                                                                 </span></div>
-                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;">
-                                                                            <span style="font-size:16px; line-height:20px;;font-family:'Arial', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif';"
+                                                                                                    <div style="font-size: 14px; line-height: 14px;color: #555555;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;text-align: left;line-height: 14px">
+                                                                            <span style="font-size:16px; line-height:19px;font-family:'Verdana', 'Tahoma', 'Helvetica', 'FreeSans', 'sans-serif';"
                                                                                   mce-data-marked="1">
                                                                                 <br data-mce-bogus="1">
                                                                             </span>
@@ -444,7 +446,7 @@
 
 
                             <!--[if (gte mso 9)|(IE)]>
-                            <table width='600' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td>
                             <![endif]-->
@@ -455,14 +457,14 @@
                                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                         width="100%">
                                         <table class="container"
-                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 600px;margin: 0 auto;text-align: inherit"
+                                               style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit"
                                                cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                                             <tbody>
                                             <tr style="vertical-align: top">
                                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top"
                                                     width="100%">
                                                     <table class="block-grid"
-                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 600px;color: #000000;background-color: transparent"
+                                                           style="border-spacing: 0;border-collapse: collapse;vertical-align: top;width: 100%;max-width: 645px;color: #000000;background-color: transparent"
                                                            cellpadding="0" cellspacing="0" width="100%"
                                                            bgcolor="transparent">
                                                         <tbody>
@@ -487,12 +489,13 @@
                                                                                     <tbody>
                                                                                     <tr style="vertical-align: top">
                                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 20px;padding-right: 20px;padding-bottom: 20px;padding-left: 20px">
-                                                                                            <div style="color:#FFFFFF;line-height:180%;font-family:Arial;">
-                                                                                                <div style="font-size: 14px; text-align: right;color: #FFFFFF;font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
+                                                                                            <div style="color:#FFFFFF;line-height:180%;font-family:Verdana;">
+                                                                                                <div style="line-height: 21px; font-size: 14px; text-align: right;color: #FFFFFF;font-family: Verdana, Tahoma, Helvetica, FreeSans, sans-serif;line-height: 22px">
                                                                                                     <p style="margin: 0;line-height: 22px;font-size: 12px;text-align: right; color: #afd9ee">
                                                                                                         <a style="color : #c0c0c0 ;"
-                                                                                                           href="mailto:${digest.contributeTo}">2015
-                                                                                                            ${digest.companyName}</a>
+                                                                                                           href="mailto:${contributeTo}">2015
+                                                                                                            Company/Group
+                                                                                                            name</a>
                                                                                                     </p></div>
                                                                                             </div>
                                                                                         </td>
