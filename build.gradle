@@ -49,3 +49,10 @@ sourceSets {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.8'
 }
+
+release {
+//  dependsOn build // 'distZip' could e.g be used in combination with the 'application' plugin
+  push = true // 'true' would e.g. be useful when triggering the release task on a CI server
+  versionSuffix = '' // '.DEV' or '' (empty) could be useful alternatives
+  tagPrefix = 'v' // 'r' or '' (empty) could be useful alternatives
+}
