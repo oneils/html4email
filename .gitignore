@@ -26,3 +26,9 @@ hs_err_pid*
 
 # IntelliJ
 /out/
+
+.app-src/tmp/
+bower_components/
+dist/
+node_modules/
+.jshintrc
