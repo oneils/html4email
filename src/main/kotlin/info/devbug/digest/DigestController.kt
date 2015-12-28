@@ -1,5 +1,6 @@
 package info.devbug.digest
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
@@ -10,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam
  */
 @Controller
 class DigestController {
+    private val digestService: DigestService
+
+    @Autowired constructor(digestService: DigestService) {
+        this.digestService = digestService
+    }
 
     @RequestMapping("/digest")
     fun digest(@RequestParam("filePath") filePath: String, model: Model): String {
         val digestParser = DigestParser()
 
         val digest = digestParser.getDigest(filePath)
-        val digestMap = hashMapOf("title" to digest.title, "contributeTo" to digest.contributeTo,
-                "topics" to digest.topics);
-
-        model.addAllAttributes(digestMap)
+        model.addAttribute("digest", digest)
 
         return "digest"
     }
