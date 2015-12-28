@@ -19,9 +19,7 @@ class DigestController {
 
     @RequestMapping("/digest")
     fun digest(@RequestParam("filePath") filePath: String, model: Model): String {
-        val digestParser = DigestParser()
-
-        val digest = digestParser.getDigest(filePath)
+        val digest = digestService.getDigest(filePath)
         model.addAttribute("digest", digest)
 
         return "digest"
