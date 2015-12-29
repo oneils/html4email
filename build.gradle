@@ -35,11 +35,13 @@ dependencies {
     //spring boot
     compile("org.springframework.boot:spring-boot-starter-web:$spring_boot_version")
     compile("org.springframework.boot:spring-boot-starter-freemarker")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
 
     compile 'com.github.salomonbrys.kotson:kotson:1.6.0'
     compile 'org.codehaus.groovy:groovy:2.4.5'
 
     compile 'org.freemarker:freemarker:2.3.23'
+    compile 'org.postgresql:postgresql:9.4-1206-jdbc42'
 }
 
 sourceSets {
