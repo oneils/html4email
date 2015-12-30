@@ -1,12 +1,13 @@
-package info.devbug.digest
+package devbug.digest
 
 import groovy.transform.TypeChecked
+import info.devbug.api.Digest
+import info.devbug.digest.DigestParser
 import spock.lang.Specification
 
 /**
  * @author Aliaksei Bahdanau.
  */
-@TypeChecked
 class DigestParserSpec extends Specification {
   private DigestParser parser
 
@@ -19,7 +20,7 @@ class DigestParserSpec extends Specification {
     def digestFilePath = "src/test/resources/digest.json"
 
     expect:
-    def digest = parser.getDigest(digestFilePath)
+    Digest digest = parser.getDigest(digestFilePath)
 
     digest.title == "Digest #4"
     digest.contributeTo == "your_company@mail.com"
