@@ -13,7 +13,7 @@ or if _Gradle_ is installed
 
     # java -jar build\libs\html4email-kotlin.jar
 
-    or
+or
 
     # ./gradlew bootRun
     
