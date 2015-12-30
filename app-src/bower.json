@@ -1,7 +1,7 @@
 {
-  "name": "digest",
+  "name": "html4email",
   "version": "1.0.0",
-  "description": "Website for digests",
+  "description": "Digest content generator",
   "main": "index.html",
   "moduleType": [],
   "keywords": [

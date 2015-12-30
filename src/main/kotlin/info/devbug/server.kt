@@ -15,7 +15,7 @@ class HomeController {
 
     @RequestMapping("/")
     fun index(): String {
-        return "index"
+        return "index.html"
     }
 
     @RequestMapping("/test")

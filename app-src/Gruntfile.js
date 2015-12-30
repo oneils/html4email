@@ -32,7 +32,7 @@ module.exports = function (grunt) {
             dist: {
                 cwd: 'app',
                 src: [ '**','!styles/**/*.css','!scripts/**/*.js' ],
-                dest: 'dist',
+                dest: '../public',
                 expand: true
             },
             fonts: {
@@ -43,28 +43,28 @@ module.exports = function (grunt) {
                         dot: true,
                         cwd: 'bower_components/bootstrap/dist',
                         src: ['fonts/*.*'],
-                        dest: 'dist'
+                        dest: '../public'
                     }, {
                         //for font-awesome
                         expand: true,
                         dot: true,
                         cwd: 'bower_components/font-awesome',
                         src: ['fonts/*.*'],
-                        dest: 'dist'
+                        dest: '../public'
                     }
                 ]
             }
         },
         clean: {
             build:{
-                src: [ 'dist/']
+                src: [ '../public/']
             }
         },
 
         useminPrepare: {
             html: 'app/index.html',
             options: {
-                dest: 'dist'
+                dest: '../public'
             }
         },
         // Concat
@@ -95,8 +95,8 @@ module.exports = function (grunt) {
                 // in dist directory
                 files: [{
                     src: [
-                        'dist/scripts/*.js',
-                        'dist/styles/*.css',
+                        '../public/scripts/*.js',
+                        '../public/styles/*.css',
                     ]
                 }]
             }
@@ -106,10 +106,10 @@ module.exports = function (grunt) {
         // options.assetDirs contains the directories for finding the assets
         // according to their relative paths
         usemin: {
-            html: ['dist/*.html'],
-            css: ['dist/styles/*.css'],
+            html: ['../public/*.html'],
+            css: ['../public/styles/*.css'],
             options: {
-                assetsDirs: ['dist', 'dist/styles']
+                assetsDirs: ['../public', '../public/styles']
             }
         },
 
@@ -148,7 +148,7 @@ module.exports = function (grunt) {
         options: {
           open: true,
           base:{
-               path: 'dist',
+               path: '../public',
             options: {
                 index: 'index.html',
                 maxAge: 300000

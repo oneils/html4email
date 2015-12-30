@@ -1,5 +1,5 @@
 {
-  "name": "conFusion",
+  "name": "html4email",
   "private": true,
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -15,7 +15,7 @@
     "grunt-usemin": "^3.1.1",
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^2.1.0",
-    "time-grunt": "^1.2.2"
+    "time-grunt": "^1.3.0"
   },
   "engines": {
     "node": ">=0.10.0"
