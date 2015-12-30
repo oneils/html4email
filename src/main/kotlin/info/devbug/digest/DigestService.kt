@@ -16,4 +16,12 @@ class DigestService {
         val digestParser = DigestParser()
         return digestParser.getDigest(filePath)
     }
+
+    /**
+     * Parses [Digest] title and returns current digest number.
+     */
+    fun getDigestNumber(digestTitle: String): String {
+        val digestParser = DigestParser()
+        return digestParser.getDigestNumber(digestTitle)
+    }
 }

@@ -79,7 +79,7 @@
         <table class="main">
             <tr class="main-tr">
                 <th>
-                    <img src="/newlogo.png">
+                    <img src="/images/logos/${digestNumber}.png">
                 </th>
             </tr>
 

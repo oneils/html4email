@@ -22,6 +22,9 @@ class DigestController {
         val digest = digestService.getDigest(filePath)
         model.addAttribute("digest", digest)
 
+        val digestNumber = digestService.getDigestNumber(digest.title)
+        model.addAttribute("digestNumber", digestNumber)
+
         return "digest"
     }
 }
