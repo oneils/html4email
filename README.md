@@ -12,4 +12,8 @@ or if _Gradle_ is installed
 ###To start:
 
     # java -jar build\libs\html4email-kotlin.jar
+
+    or
+
+    # ./gradlew bootRun
     
