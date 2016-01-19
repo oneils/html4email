@@ -45,8 +45,8 @@ class ArticleResource {
 //        return "redirect:/articles"
 //    }
 
-    @RequestMapping(method = arrayOf(RequestMethod.DELETE))
-    fun delete(@RequestParam("id") id: Int): String {
+    @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.DELETE))
+    fun delete(@PathVariable("id") id: Int): String {
         articleService.delete(id)
         return "Ok"
     }
