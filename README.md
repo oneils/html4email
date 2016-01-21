@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/oneils/html4email/status.png)](https://drone.io/github.com/oneils/html4email/latest)
+
 # html4email-kotlin
 
 
