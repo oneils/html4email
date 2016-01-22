@@ -2,14 +2,14 @@
 
 var digestControllers = angular.module('digestControllers', ['ngResource']);
 
-digestControllers.controller('ArticleListCtrl', ['$scope', 'Article',function($scope, Article) {
+digestControllers.controller('ArticleListCtrl', ['$scope', 'Article', function ($scope, Article) {
     $scope.articles = Article.query();
 }]);
 
-digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article',function($scope, Article) {
+digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function ($scope, Article) {
     $scope.article = {};
 
-    $scope.saveArticle = function() {
+    $scope.saveArticle = function () {
         var article = new Article();
 
         article.title = $scope.article.title;
