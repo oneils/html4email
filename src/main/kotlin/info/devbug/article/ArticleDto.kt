@@ -1,5 +1,6 @@
 package info.devbug.article;
 
+import java.util.*
 import javax.persistence.*
 
 /**
@@ -23,4 +24,5 @@ class ArticleDto() {
     var title: String = ""
     var description: String = ""
     var url: String = ""
+    var createdDate: Date = Date()
 }
