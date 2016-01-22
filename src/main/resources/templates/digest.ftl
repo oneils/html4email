@@ -69,7 +69,7 @@
         text-align: center;
     }
     .main .main-tr:last-child td a {
-        font-size: 15px;
+        font-size: 12px;
         color: #cdcdcd;
     }
     </style>
