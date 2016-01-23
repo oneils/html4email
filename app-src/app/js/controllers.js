@@ -27,4 +27,12 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
         $scope.saveArticleForm.$setUntouched();
         $scope.article = {}
     };
+
+    $scope.deleteArticle = function(inputArticle) {
+        console.log(inputArticle.id);
+
+        $scope.articles.pop(inputArticle);
+        var article = new Article();
+        article.$delete({id: inputArticle.id});
+    };
 }]);

@@ -28,17 +28,25 @@
                 <pre ng-bind="article | json"></pre>
             </div>
 
+            <div class="col-md-8">
 
-            <div class="col-md-4">
                 <ul>
                     <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
-                        <p>ID: {{article.id}}</p>
-                        <a href="{{article.url}}">{{article.title}}</a>
-                        <p>{{article.description}}</p>
-                        <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
-                        <p>Delete | Edit</p>
+                        <form name="deleteArticleForm" role="form">
+                            <p>ID: {{article.id}}</p>
+                            <a href="{{article.url}}">{{article.title}}</a>
+                            <p>{{article.description}}</p>
+                            <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default">Edit</button>
+                                <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
+                                    Delete
+                                </button>
+                            </div>
+                        </form>
                     </li>
                 </ul>
+
             </div>
         </div>
     </div>
