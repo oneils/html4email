@@ -23,7 +23,6 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
             $scope.articles.push(data)
         });
 
-
         $scope.saveArticleForm.$setPristine();
         $scope.saveArticleForm.$setUntouched();
         $scope.article = {}

@@ -31,7 +31,8 @@
 
             <div class="col-md-4">
                 <ul>
-                    <li ng-repeat="article in articles" class="thumbnail article-listing">
+                    <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
+                        <p>ID: {{article.id}}</p>
                         <a href="{{article.url}}">{{article.title}}</a>
                         <p>{{article.description}}</p>
                         <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
