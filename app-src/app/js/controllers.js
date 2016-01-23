@@ -8,6 +8,7 @@ digestControllers.controller('ArticleListCtrl', ['$scope', 'Article', function (
 
 digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function ($scope, Article) {
     $scope.article = {};
+    $scope.articles = Article.query();
 
     $scope.saveArticle = function () {
         var article = new Article();
