@@ -29,8 +29,8 @@ import java.time.LocalDate
 /**
  * @author Aliaksei Bahdanau.
  */
-//@Configuration
-//@EnableSwagger2
+@Configuration
+@EnableSwagger2
 open class SwaggerConfig {
 
     @Autowired
