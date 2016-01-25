@@ -36,3 +36,7 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
         article.$delete({id: inputArticle.id});
     };
 }]);
+
+digestControllers.controller('DigestCtrl', ['$scope', 'Article', 'Digest', function ($scope, Article) {
+    
+}]);
