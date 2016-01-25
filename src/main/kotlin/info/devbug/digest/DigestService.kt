@@ -1,6 +1,7 @@
 package info.devbug.digest
 
 import info.devbug.api.Digest
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 /**
@@ -8,6 +9,12 @@ import org.springframework.stereotype.Service
  */
 @Service
 class DigestService {
+
+    private val digestRepository: DigestRepository
+
+    @Autowired constructor(digestRepository: DigestRepository) {
+        this.digestRepository = digestRepository
+    }
 
     /**
      * Returns the Digest object according to specified the digest file path.
@@ -24,4 +31,10 @@ class DigestService {
         val digestParser = DigestParser()
         return digestParser.getDigestNumber(digestTitle)
     }
+
+    fun findAll(): List<DigestDto> {
+        return digestRepository.findAll()
+    }
+
+
 }

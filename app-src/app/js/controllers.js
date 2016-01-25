@@ -37,28 +37,46 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
     };
 }]);
 
-digestControllers.controller('DigestCtrl', ['$scope', 'Article', 'Digest', function ($scope, Article) {
+digestControllers.controller('DigestCtrl', ['$scope', '$http', 'Article', 'Digest', function ($scope, $http, Article, Digest) {
+    $scope.digests = Digest.query();
+
     var digest = {};
     digest.title = "BackEnd Digest #";
 
     $scope.digest = digest;
 
-    $scope.digests = [];
-
     // TODO articles should be retrieved for the selected Digest.
     $scope.article = {};
     $scope.articles = Article.query();
+    $scope.digestArticles = [];
+
+
 
     $scope.createDigest = function () {
         var digest = {};
         digest.title = $scope.digest.title;
-
-        // TODO the real Digest ID should be used insted.
-        digest.id = digest.title.split("#")[1];
 
         $scope.digests.push(digest);
 
         $scope.newDigestForm.$setPristine();
         $scope.newDigestForm.$setUntouched();
     };
+
+    $scope.getArticles = function(data) {
+
+        // TODO remove duplicated REST call on every clicking on Digest title
+        $http({
+            method: 'GET',
+            url: '/v1/digests/' + data + '/articles'
+        }).then(function successCallback(response) {
+
+            console.log(response.data);
+
+            $scope.digestArticles = response.data;
+
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    }
 }]);

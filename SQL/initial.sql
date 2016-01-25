@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS article;
 CREATE TABLE article (
     article_id serial PRIMARY KEY,
-    title VARCHAR(50) NOT NULL,
-    url VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    url VARCHAR NOT NULL,
     description TEXT,
     created_date DATE default current_date,
     updated_date DATE
@@ -13,3 +13,45 @@ CREATE INDEX "description" ON "public"."article" USING btree( "description" Asc 
 insert  INTO article (title, url) values ('title1', 'http://utl.com');
 insert  INTO article (title, url) values ('title3', 'http://test.com');
 insert  INTO article (title, url) values ('title3', 'http://test.com');
+
+-- Digest Table
+DROP TABLE IF EXISTS digest;
+CREATE TABLE digest (
+    digest_id serial PRIMARY KEY,
+    title varchar(50) NOT NULL,
+    published_date DATE,
+    created_date DATE default current_date
+);
+CREATE INDEX "title" ON "public"."digest" USING btree( "title" Asc NULLS Last );
+
+INSERT  INTO digest (title) values ('BackEnd Digest #1');
+INSERT  INTO digest (title) values ('BackEnd Digest #2');
+--------------------------------------------------------------
+
+-- Topic Table
+DROP TABLE IF EXISTS topic;
+CREATE TABLE topic (
+  topic_id serial PRIMARY KEY,
+  topic_name varchar(50) NOT NULL,
+  order_priority Integer NOT NULL
+);
+CREATE INDEX "topic_name" ON "public"."topic" USING btree( "topic_name" Asc NULLS Last );
+--------------------------------------------------------------
+
+-- Digest-Topic-Article table
+DROP TABLE IF EXISTS digest_topic_article;
+CREATE TABLE "public"."digest_topic_article" (
+  "dta_id" serial NOT NULL,
+  "digest_id" Integer NOT NULL,
+  "topic_id" Integer NOT NULL,
+  "article_id" Integer NOT NULL,
+  PRIMARY KEY ( "dta_id" ) );
+
+DROP INDEX IF EXISTS "index_article_id";
+CREATE INDEX "index_article_id" ON "public"."digest_topic_article" USING btree( "article_id" );
+
+DROP INDEX IF EXISTS "index_topic_id";
+CREATE INDEX "index_topic_id" ON "public"."digest_topic_article" USING btree( "topic_id" );
+
+DROP INDEX IF EXISTS "index_digest_id";
+CREATE INDEX "index_digest_id" ON "public"."digest_topic_article" USING btree( "digest_id" );

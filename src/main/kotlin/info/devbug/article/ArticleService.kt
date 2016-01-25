@@ -29,4 +29,8 @@ class ArticleService {
     fun delete(id: Int) {
         articleRepository.delete(id)
     }
+
+    fun findArticles(digestID: Int): List<ArticleDto> {
+        return articleRepository.findArticlesByDigestId(digestID)
+    }
 }

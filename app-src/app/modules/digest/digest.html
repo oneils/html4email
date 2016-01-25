@@ -44,12 +44,12 @@
                 <div class="row">
                     <ul>
                         <li ng-repeat="digest in digests | orderBy:'-title'" class="thumbnail article-listing">
-                            <a href="javascript:;" data-target="#{{digest.id}}" data-toggle="collapse">{{digest
-                                .title}}</a>
+                            <a href="javascript:;" data-target="#digest-{{digest.id}}" data-toggle="collapse"
+                            ng-click="getArticles(digest.id)">{{digest.title}}</a>
 
-                            <div id="{{digest.id}}" class="collapse">
+                            <div id="digest-{{digest.id}}" class="collapse">
                                 <ul>
-                                    <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
+                                    <li ng-repeat="article in digestArticles | orderBy:'-id'" class="thumbnail article-listing">
                                         <form name="deleteArticleForm" role="form">
                                             <p>#: {{article.id}}</p>
                                             <a href="{{article.url}}">{{article.title}}</a>
