@@ -38,5 +38,27 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
 }]);
 
 digestControllers.controller('DigestCtrl', ['$scope', 'Article', 'Digest', function ($scope, Article) {
-    
+    var digest = {};
+    digest.title = "BackEnd Digest #";
+
+    $scope.digest = digest;
+
+    $scope.digests = [];
+
+    // TODO articles should be retrieved for the selected Digest.
+    $scope.article = {};
+    $scope.articles = Article.query();
+
+    $scope.createDigest = function () {
+        var digest = {};
+        digest.title = $scope.digest.title;
+
+        // TODO the real Digest ID should be used insted.
+        digest.id = digest.title.split("#")[1];
+
+        $scope.digests.push(digest);
+
+        $scope.newDigestForm.$setPristine();
+        $scope.newDigestForm.$setUntouched();
+    };
 }]);

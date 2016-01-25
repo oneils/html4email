@@ -4,6 +4,73 @@
 
         <div class="row" ng-controller="DigestCtrl">
 
+            <div class="col-md-5">
+                <ul>
+                    <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
+                        <div class="media">
+
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="{{article.url}}">{{article.title}}</a></h4>
+                                {{article.description}}
+                            </div>
+                            <div class="media-right">
+                                <button type="button" class="btn btn-success" ng-click="deleteArticle(article)">
+                                    To digest >>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-7">
+                <div class="row">
+                    <form role="form" name="newDigestForm">
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" class="form-control" id="title" name="title" required
+                                   ng-model="digest.title">
+                        </div>
+
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-default" ng-click="createDigest()">Create</button>
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <div class="row">
+                    <ul>
+                        <li ng-repeat="digest in digests | orderBy:'-title'" class="thumbnail article-listing">
+                            <a href="javascript:;" data-target="#{{digest.id}}" data-toggle="collapse">{{digest
+                                .title}}</a>
+
+                            <div id="{{digest.id}}" class="collapse">
+                                <ul>
+                                    <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
+                                        <form name="deleteArticleForm" role="form">
+                                            <p>#: {{article.id}}</p>
+                                            <a href="{{article.url}}">{{article.title}}</a>
+                                            <p>{{article.description}}</p>
+                                            <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button type="button" class="btn btn-default">Edit</button>
+                                                <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
