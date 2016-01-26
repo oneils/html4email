@@ -29,8 +29,6 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
     };
 
     $scope.deleteArticle = function(inputArticle) {
-        console.log(inputArticle.id);
-
         $scope.articles.pop(inputArticle);
         var article = new Article();
         article.$delete({id: inputArticle.id});
@@ -38,18 +36,33 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
 }]);
 
 digestControllers.controller('DigestCtrl', ['$scope', '$http', 'Article', 'Digest', function ($scope, $http, Article, Digest) {
-    $scope.digests = Digest.query();
+    var digests = Digest.query();
+
+    $scope.article = {};
+    $scope.articles = Article.query();
+
+    var digestArticles = [];
+    digests.$promise
+        .then(function (data) {
+
+            for (var i = 0; i < data.length; i++) {
+                digestArticles.push(
+                    {
+                        "digest": {
+                            "id": data[i].id,
+                            "createdDate": data[i].createdDate,
+                            "title": data[i].title,
+                            "articles": []
+                        }
+                    }
+                );
+            }
+            $scope.digestArticles = digestArticles;
+        });
 
     var digest = {};
     digest.title = "BackEnd Digest #";
-
     $scope.digest = digest;
-
-    // TODO articles should be retrieved for the selected Digest.
-    $scope.article = {};
-    $scope.articles = Article.query();
-    $scope.digestArticles = [];
-
 
 
     $scope.createDigest = function () {
@@ -62,17 +75,24 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', 'Article', 'Diges
         $scope.newDigestForm.$setUntouched();
     };
 
-    $scope.getArticles = function(data) {
+    $scope.getArticles = function (digestId) {
+        var digestArticles = $scope.digestArticles;
 
         // TODO remove duplicated REST call on every clicking on Digest title
         $http({
             method: 'GET',
-            url: '/v1/digests/' + data + '/articles'
+            url: '/v1/digests/' + digestId + '/articles'
         }).then(function successCallback(response) {
+            var articles = response.data;
 
-            console.log(response.data);
+            for (var i = 0; i < digestArticles.length; i++) {
 
-            $scope.digestArticles = response.data;
+                if (digestArticles[i].digest.id === digestId) {
+                    digestArticles[i].digest.articles = articles;
+                }
+            }
+
+            $scope.digestArticles.concat(digestArticles);
 
         }, function errorCallback(response) {
             // called asynchronously if an error occurs

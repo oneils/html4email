@@ -15,7 +15,7 @@
                             </div>
                             <div class="media-right">
                                 <button type="button" class="btn btn-success" ng-click="deleteArticle(article)">
-                                    To digest >>
+                                    >>
                                 </button>
                             </div>
                         </div>
@@ -43,13 +43,19 @@
 
                 <div class="row">
                     <ul>
-                        <li ng-repeat="digest in digests | orderBy:'-title'" class="thumbnail article-listing">
-                            <a href="javascript:;" data-target="#digest-{{digest.id}}" data-toggle="collapse"
-                            ng-click="getArticles(digest.id)">{{digest.title}}</a>
+                        <li ng-repeat="digestArticle in digestArticles | orderBy:'-digestArticle.digest.title'"
+                            class="thumbnail article-listing">
+                            {{digestArticle.digest.id}}
+                            <a href="javascript:;" data-target="#digest-{{digestArticle.digest.id}}"
+                               data-toggle="collapse"
+                               ng-click="getArticles(digestArticle.digest.id)">{{digestArticle.digest.title}}</a>
 
-                            <div id="digest-{{digest.id}}" class="collapse">
+
+                            <div id="digest-{{digestArticle.digest.id}}" class="collapse">
                                 <ul>
-                                    <li ng-repeat="article in digestArticles | orderBy:'-id'" class="thumbnail article-listing">
+                                    <!-- Articles should be devided by Topics-->
+                                    <li ng-repeat="article in digestArticle.digest.articles | orderBy:'-id'"
+                                        class="thumbnail article-listing">
                                         <form name="deleteArticleForm" role="form">
                                             <p>#: {{article.id}}</p>
                                             <a href="{{article.url}}">{{article.title}}</a>
@@ -57,7 +63,8 @@
                                             <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
                                             <div class="btn-group" role="group" aria-label="...">
                                                 <button type="button" class="btn btn-default">Edit</button>
-                                                <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
+                                                <button type="button" class="btn btn-danger"
+                                                        ng-click="deleteArticle(article)">
                                                     Delete
                                                 </button>
                                             </div>
