@@ -52,6 +52,9 @@
 
 
                             <div id="digest-{{digestArticle.digest.id}}" class="collapse">
+                                <div ng-show="digestArticle.digest.articles.length == 0">
+                                    <span class="label label-warning">There are no articles for selected Digest</span>
+                                </div>
                                 <ul>
                                     <!-- Articles should be devided by Topics-->
                                     <li ng-repeat="article in digestArticle.digest.articles | orderBy:'-id'"
