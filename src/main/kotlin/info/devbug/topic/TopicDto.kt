@@ -1,5 +1,7 @@
-package info.devbug.dto
+package info.devbug.topic
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
+import info.devbug.article.ArticleDto
 import javax.persistence.*
 
 /**
@@ -25,5 +27,9 @@ class TopicDto() {
 
     @Column(name = "order_priority")
     var orderPriority: Int = 0
+
+    @OneToMany(cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER,mappedBy = "topic")
+    @JsonManagedReference
+    var articles: Set<ArticleDto> = emptySet()
 
 }

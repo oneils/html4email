@@ -44,6 +44,19 @@ insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost'
 --------------------------------------------------------------
 
 -- Digest-Topic-Article table
+DROP TABLE IF EXISTS topic_articles;
+CREATE TABLE "public"."topic_articles" (
+  "topic_id" serial NOT NULL,
+  "article_id" Integer NOT NULL,
+  PRIMARY KEY ( "topic_id", "article_id" ) );
+
+DROP INDEX IF EXISTS "index_topic_article_id";
+CREATE INDEX "index_topic_article_id" ON "public"."topic_articles" USING btree( "topic_id", "article_id" );
+
+INSERT INTO topic_articles(topic_id, article_id) VALUES (1, 7);
+--------------------------------------------------------------
+
+-- Digest-Topic-Article table
 DROP TABLE IF EXISTS digest_topic_article;
 CREATE TABLE "public"."digest_topic_article" (
   "dta_id" serial NOT NULL,

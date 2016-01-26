@@ -1,5 +1,7 @@
 package info.devbug.article;
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import info.devbug.topic.TopicDto
 import java.util.*
 import javax.persistence.*
 
@@ -26,5 +28,10 @@ class ArticleDto() {
     var url: String = ""
     var createdDate: Date = Date()
 
+    // TODO topic ID should be removed.
     var topicId: Int? = null
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "topic_id")
+    @JsonBackReference
+    var topic: TopicDto? = null
 }

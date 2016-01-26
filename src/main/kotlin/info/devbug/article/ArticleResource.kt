@@ -1,6 +1,6 @@
 package info.devbug.article
 
-import info.devbug.dto.TopicDto
+import info.devbug.topic.TopicDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus

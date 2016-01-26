@@ -1,6 +1,6 @@
 package info.devbug.article;
 
-import info.devbug.dto.TopicDto
+import info.devbug.topic.TopicDto
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.query.Param
