@@ -1,5 +1,6 @@
 package info.devbug.article
 
+import info.devbug.dto.TopicDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -32,5 +33,9 @@ class ArticleService {
 
     fun findArticles(digestID: Int): List<ArticleDto> {
         return articleRepository.findArticlesByDigestId(digestID)
+    }
+
+    fun topics(): List<TopicDto> {
+        return articleRepository.articles();
     }
 }

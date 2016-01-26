@@ -1,5 +1,6 @@
 package info.devbug.article;
 
+import info.devbug.dto.TopicDto
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.query.Param
@@ -21,5 +22,8 @@ interface ArticleRepository : CrudRepository<ArticleDto, Int> {
             "WHERE dta.digestId = :digestID " +
             "AND a.id = dta.articleId")
     fun findArticlesByDigestId(@Param("digestID") digestID: Int): List<ArticleDto>
+
+    @Query("SELECT topic FROM TopicDto as topic")
+    fun articles(): List<TopicDto>
 
 }

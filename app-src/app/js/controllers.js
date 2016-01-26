@@ -2,8 +2,16 @@
 
 var digestControllers = angular.module('digestControllers', ['ngResource']);
 
-digestControllers.controller('ArticleListCtrl', ['$scope', 'Article', function ($scope, Article) {
+digestControllers.controller('ArticleListCtrl', ['$scope', '$http', 'Article', function ($scope, $http, Article) {
     $scope.articles = Article.query();
+    $scope.topics = [];
+
+    $http({
+        method: 'GET',
+        url: '/v1/articles/topics'
+    }).then(function successCallback(response) {
+        $scope.topics = response;
+    });
 }]);
 
 digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function ($scope, Article) {

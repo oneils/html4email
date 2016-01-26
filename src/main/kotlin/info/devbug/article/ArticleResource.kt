@@ -1,5 +1,6 @@
 package info.devbug.article
 
+import info.devbug.dto.TopicDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
@@ -57,5 +58,10 @@ class ArticleResource {
     @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.PUT))
     fun updateArticle(@RequestBody article: ArticleDto, @PathVariable("id") id: Int): ResponseEntity<ArticleDto> {
         return ResponseEntity(articleService.save(article), HttpStatus.OK)
+    }
+
+    @RequestMapping(value = "/topics", method = arrayOf(RequestMethod.GET))
+    fun topics(): ResponseEntity<List<TopicDto>> {
+        return ResponseEntity(articleService.topics(), HttpStatus.OK)
     }
 }
