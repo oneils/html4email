@@ -45,22 +45,20 @@
                     <ul>
                         <li ng-repeat="digestArticle in digestArticles | orderBy:'-digestArticle.digest.title'"
                             class="thumbnail article-listing">
-                            {{digestArticle.digest.id}}
                             <a href="javascript:;" data-target="#digest-{{digestArticle.digest.id}}"
                                data-toggle="collapse"
                                ng-click="getArticles(digestArticle.digest.id)">{{digestArticle.digest.title}}</a>
 
-
                             <div id="digest-{{digestArticle.digest.id}}" class="collapse">
-                                <div ng-show="digestArticle.digest.articles.length == 0">
+                                <div ng-show="digestArticle.digest.articles.length == 0" class="animate-show">
                                     <span class="label label-warning">There are no articles for selected Digest</span>
                                 </div>
                                 <ul>
                                     <!-- Articles should be devided by Topics-->
                                     <li ng-repeat="article in digestArticle.digest.articles | orderBy:'-id'"
-                                        class="thumbnail article-listing">
+                                        class="article-listing">
                                         <form name="deleteArticleForm" role="form">
-                                            <p>#: {{article.id}}</p>
+                                            <!--<p>#: {{article.id}}</p>-->
                                             <a href="{{article.url}}">{{article.title}}</a>
                                             <p>{{article.description}}</p>
                                             <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
