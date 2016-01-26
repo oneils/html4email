@@ -41,12 +41,18 @@
                             <p>ID: {{article.id}}</p>
                             <a href="{{article.url}}">{{article.title}}</a>
                             <p>{{article.description}}</p>
-                            <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
+                            <p><label>Topic ID: {{article.topicId}} | Created: {{article.createdDate |
+                                date:'yyyy-MM-dd'}}</label></p>
                             <div class="btn-group" role="group" aria-label="...">
-                                <button type="button" class="btn btn-default disabled">Edit</button>
-                                <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
-                                    Delete
-                                </button>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-default disabled">Edit</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
+                                        Delete
+                                    </button>
+                                </div>
+
                             </div>
                         </form>
                     </li>

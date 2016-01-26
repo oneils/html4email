@@ -1,26 +1,10 @@
-DROP TABLE IF EXISTS article;
-CREATE TABLE article (
-    article_id serial PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    url VARCHAR NOT NULL,
-    description TEXT,
-    created_date DATE default current_date,
-    updated_date DATE
-);
-CREATE INDEX "title" ON "public"."article" USING btree( "title" Asc NULLS Last );
-CREATE INDEX "description" ON "public"."article" USING btree( "description" Asc NULLS Last );
-
-insert  INTO article (title, url) values ('title1', 'http://utl.com');
-insert  INTO article (title, url) values ('title3', 'http://test.com');
-insert  INTO article (title, url) values ('title3', 'http://test.com');
-
 -- Digest Table
 DROP TABLE IF EXISTS digest;
 CREATE TABLE digest (
-    digest_id serial PRIMARY KEY,
-    title varchar(50) NOT NULL,
-    published_date DATE,
-    created_date DATE default current_date
+  digest_id serial PRIMARY KEY,
+  title varchar(50) NOT NULL,
+  published_date DATE,
+  created_date DATE default current_date
 );
 CREATE INDEX "title" ON "public"."digest" USING btree( "title" Asc NULLS Last );
 
@@ -36,6 +20,27 @@ CREATE TABLE topic (
   order_priority Integer NOT NULL
 );
 CREATE INDEX "topic_name" ON "public"."topic" USING btree( "topic_name" Asc NULLS Last );
+--------------------------------------------------------------
+
+
+-- Article Table
+DROP TABLE IF EXISTS article;
+CREATE TABLE article (
+    article_id serial PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    url VARCHAR NOT NULL,
+    description TEXT,
+    created_date DATE default current_date,
+    updated_date DATE,
+    topic_id INT NOT NULL,
+    FOREIGN KEY (topic_id) REFERENCES topic (topic_id)
+);
+CREATE INDEX "title" ON "public"."article" USING btree( "title" Asc NULLS Last );
+CREATE INDEX "description" ON "public"."article" USING btree( "description" Asc NULLS Last );
+
+insert  INTO article (title, url, topic_id) values ('title1', 'http://localhost', 2);
+insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost', 2);
+insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost', 2);
 --------------------------------------------------------------
 
 -- Digest-Topic-Article table

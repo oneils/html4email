@@ -24,6 +24,7 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
         article.title = $scope.article.title;
         article.url = $scope.article.url;
         article.description = $scope.article.description;
+        article.topicId = $scope.topics.repeatSelect;
 
         var result = article.$save();
 

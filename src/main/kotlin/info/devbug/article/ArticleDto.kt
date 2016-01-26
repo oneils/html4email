@@ -25,4 +25,6 @@ class ArticleDto() {
     var description: String = ""
     var url: String = ""
     var createdDate: Date = Date()
+
+    var topicId: Int? = null
 }
