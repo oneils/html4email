@@ -6,6 +6,8 @@ digestControllers.controller('ArticleListCtrl', ['$scope', '$http', 'Article', f
     $scope.articles = Article.query();
     $scope.topics = [];
 
+
+    // TODO topic should be retrieved from the appropriate REST API
     $http({
         method: 'GET',
         url: '/v1/articles/topics'
@@ -25,6 +27,10 @@ digestControllers.controller('SaveArticleCtrl', ['$scope', 'Article', function (
         article.url = $scope.article.url;
         article.description = $scope.article.description;
         article.topicId = $scope.topics.repeatSelect;
+
+        var topic = {};
+        topic.id = $scope.topics.repeatSelect;
+        article.topic = topic;
 
         var result = article.$save();
 
