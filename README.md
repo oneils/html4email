@@ -19,6 +19,13 @@ or
 
     # ./gradlew bootRun
 
+
+By default application uses embedded database *HSQLDB*. Embedded database could be switched to PostgreSQL with the
+following environment variable 'spring.config.name':
+ ```
+ spring.config.name=application-prod
+ ```
+
 ### REST api documentation: ###
 
 * Via Swagger UI:
