@@ -1,5 +1,9 @@
 package info.devbug
 
+import info.devbug.api.Topic
+import info.devbug.topic.TopicDto
+import info.devbug.topic.TopicRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.Bean
@@ -16,6 +20,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableAutoConfiguration
 @ComponentScan (basePackages = arrayOf("info.devbug.*"))
 class HomeController {
+
+    private val topicRepository: TopicRepository
+
+    @Autowired constructor(topicRepository: TopicRepository) {
+        this.topicRepository = topicRepository
+
+//        val topicList: List<TopicDto> = listOf(TopicDto("News", 1), TopicDto("Interesting", 1), TopicDto("NWhat to watch", 1))
+//        topicRepository.save(topicList)
+    }
 
     @RequestMapping("/")
     fun index(): String {
