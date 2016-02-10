@@ -1,30 +1,37 @@
--- Digest Table
 DROP TABLE IF EXISTS digest;
+DROP TABLE  IF EXISTS article;
+DROP TABLE IF EXISTS topic;
+DROP TABLE IF EXISTS digest_topic_article;
+DROP TABLE IF EXISTS topic_articles;
+
+
+
+-- Digest Table
+--DROP TABLE IF EXISTS digest;
 CREATE TABLE digest (
   digest_id serial PRIMARY KEY,
   title varchar(50) NOT NULL,
   published_date DATE,
   created_date DATE default current_date
 );
-CREATE INDEX "title" ON "public"."digest" USING btree( "title" Asc NULLS Last );
-
-INSERT  INTO digest (title) values ('BackEnd Digest #1');
-INSERT  INTO digest (title) values ('BackEnd Digest #2');
+DROP INDEX IF EXISTS  "index_digest_title";
+CREATE INDEX "index_digest_title" ON "public"."digest" USING btree( "title" Asc NULLS Last );
 --------------------------------------------------------------
 
 -- Topic Table
-DROP TABLE IF EXISTS topic;
+--DROP TABLE IF EXISTS topic;
 CREATE TABLE topic (
   topic_id serial PRIMARY KEY,
   topic_name varchar(50) NOT NULL,
   order_priority Integer NOT NULL
 );
-CREATE INDEX "topic_name" ON "public"."topic" USING btree( "topic_name" Asc NULLS Last );
+DROP INDEX IF EXISTS "index_topic_name";
+CREATE INDEX "index_topic_name" ON "public"."topic" USING btree( "topic_name" Asc NULLS Last );
 --------------------------------------------------------------
 
 
 -- Article Table
-DROP TABLE IF EXISTS article;
+--DROP TABLE IF EXISTS article;
 CREATE TABLE article (
     article_id serial PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -32,19 +39,18 @@ CREATE TABLE article (
     description TEXT,
     created_date DATE default current_date,
     updated_date DATE,
-    topic_id INT NOT NULL,
-    FOREIGN KEY (topic_id) REFERENCES topic (topic_id)
+    topic_id INT
+--    ,
+--    FOREIGN KEY (topic_id) REFERENCES topic (topic_id)
 );
-CREATE INDEX "title" ON "public"."article" USING btree( "title" Asc NULLS Last );
-CREATE INDEX "description" ON "public"."article" USING btree( "description" Asc NULLS Last );
-
-insert  INTO article (title, url, topic_id) values ('title1', 'http://localhost', 2);
-insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost', 2);
-insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost', 2);
+DROP INDEX IF EXISTS "index_article_title";
+DROP INDEX IF EXISTS "index_article_description";
+CREATE INDEX "index_article_title" ON "public"."article" USING btree( "title" Asc NULLS Last );
+CREATE INDEX "index_article_description" ON "public"."article" USING btree( "description" Asc NULLS Last );
 --------------------------------------------------------------
 
 -- Digest-Topic-Article table
-DROP TABLE IF EXISTS topic_articles;
+--DROP TABLE IF EXISTS topic_articles;
 CREATE TABLE "public"."topic_articles" (
   "topic_id" serial NOT NULL,
   "article_id" Integer NOT NULL,
@@ -52,12 +58,10 @@ CREATE TABLE "public"."topic_articles" (
 
 DROP INDEX IF EXISTS "index_topic_article_id";
 CREATE INDEX "index_topic_article_id" ON "public"."topic_articles" USING btree( "topic_id", "article_id" );
-
-INSERT INTO topic_articles(topic_id, article_id) VALUES (1, 7);
 --------------------------------------------------------------
 
 -- Digest-Topic-Article table
-DROP TABLE IF EXISTS digest_topic_article;
+--DROP TABLE IF EXISTS digest_topic_article;
 CREATE TABLE "public"."digest_topic_article" (
   "dta_id" serial NOT NULL,
   "digest_id" Integer NOT NULL,

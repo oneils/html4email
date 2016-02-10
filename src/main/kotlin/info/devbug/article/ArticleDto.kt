@@ -1,13 +1,14 @@
 package info.devbug.article;
 
-import javax.persistence.*
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
+import java.util.*
 
 /**
  * @author Aliaksei Bahdanau.
  */
 
-@Entity
-@Table(name = "article")
+@Document(collection = "articles")
 class ArticleDto() {
     constructor(title: String, url: String, description: String) : this() {
         this.title = title
@@ -16,11 +17,10 @@ class ArticleDto() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_article_id_seq")
-    @SequenceGenerator(name = "article_article_id_seq", sequenceName = "article_article_id_seq", allocationSize = 1)
-    @Column(name = "article_id")
-    var id: Int = 0
+    var id: String? = null
     var title: String = ""
     var description: String = ""
     var url: String = ""
+    var createdDate: Date = Date()
+
 }

@@ -69,7 +69,7 @@
         text-align: center;
     }
     .main .main-tr:last-child td a {
-        font-size: 15px;
+        font-size: 12px;
         color: #cdcdcd;
     }
     </style>
@@ -92,7 +92,7 @@
                     <table><tr><td style="padding: 10px 0 0 0">
 
                         <div class="news-item">
-                            <table><tr><td style="padding: 0 0 10px 0"><a class="title" href="${article.url}">${article.title}</a></td></tr></table>
+                            <table><tr><td style="padding: 0 0 10px 0"><a class="title" href="${article.url}" target="_blank">${article.title}</a></td></tr></table>
                             <p class="description">
                                 ${article.description}
                             </p>

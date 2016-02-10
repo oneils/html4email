@@ -22,8 +22,8 @@ class ArticleService {
         return articleRepository.findAll()
     }
 
-    fun save(article: ArticleDto) {
-        articleRepository.save(article)
+    fun save(article: ArticleDto): ArticleDto {
+        return articleRepository.save(article)
     }
 
     fun delete(id: Int) {

@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <h1>Article List</h1>
+
+        <div class="row" ng-controller="SaveArticleCtrl">
+            <div class="col-md-4">
+                <form role="form" name="saveArticleForm">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" name="title" required
+                               ng-model="article.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL:</label>
+                        <input type="URL" class="form-control" id="url" name="url" required
+                               ng-model="article.url">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                    <textArea rows="6" class="form-control" id="description" name="description"
+                              ng-model="article.description"></textArea>
+
+                    </div>
+                    <div class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="topics.repeatSelect">
+                            <option ng-repeat="option in topics.data" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-default" ng-click="saveArticle()">Save</button>
+
+                </form>
+                <pre ng-bind="article | json"></pre>
+            </div>
+
+            <div class="col-md-8">
+
+                <ul>
+                    <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
+                        <form name="deleteArticleForm" role="form">
+                            <p>ID: {{article.id}}</p>
+                            <a href="{{article.url}}">{{article.title}}</a>
+                            <p>{{article.description}}</p>
+                            <p><label>Topic ID: {{article.topicId}} | Created: {{article.createdDate |
+                                date:'yyyy-MM-dd'}}</label></p>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-default disabled">Edit</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
+                                        Delete
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

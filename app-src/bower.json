@@ -24,12 +24,14 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
-    "angular": "~1.4.7",
-    "angular-route": "~1.4.7",
-    "angular-resource": "~1.4.7",
-    "angular-i18n": "~1.4.7",
-    "angular-sanitize": "~1.4.7",
-    "angular-animate": "~1.4.7",
-    "angular-bootstrap": "~0.13.0"
+    "angular": "~1.4.x",
+    "angular-route": "~1.4.x",
+    "angular-resource": "~1.4.x",
+    "angular-i18n": "~1.4.x",
+    "angular-sanitize": "~1.4.x",
+    "angular-animate": "~1.4.x",
+    "angular-bootstrap": "~0.13.0",
+    "angular-resource": "1.4.x",
+    "jquery": "2.2.0"
   }
 }

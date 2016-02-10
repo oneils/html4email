@@ -7,9 +7,6 @@ CREATE TABLE digest (
   created_date DATE default current_date
 );
 CREATE INDEX "title" ON "public"."digest" USING btree( "title" Asc NULLS Last );
-
-INSERT  INTO digest (title) values ('BackEnd Digest #1');
-INSERT  INTO digest (title) values ('BackEnd Digest #2');
 --------------------------------------------------------------
 
 -- Topic Table
@@ -37,10 +34,6 @@ CREATE TABLE article (
 );
 CREATE INDEX "title" ON "public"."article" USING btree( "title" Asc NULLS Last );
 CREATE INDEX "description" ON "public"."article" USING btree( "description" Asc NULLS Last );
-
-insert  INTO article (title, url, topic_id) values ('title1', 'http://localhost', 2);
-insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost', 2);
-insert  INTO article (title, url, topic_id) values ('title3', 'http://localhost', 2);
 --------------------------------------------------------------
 
 -- Digest-Topic-Article table
@@ -52,8 +45,6 @@ CREATE TABLE "public"."topic_articles" (
 
 DROP INDEX IF EXISTS "index_topic_article_id";
 CREATE INDEX "index_topic_article_id" ON "public"."topic_articles" USING btree( "topic_id", "article_id" );
-
-INSERT INTO topic_articles(topic_id, article_id) VALUES (1, 7);
 --------------------------------------------------------------
 
 -- Digest-Topic-Article table
