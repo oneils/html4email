@@ -1,7 +1,47 @@
 [![Build Status](https://drone.io/github.com/oneils/html4email/status.png)](https://drone.io/github.com/oneils/html4email/latest)
 
 ## html4email-kotlin  ##
-Currently is a prototype of the application for generating Digest email template from JSON file.
+Currently this is a prototype of the application for generating Digest email template from JSON file.
+
+Supported Json format for importing from:
+```
+{
+  "title": "Digest #4",
+  "contributeTo": "your_company@mail.com",
+  "topics": [
+    {
+      "topic": "NEWS",
+      "articles": [
+        {
+          "title": "First NEWS title",
+          "description": "First article NEWS Description",
+          "url": "http://localhost/articles/first"
+        },
+        {
+          "title": "Second NEWS title",
+          "description": "Second article NEWS Description",
+          "url": "http://localhost/articles/second"
+        }
+      ]
+    },
+    {
+      "topic": "PEOPLE",
+      "articles": [
+        {
+          "title": "First PEOPLE title",
+          "description": "First article PEOPLE Description",
+          "url": "http://localhost/people/first"
+        },
+        {
+          "title": "Second PEOPLE title",
+          "description": "Second article PEOPLE Description",
+          "url": "http://localhost/people/second"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### To build backend:  ###
 
