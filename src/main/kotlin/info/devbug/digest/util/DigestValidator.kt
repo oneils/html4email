@@ -1,4 +1,4 @@
-package info.devbug.digest
+package info.devbug.digest.util
 
 import kotlin.text.Regex
 

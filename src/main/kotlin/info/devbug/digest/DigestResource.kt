@@ -1,6 +1,8 @@
 package info.devbug.digest
 
 import info.devbug.article.ArticleService
+import info.devbug.digest.repository.DigestDto
+import info.devbug.digest.service.DigestServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,12 +16,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping(value = "/v1/digests")
 class DigestResource {
-    private val digestService: DigestService
-    private val articleService: ArticleService
+    private val digestService: DigestServiceImpl
 
-    @Autowired constructor(digestService: DigestService, articleService: ArticleService) {
+    @Autowired constructor(digestService: DigestServiceImpl) {
         this.digestService = digestService
-        this.articleService = articleService
     }
 
     @RequestMapping(method = arrayOf(RequestMethod.GET))

@@ -1,4 +1,4 @@
-package info.devbug.digest
+package info.devbug.digest.util
 
 import com.google.gson.Gson
 import info.devbug.api.Digest

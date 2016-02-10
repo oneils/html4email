@@ -1,6 +1,9 @@
-package info.devbug.digest
+package info.devbug.digest.service
 
 import info.devbug.api.Digest
+import info.devbug.digest.repository.DigestDto
+import info.devbug.digest.util.DigestParser
+import info.devbug.digest.repository.DigestRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -8,7 +11,7 @@ import org.springframework.stereotype.Service
  * @author Aliaksei Bahdanau.
  */
 @Service
-class DigestService {
+open class DigestServiceImpl : DigestService{
 
     private val digestRepository: DigestRepository
 
@@ -32,7 +35,7 @@ class DigestService {
         return digestParser.getDigestNumber(digestTitle)
     }
 
-    fun findAll(): List<DigestDto> {
+    override fun findAll(): List<DigestDto> {
         return digestRepository.findAll()
     }
 }

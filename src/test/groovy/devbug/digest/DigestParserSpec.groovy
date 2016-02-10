@@ -1,8 +1,7 @@
 package devbug.digest
 
-import groovy.transform.TypeChecked
 import info.devbug.api.Digest
-import info.devbug.digest.DigestParser
+import info.devbug.digest.util.DigestParser
 import spock.lang.Specification
 
 /**

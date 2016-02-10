@@ -1,4 +1,4 @@
-package info.devbug.digest
+package info.devbug.digest.repository
 
 import info.devbug.topic.TopicDto
 import org.springframework.data.annotation.Id
@@ -16,6 +16,12 @@ class DigestDto() {
         this.title = title
     }
 
+    constructor(title: String, contributeTo: String, topics: List<TopicDto>): this() {
+        this.title = title
+        this.topics = topics
+        this.contributeTo = contributeTo
+    }
+
     @Id
     var id: String? = null
 
@@ -26,4 +32,8 @@ class DigestDto() {
     var createdDate: Date = Date()
 
     var topics: List<TopicDto> = emptyList()
+
+    var contributeTo: String = ""
+
+    var companyName: String = ""
 }
