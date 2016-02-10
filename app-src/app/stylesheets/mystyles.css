@@ -54,6 +54,18 @@ ul.article-thumbs {
     list-style: none;
 }
 
+.digest-details{
+    background: rgba(200, 200, 200, 0.2);
+}
+
+.topic-listing {
+    list-style: none;
+}
+
+.article-listing {
+    list-style: none;
+}
+
 ul.article-thumbs li {
     border: 1px solid black;
     display: inline-block;

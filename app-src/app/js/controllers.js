@@ -67,7 +67,7 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', 'Article', 'Diges
                             "id": data[i].id,
                             "createdDate": data[i].createdDate,
                             "title": data[i].title,
-                            "articles": []
+                            "topics": data[i].topics
                         }
                     }
                 );
@@ -89,29 +89,4 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', 'Article', 'Diges
         $scope.newDigestForm.$setPristine();
         $scope.newDigestForm.$setUntouched();
     };
-
-    $scope.getArticles = function (digestId) {
-        var digestArticles = $scope.digestArticles;
-
-        // TODO remove duplicated REST call on every clicking on Digest title
-        $http({
-            method: 'GET',
-            url: '/v1/digests/' + digestId + '/articles'
-        }).then(function successCallback(response) {
-            var articles = response.data;
-
-            for (var i = 0; i < digestArticles.length; i++) {
-
-                if (digestArticles[i].digest.id === digestId) {
-                    digestArticles[i].digest.articles = articles;
-                }
-            }
-
-            $scope.digestArticles.concat(digestArticles);
-
-        }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-    }
 }]);

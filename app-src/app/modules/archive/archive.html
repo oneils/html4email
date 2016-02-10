@@ -1,0 +1,40 @@
+<div class="container" ng-controller="DigestCtrl">
+    <h1>Digests archive</h1>
+
+    <div class="row">
+        <ul>
+            <li ng-repeat="digestArticle in digestArticles | orderBy:'-digestArticle.digest.title'"
+                class="thumbnail article-listing">
+
+
+                <h3>{{digestArticle.digest.title}}</h3>
+                <p>Published date: {{digestArticle.digest.publishedDate}}</p>
+
+                <a href="javascript:;" data-target="#digest-{{digestArticle.digest.id}}"
+                   data-toggle="collapse">Read more..</a>
+
+                <div id="digest-{{digestArticle.digest.id}}" class="collapse digest-details">
+                    <div ng-show="digestArticle.digest.articles.length == 0" class="animate-show">
+                        <span class="label label-warning">There are no articles for selected Digest</span>
+                    </div>
+                    <ul>
+                        <li ng-repeat="topic in digestArticle.digest.topics" class="topic-listing">
+                            <h4>{{topic.topic}}</h4>
+
+                            <ul>
+                                <li ng-repeat="article in topic.articles" class="article-listing">
+
+                                    <a href="{{article.url}}" target="_blank">{{article.title}}</a>
+                                    <p>{{article.description}}</p>
+                                    <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
