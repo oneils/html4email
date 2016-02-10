@@ -1,6 +1,5 @@
 package info.devbug.article
 
-import info.devbug.topic.TopicDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -29,13 +28,5 @@ class ArticleService {
 
     fun delete(id: Int) {
         articleRepository.delete(id)
-    }
-
-    fun findArticles(digestID: Int): List<ArticleDto> {
-        return articleRepository.findArticlesByDigestId(digestID)
-    }
-
-    fun topics(): List<TopicDto> {
-        return articleRepository.articles();
     }
 }

@@ -35,6 +35,4 @@ class DigestService {
     fun findAll(): List<DigestDto> {
         return digestRepository.findAll()
     }
-
-
 }

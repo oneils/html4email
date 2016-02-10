@@ -1,15 +1,14 @@
 package info.devbug.topic
 
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import info.devbug.article.ArticleDto
-import javax.persistence.*
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 
 /**
  * @author Aliaksei Bahdanau
  */
 
-@Entity
-@Table(name = "topic")
+@Document(collection = "topics")
 class TopicDto() {
     constructor(name: String, orderPriority: Int) : this() {
         this.name = name
@@ -17,19 +16,12 @@ class TopicDto() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "topic_topic_id_seq")
-    @SequenceGenerator(name = "topic_topic_id_seq", sequenceName = "topic_topic_id_seq", allocationSize = 1)
-    @Column(name = "topic_id")
-    var id: Int = 0
+    var id: String = ""
 
-    @Column(name = "topic_name")
     var name: String = ""
 
-    @Column(name = "order_priority")
     var orderPriority: Int = 0
 
-    @OneToMany(cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER,mappedBy = "topic")
-    @JsonManagedReference
-    var articles: Set<ArticleDto> = emptySet()
+    var articles: List<ArticleDto> = emptyList()
 
 }

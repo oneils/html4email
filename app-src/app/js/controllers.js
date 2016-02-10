@@ -10,7 +10,7 @@ digestControllers.controller('ArticleListCtrl', ['$scope', '$http', 'Article', f
     // TODO topic should be retrieved from the appropriate REST API
     $http({
         method: 'GET',
-        url: '/v1/articles/topics'
+        url: '/v1/topics'
     }).then(function successCallback(response) {
         $scope.topics = response;
     });

@@ -1,14 +1,15 @@
 package info.devbug.digest
 
+import info.devbug.topic.TopicDto
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
-import javax.persistence.*
 
 /**
  * @author Aliaksei Bahdanau
  */
 
-@Entity
-@Table(name = "digest")
+@Document(collection = "digests")
 class DigestDto() {
 
     constructor(title: String): this() {
@@ -16,16 +17,13 @@ class DigestDto() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "digest_digest_id_seq")
-    @SequenceGenerator(name = "digest_digest_id_seq", sequenceName = "digest_digest_id_seq", allocationSize = 1)
-    @Column(name = "digest_id")
-    var id: Int = 0
+    var id: String? = null
 
     var title: String = ""
 
-    @Column(name = "published_date")
     var publishedDate: Date = Date()
 
-    @Column(name = "created_date")
     var createdDate: Date = Date()
+
+    var topics: List<TopicDto> = emptyList()
 }

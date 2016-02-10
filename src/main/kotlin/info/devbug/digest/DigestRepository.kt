@@ -1,6 +1,6 @@
 package info.devbug.digest
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
 /**
@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository
  */
 
 @Repository
-interface  DigestRepository : CrudRepository<DigestDto, Int> {
+interface DigestRepository : PagingAndSortingRepository<DigestDto, Int> {
 
     override fun findAll(): List<DigestDto>
+
 }
