@@ -76,29 +76,19 @@ following environment variable 'spring.config.name':
 
 ## How to build UI
 
-#### Install required libs for Grunt:
+#### Install Bower and Grunt:
 ```
 npm install -g grunt-cli
-npm install  grunt-cli --save-dev
-npm install grunt-contrib-jshint --save-dev
-npm install jshint-stylish --save-dev
-npm install time-grunt --save-dev
-npm install jit-grunt --save-dev
-npm install grunt-contrib-copy --save-dev
-npm install grunt-contrib-clean --save-dev
-npm install grunt-contrib-concat --save-dev
-npm install grunt-contrib-cssmin --save-dev
-npm install grunt-contrib-uglify --save-dev
-npm install grunt-filerev --save-dev
-npm install grunt-usemin --save-dev
-npm install grunt-contrib-watch --save-dev
-npm install grunt-contrib-connect --save-dev
+npm install -g bower
 ```
+Go to the `/app-src`
 
-After that run the command:
-```
-bower install
-```
+Run the commands:
+
+`npm instal` (to install npm dependencies)
+
+`bower install` (to install bower modules)
+
 
 ### To build UI run the command
 ```
