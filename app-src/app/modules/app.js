@@ -9,6 +9,10 @@ var digestApp = angular.module('digestApp', [
 digestApp.config(['$routeProvider',
 function($routeProvider) {
     $routeProvider.
+    when('/admin', {
+        templateUrl: 'modules/admin/admin.html',
+        controller: 'ArticleListCtrl'
+    }).
     when('/article-list', {
         templateUrl: 'modules/articles/articles-list.html',
         controller: 'ArticleListCtrl'
@@ -17,15 +21,12 @@ function($routeProvider) {
         templateUrl: 'modules/digest/digest.html',
         controller: 'DigestCtrl'
     }).
-    when('/archive', {
-        templateUrl: 'modules/archive/archive.html',
-        controller: 'ArchiveCtrl'
-    }).
     when('/import-digest', {
         templateUrl: 'modules/import/import-digest.html'
     }).
     when('/', {
-        templateUrl: 'modules/mainpage/mainpage.html'
+        templateUrl: 'modules/archive/archive.html',
+        controller: 'ArchiveCtrl'
     }).
     otherwise({
         redirectTo: '/'
