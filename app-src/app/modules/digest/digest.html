@@ -4,7 +4,28 @@
 
         <div class="row" ng-controller="DigestCtrl">
 
-            <div class="col-md-5">
+            <div class="row">
+                <form role="form" name="newDigestForm">
+                    <div class="form-group">
+                        <label for="digest-title">Title:</label>
+                        <input type="text" class="form-control" id="digest-title" name="digest-title" required
+                               ng-model="digest.title">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="digest-topics">Topics:</label>
+                        <input type="text" class="form-control" id="digest-topics" name="digest-topics"
+                               ng-model="digest.topics">
+                    </div>
+
+                    <button type="button" class="btn btn-default" ng-click="createDigest()">Create</button>
+
+                </form>
+            </div>
+
+
+            <div class="col-md-5" ng-controller="ArticleListCtrl">
                 <ul>
                     <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
                         <div class="media">
@@ -25,25 +46,12 @@
             </div>
 
             <div class="col-md-7">
-                <div class="row">
-                    <form role="form" name="newDigestForm">
-                        <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input type="text" class="form-control" id="title" name="title" required
-                                   ng-model="digest.title">
-                        </div>
-
-                        <div class="col-md-1">
-                            <button type="button" class="btn btn-default" ng-click="createDigest()">Create</button>
-                        </div>
-
-                    </form>
-                </div>
-
 
                 <div class="row">
+
+                    <pre ng-bind="digests | json"></pre>
                     <ul>
-                        <li ng-repeat="digestArticle in digestArticles | orderBy:'-digestArticle.digest.title'"
+                        <li ng-repeat="digestArticle in digests | orderBy:'-digestArticle.digest.title'"
                             class="thumbnail article-listing">
                             <a href="javascript:;" data-target="#digest-{{digestArticle.digest.id}}"
                                data-toggle="collapse"
