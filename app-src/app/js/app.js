@@ -19,7 +19,7 @@ function($routeProvider) {
     }).
     when('/archive', {
         templateUrl: 'modules/archive/archive.html',
-        controller: 'DigestCtrl'
+        controller: 'ArchiveCtrl'
     }).
     when('/import-digest', {
         templateUrl: 'modules/import/import-digest.html'

@@ -1,24 +1,25 @@
-<div class="container" ng-controller="DigestCtrl">
+<div class="container" ng-controller="ArchiveCtrl">
     <h1>Digests archive</h1>
 
     <div class="row">
         <ul>
-            <li ng-repeat="digestArticle in digestArticles | orderBy:'-digestArticle.digest.title'"
+            <li ng-repeat="digest in digests | orderBy:'-digest.title'"
                 class="thumbnail article-listing">
 
 
-                <h3>{{digestArticle.digest.title}}</h3>
-                <p>Published date: {{digestArticle.digest.publishedDate}}</p>
+                <h3>{{digest.title}}</h3>
+                <p><i>Published date:</i></p>
+                <!--<p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>-->
 
-                <a href="javascript:;" data-target="#digest-{{digestArticle.digest.id}}"
+                <a href="javascript:;" data-target="#digest-{{digest.id}}"
                    data-toggle="collapse">Read more..</a>
 
-                <div id="digest-{{digestArticle.digest.id}}" class="collapse digest-details">
-                    <div ng-show="digestArticle.digest.articles.length == 0" class="animate-show">
+                <div id="digest-{{digest.id}}" class="collapse digest-details">
+                    <div ng-show="digest.articles.length == 0" class="animate-show">
                         <span class="label label-warning">There are no articles for selected Digest</span>
                     </div>
                     <ul>
-                        <li ng-repeat="topic in digestArticle.digest.topics" class="topic-listing">
+                        <li ng-repeat="topic in digest.topics" class="topic-listing">
                             <h4>{{topic.topic}}</h4>
 
                             <ul>
@@ -26,7 +27,6 @@
 
                                     <a href="{{article.url}}" target="_blank">{{article.title}}</a>
                                     <p>{{article.description}}</p>
-                                    <p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>
 
                                 </li>
                             </ul>
