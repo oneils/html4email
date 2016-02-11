@@ -5,6 +5,9 @@ import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.util.DigestParser
 import info.devbug.digest.repository.DigestRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 /**
@@ -35,7 +38,8 @@ open class DigestServiceImpl : DigestService{
         return digestParser.getDigestNumber(digestTitle)
     }
 
-    override fun findAll(): List<DigestDto> {
-        return digestRepository.findAll()
+    override fun findAll(page: Int, size: Int): Page<DigestDto> {
+        val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "creationDate");
+        return digestRepository.findAll(request)
     }
 }

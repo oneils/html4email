@@ -10,6 +10,7 @@ import org.mockito.BDDMockito.given
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.springframework.boot.test.SpringApplicationConfiguration
+import org.springframework.data.domain.PageImpl
 import org.springframework.mock.web.MockServletContext
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
@@ -43,15 +44,13 @@ class DigestResourceTest {
 
     @Test
     fun `getDigest should return 200 status for correct endpoint`() {
-        given(digestServiceMock.findAll()).willReturn(listOf(DigestDto(), DigestDto()))
+        given(digestServiceMock.findAll(1, 10)).willReturn(PageImpl<DigestDto>(listOf(DigestDto(), DigestDto())))
 
         mockMvc?.perform(get("/v1/digests"))?.andExpect(status().isOk())
     }
 
     @Test
     fun `getDigest should return 404 status for incorrect endpoint`() {
-        given(digestServiceMock.findAll()).willReturn(listOf(DigestDto(), DigestDto()))
-
         mockMvc?.perform(get("/v1/digests/nonexists"))?.andExpect(status().isNotFound())
     }
 }
