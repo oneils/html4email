@@ -1,7 +1,12 @@
 /* app css stylesheet */
 
+html {
+    font-family: "PT Sans", Arial, sans-serif;
+}
+
 body {
     padding-top: 20px;
+    font-family: "PT Sans", Arial, sans-serif;
 }
 
 
