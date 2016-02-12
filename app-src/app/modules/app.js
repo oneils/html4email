@@ -3,7 +3,8 @@
 var digestApp = angular.module('digestApp', [
     'ngRoute',
     'digestControllers',
-    'digestServices'
+    'digestServices',
+    'ui.bootstrap'
 ]);
 
 digestApp.config(['$routeProvider',
