@@ -1,6 +1,9 @@
 package info.devbug.article
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,8 +24,11 @@ class ArticleResource {
     }
 
     @RequestMapping(method = arrayOf(RequestMethod.GET))
-    fun articles(): ResponseEntity<List<ArticleDto>> {
-        val articles = articleService.findAll()
+    fun articles(@RequestParam(value = "page", required = false, defaultValue = "0") page: Int,
+                 @RequestParam(value = "size", required = false, defaultValue = "10") size: Int):
+            ResponseEntity<Page<ArticleDto>> {
+        val pageRequest: PageRequest = PageRequest(page, size, Sort.Direction.DESC, "creationDate");
+        val articles = articleService.findAll(pageRequest)
         return ResponseEntity(articles, HttpStatus.OK)
     }
 

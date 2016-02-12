@@ -10,6 +10,4 @@ import org.springframework.stereotype.Repository
 interface ArticleRepository : PagingAndSortingRepository<ArticleDto, String> {
 
     fun findByTitle(title: String): List<ArticleDto>
-
-    override fun findAll(): List<ArticleDto>
 }

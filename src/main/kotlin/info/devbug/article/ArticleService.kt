@@ -1,6 +1,9 @@
 package info.devbug.article
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 /**
@@ -18,8 +21,8 @@ class ArticleService {
         return articleRepository.findOne(id)
     }
 
-    fun findAll(): List<ArticleDto> {
-        return articleRepository.findAll()
+    fun findAll(pageRequest: PageRequest): Page<ArticleDto> {
+        return articleRepository.findAll(pageRequest)
     }
 
     fun save(article: ArticleDto): ArticleDto {
