@@ -9,4 +9,6 @@ digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope
         $scope.totalItems = response.data.totalElements;
     });
 
+    $scope.$watch("totalItems", true);
+
 }]);
