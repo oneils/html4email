@@ -45,7 +45,7 @@ class ArticleResource {
                 .toUri();
         responseHeaders.location = newPollUri;
 
-        return ResponseEntity(responseHeaders, HttpStatus.CREATED)
+        return ResponseEntity(savedArticle, responseHeaders, HttpStatus.CREATED)
     }
 
     @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.DELETE))
