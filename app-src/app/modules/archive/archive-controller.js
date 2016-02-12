@@ -1,5 +1,6 @@
 digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.currentPage = 1;
+    $scope.toggle = true;
 
     $http({
         method: 'GET',

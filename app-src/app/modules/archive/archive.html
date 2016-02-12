@@ -12,7 +12,7 @@
                 <!--<p>Created: {{article.createdDate | date:'yyyy-MM-dd'}}</p>-->
 
                 <a href="javascript:;" data-target="#digest-{{digest.id}}"
-                   data-toggle="collapse">Read more..</a>
+                   data-toggle="collapse"  ng-click="toggle = !toggle">{{toggle && 'Show more' || 'Hide'}}</a>
 
                 <div id="digest-{{digest.id}}" class="collapse digest-details">
                     <div ng-show="digest.articles.length == 0" class="animate-show">
