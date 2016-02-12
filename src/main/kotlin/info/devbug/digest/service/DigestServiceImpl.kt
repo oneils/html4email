@@ -42,4 +42,8 @@ open class DigestServiceImpl : DigestService{
         val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "creationDate");
         return digestRepository.findAll(request)
     }
+
+    override fun save(digest: DigestDto): DigestDto {
+        return digestRepository.save(digest)
+    }
 }

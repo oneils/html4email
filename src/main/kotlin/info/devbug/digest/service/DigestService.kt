@@ -9,4 +9,6 @@ import org.springframework.data.domain.Page
 interface DigestService {
 
     fun findAll(page: Int, size: Int): Page<DigestDto>
+
+    fun save(digest: DigestDto): DigestDto
 }
