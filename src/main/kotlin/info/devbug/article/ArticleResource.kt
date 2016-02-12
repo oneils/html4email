@@ -43,19 +43,19 @@ class ArticleResource {
     }
 
     @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.DELETE))
-    fun delete(@PathVariable("id") id: Int): ResponseEntity<ArticleDto> {
+    fun delete(@PathVariable("id") id: String): ResponseEntity<ArticleDto> {
         articleService.delete(id)
         return ResponseEntity(HttpStatus.OK)
     }
 
     @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.GET))
-    fun findById(@PathVariable("id") id: Int): ResponseEntity<ArticleDto> {
+    fun findById(@PathVariable("id") id: String): ResponseEntity<ArticleDto> {
         val article = articleService.findArticleById(id)
         return ResponseEntity(article, HttpStatus.OK)
     }
 
     @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.PUT))
-    fun updateArticle(@RequestBody article: ArticleDto, @PathVariable("id") id: Int): ResponseEntity<ArticleDto> {
+    fun updateArticle(@RequestBody article: ArticleDto, @PathVariable("id") id: String): ResponseEntity<ArticleDto> {
         return ResponseEntity(articleService.save(article), HttpStatus.OK)
     }
 }

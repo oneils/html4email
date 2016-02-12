@@ -14,7 +14,7 @@ class ArticleService {
         this.articleRepository = articleRepository
     }
 
-    fun findArticleById(id: Int): ArticleDto {
+    fun findArticleById(id: String): ArticleDto {
         return articleRepository.findOne(id)
     }
 
@@ -26,7 +26,7 @@ class ArticleService {
         return articleRepository.save(article)
     }
 
-    fun delete(id: Int) {
+    fun delete(id: String) {
         articleRepository.delete(id)
     }
 }
