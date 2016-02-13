@@ -37,6 +37,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$spring_boot_version")
     compile("org.springframework.boot:spring-boot-starter-freemarker")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework.boot:spring-boot-starter-security")
 
     compile 'com.github.salomonbrys.kotson:kotson:2.0.0'
 
