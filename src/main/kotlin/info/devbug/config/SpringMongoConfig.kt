@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @author Aliaksei Bahdanau
  */
 @Configuration
-@EnableMongoRepositories("info.devbug.article", "info.devbug.digest", "info.devbug.topic")
+@EnableMongoRepositories("info.devbug.article", "info.devbug.digest", "info.devbug.topic", "info.devbug.feedback")
 open class SpringMongoConfig {
 
     @Bean
