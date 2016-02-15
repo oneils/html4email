@@ -21,5 +21,7 @@ class FeedbackDto {
 
     var email = ""
 
+    var content = ""
+
     var read = false
 }
