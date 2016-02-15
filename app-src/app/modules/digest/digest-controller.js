@@ -31,7 +31,7 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope,
             },
             data: $scope.jsonDigest
         }).then(function successCallback(response) {
-
+            $scope.jsonDigest = null;
         });
 
         $scope.digests.push(digest);

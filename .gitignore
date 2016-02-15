@@ -31,7 +31,6 @@ hs_err_pid*
 bower_components/
 dist/
 node_modules/
-.jshintrc
 .tmp/
 *.log
 
