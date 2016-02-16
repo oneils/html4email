@@ -1,14 +1,15 @@
 <div class="container" ng-controller="ArchiveCtrl">
-    <h1>Digests archive</h1>
 
-    <div class="row">
+
+    <div class="col-md-12 col-xs-12">
+        <h1>Digests archive</h1>
         <ul>
             <li ng-repeat="digest in digests | orderBy:'-digest.title'"
                 class="thumbnail article-listing">
 
 
-                <h3>{{digest.title}}</h3>
-                <p><i>Published date: {{digest.publishedDate | date:'yyyy-MM-dd'}}</i></p>
+                <h3 class="digest_title">{{digest.title}}</h3>
+                <p class="digest_info">{{digest.publishedDate | date:'yyyy-MM-dd'}}</p>
 
                 <a href="javascript:;" data-target="#digest-{{digest.id}}"
                    data-toggle="collapse"  ng-click="toggle = !toggle">{{toggle && 'Show more' || 'Hide'}}</a>
