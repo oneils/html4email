@@ -10,30 +10,22 @@ import java.util.*
  */
 
 @Document(collection = "digests")
-class DigestDto() {
+data class DigestDto(@Id
+                     var id: String = "",
+                     var title: String = "",
+                     var publishedDate: Date = Date(),
+                     var createdDate: Date = Date(),
+                     var topics: List<TopicDto> = emptyList(),
+                     var contributeTo: String = "",
+                     var companyName: String = "") {
 
-    constructor(title: String): this() {
+    constructor(title: String) : this() {
         this.title = title
     }
 
-    constructor(title: String, contributeTo: String, topics: List<TopicDto>): this() {
+    constructor(title: String, contributeTo: String, topics: List<TopicDto>) : this() {
         this.title = title
         this.topics = topics
         this.contributeTo = contributeTo
     }
-
-    @Id
-    var id: String? = null
-
-    var title: String = ""
-
-    var publishedDate: Date = Date()
-
-    var createdDate: Date = Date()
-
-    var topics: List<TopicDto> = emptyList()
-
-    var contributeTo: String = ""
-
-    var companyName: String = ""
 }
