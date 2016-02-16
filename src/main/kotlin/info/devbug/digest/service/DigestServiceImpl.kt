@@ -38,7 +38,7 @@ open class DigestServiceImpl : DigestService{
     }
 
     override fun findAll(page: Int, size: Int): Page<DigestDto> {
-        val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "creationDate");
+        val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "publishedDate");
         return digestRepository.findAll(request)
     }
 
