@@ -11,7 +11,7 @@ import java.util.*
 
 @Document(collection = "digests")
 data class DigestDto(@Id
-                     var id: String = "",
+                     var id: String? = null,
                      var title: String = "",
                      var publishedDate: Date = Date(),
                      var createdDate: Date = Date(),
