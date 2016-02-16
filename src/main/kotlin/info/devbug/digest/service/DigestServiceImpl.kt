@@ -1,6 +1,5 @@
 package info.devbug.digest.service
 
-import info.devbug.api.Digest
 import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.util.DigestParser
 import info.devbug.digest.repository.DigestRepository
@@ -25,7 +24,7 @@ open class DigestServiceImpl : DigestService{
     /**
      * Returns the Digest object according to specified the digest file path.
      */
-    fun getDigest(filePath: String): Digest {
+    fun getDigest(filePath: String): DigestDto {
         val digestParser = DigestParser()
         return digestParser.getDigest(filePath)
     }
