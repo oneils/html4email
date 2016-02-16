@@ -26,7 +26,8 @@
                                 <li ng-repeat="article in topic.articles" class="article-listing">
 
                                     <a href="{{article.url}}" target="_blank">{{article.title}}</a>
-                                    <p>{{article.description}}</p>
+                                    <!--<p>{{article.description}}</p>-->
+                                    <p ng-bind-html="article.description"></p>
 
                                 </li>
                             </ul>

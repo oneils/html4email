@@ -2,6 +2,7 @@
 
 var digestApp = angular.module('digestApp', [
     'ngRoute',
+    'ngSanitize',
     'digestControllers',
     'digestServices',
     'ui.bootstrap'
