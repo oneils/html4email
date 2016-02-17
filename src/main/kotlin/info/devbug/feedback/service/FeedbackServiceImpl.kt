@@ -9,14 +9,7 @@ import org.springframework.stereotype.Service
  * @author Dzmitry Misiuk
  */
 @Service
-class FeedbackServiceImpl : FeedbackService {
-
-    private val feedbackRepository: FeedbackRepository
-
-
-    @Autowired constructor(feedbackRepository: FeedbackRepository) {
-        this.feedbackRepository = feedbackRepository
-    }
+class FeedbackServiceImpl @Autowired constructor(private val feedbackRepository: FeedbackRepository) : FeedbackService {
 
     override fun send(feedback: FeedbackDto): FeedbackDto {
         return feedbackRepository.save(feedback)

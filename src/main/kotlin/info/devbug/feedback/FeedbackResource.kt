@@ -15,12 +15,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping("/v1/feedbacks")
-class FeedbackResource {
-    private val feedbackService: FeedbackService
-
-    @Autowired constructor(feedbackService: FeedbackService) {
-        this.feedbackService = feedbackService
-    }
+class FeedbackResource @Autowired constructor(private val feedbackService: FeedbackService) {
 
     @RequestMapping(method = arrayOf(RequestMethod.POST), consumes = arrayOf("application/json"))
     fun send(@RequestBody feedback: FeedbackDto): ResponseEntity<FeedbackDto> {
