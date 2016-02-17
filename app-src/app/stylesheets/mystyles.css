@@ -1,4 +1,9 @@
-/* app css stylesheet */
+@charset "UTF-8";
+
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic);
+
+@import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic&subset=latin,cyrillic);
 
 html {
     font-family: "PT Sans", Arial, sans-serif;
@@ -8,7 +13,6 @@ body {
     padding-top: 20px;
     font-family: "PT Sans", Arial, sans-serif;
 }
-
 
 .article-images {
     background-color: white;
@@ -60,7 +64,10 @@ ul.article-thumbs {
 }
 
 .digest-details{
-    background: rgba(200, 200, 200, 0.2);
+    background: rgba(200, 200, 200, 0.1);
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .topic-listing {
@@ -113,4 +120,41 @@ ul.specs dt {
 
 h1 {
     border-bottom: 1px solid gray;
+}
+
+a {
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(0, 96, 160, 0.2);
+    color: #0060a0;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    outline: none;
+}
+
+a:hover{
+    border-color: rgba(224, 80, 32, 0.9);
+    color: #e05020;
+    fill: #e05020;
+    -webkit-transition: all 0ms;
+    transition: all 0ms;
+}
+
+.container {
+    font-family: "PT Sans", Arial, sans-serif;
+}
+
+.digest_title {
+    margin-right: 60px;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #000;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: "PT Serif", Georgia, sans-serif;
+}
+.digest_info {
+    margin-top: 4px;
+    margin-bottom: 3px;
+    color: #666;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }

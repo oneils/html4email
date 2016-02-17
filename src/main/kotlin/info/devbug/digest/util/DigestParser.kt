@@ -1,7 +1,7 @@
 package info.devbug.digest.util
 
 import com.google.gson.Gson
-import info.devbug.api.Digest
+import info.devbug.digest.repository.DigestDto
 import java.io.BufferedReader
 import java.io.FileReader
 import kotlin.text.split
@@ -16,13 +16,13 @@ class DigestParser {
     /**
      * Parses the specified Digest Json file and returns the Digest
      */
-    fun getDigest(digestJsonPath: String): Digest {
+    fun getDigest(digestJsonPath: String): DigestDto {
         val gson = Gson()
 
         val br = BufferedReader(
                 FileReader(digestJsonPath));
 
-        val digest = gson.fromJson(br, Digest::class.java)
+        val digest = gson.fromJson(br, DigestDto::class.java)
         return digest
     }
 
