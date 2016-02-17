@@ -12,6 +12,20 @@ import org.springframework.stereotype.Service
 class FeedbackServiceImpl @Autowired constructor(private val feedbackRepository: FeedbackRepository) : FeedbackService {
 
     override fun send(feedback: FeedbackDto): FeedbackDto {
+        feedback.read = false
+        feedback.id = null
         return feedbackRepository.save(feedback)
+    }
+
+    override fun getAll(): List<FeedbackDto> {
+        return feedbackRepository.findAll().toList()
+    }
+
+    override fun getUnread(): List<FeedbackDto> {
+        return feedbackRepository.findByRead(false)
+    }
+
+    override fun getFeedback(id: String): FeedbackDto {
+        return feedbackRepository.findOne(id)
     }
 }

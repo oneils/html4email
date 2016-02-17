@@ -5,10 +5,7 @@ import info.devbug.feedback.service.FeedbackService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 /**
  * @author Dzmitry Misiuk
@@ -21,5 +18,23 @@ class FeedbackResource @Autowired constructor(private val feedbackService: Feedb
     fun send(@RequestBody feedback: FeedbackDto): ResponseEntity<FeedbackDto> {
         val feedback = feedbackService.send(feedback)
         return ResponseEntity(feedback, HttpStatus.OK)
+    }
+
+    @RequestMapping(method = arrayOf(RequestMethod.GET))
+    fun getAll(): ResponseEntity<List<FeedbackDto>> {
+        val feedbacks = feedbackService.getAll()
+        return ResponseEntity(feedbacks, HttpStatus.OK)
+    }
+
+    @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.GET))
+    fun getFeedback(@RequestParam("id") id: String): ResponseEntity<FeedbackDto> {
+        val feedback = feedbackService.getFeedback(id)
+        return ResponseEntity(feedback, HttpStatus.OK)
+    }
+
+    @RequestMapping("/unread", method = arrayOf(RequestMethod.GET))
+    fun getUnread(): ResponseEntity<List<FeedbackDto>> {
+        val unreadFeedbacks = feedbackService.getUnread()
+        return ResponseEntity(unreadFeedbacks, HttpStatus.OK)
     }
 }

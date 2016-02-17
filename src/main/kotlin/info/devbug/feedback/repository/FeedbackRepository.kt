@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
  */
 @Repository
 interface FeedbackRepository : PagingAndSortingRepository<FeedbackDto, String> {
+    fun findByRead(read: Boolean): List<FeedbackDto>
 }
