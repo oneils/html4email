@@ -36,3 +36,7 @@ node_modules/
 
 public/
 src/main/resources/static/
+
+
+#webpack
+bundle.js

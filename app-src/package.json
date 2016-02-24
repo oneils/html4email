@@ -2,6 +2,11 @@
   "name": "html4email",
   "private": true,
   "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.7.0",
@@ -17,16 +22,15 @@
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^2.1.0",
     "time-grunt": "^1.3.0",
-    "babel-cli": "^6.5.1",
-    "babel-core": "^6.5.2",
-    "babel-preset-es2015": "^6.5.0"
+    "webpack": "^1.12.14"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "babel": {
     "presets": [
-      "es2015"
+      "es2015",
+      "react"
     ]
   },
   "dependencies": {
