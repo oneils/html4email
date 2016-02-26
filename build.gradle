@@ -39,6 +39,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.boot:spring-boot-starter-security")
 
+    compile("org.springframework.security.oauth:spring-security-oauth2")
+
     compile 'com.github.salomonbrys.kotson:kotson:2.0.0'
 
     compile 'org.freemarker:freemarker:2.3.23'
