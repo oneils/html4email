@@ -1,5 +1,4 @@
 package info.devbug.user
-package info.devbug.user
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.GrantedAuthority
