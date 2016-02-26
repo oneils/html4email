@@ -1,6 +1,5 @@
 package info.devbug.digest.service
 
-import info.devbug.api.Digest
 import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.util.DigestParser
 import info.devbug.digest.repository.DigestRepository
@@ -25,7 +24,7 @@ open class DigestServiceImpl : DigestService{
     /**
      * Returns the Digest object according to specified the digest file path.
      */
-    fun getDigest(filePath: String): Digest {
+    fun getDigest(filePath: String): DigestDto {
         val digestParser = DigestParser()
         return digestParser.getDigest(filePath)
     }
@@ -39,7 +38,7 @@ open class DigestServiceImpl : DigestService{
     }
 
     override fun findAll(page: Int, size: Int): Page<DigestDto> {
-        val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "creationDate");
+        val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "publishedDate");
         return digestRepository.findAll(request)
     }
 

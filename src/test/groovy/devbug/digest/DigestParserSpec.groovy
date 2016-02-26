@@ -1,6 +1,6 @@
 package devbug.digest
 
-import info.devbug.api.Digest
+import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.util.DigestParser
 import spock.lang.Specification
 
@@ -19,7 +19,7 @@ class DigestParserSpec extends Specification {
     def digestFilePath = "src/test/resources/digest.json"
 
     expect:
-    Digest digest = parser.getDigest(digestFilePath)
+    DigestDto digest = parser.getDigest(digestFilePath)
 
     digest.title == "Digest #4"
     digest.contributeTo == "your_company@mail.com"

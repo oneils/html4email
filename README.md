@@ -60,11 +60,13 @@ or
     # ./gradlew bootRun
 
 
-By default application uses embedded database *HSQLDB*. Embedded database could be switched to PostgreSQL with the
-following environment variable 'spring.config.name':
- ```
- spring.config.name=application-prod
- ```
+Application uses **MongoDB** database.
+
+database name: **digest**
+
+collections:
+- digests - collection with published Digests
+- articles - collection with artciles which could be used for new Digests.
 
 ### REST api documentation: ###
 
