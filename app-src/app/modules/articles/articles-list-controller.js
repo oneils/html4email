@@ -47,8 +47,13 @@ digestControllers.controller('ArticleListCtrl', ['$scope', '$http', 'Article', f
     };
 
     $scope.deleteArticle = function(inputArticle) {
-        $scope.articles.pop(inputArticle);
         var article = new Article();
-        article.$delete({id: inputArticle.id});
+        var deleteResult = article.$delete({id: inputArticle.id});
+
+        deleteResult.then(function (data) {
+            var elementIndex = $scope.articles.indexOf(inputArticle);
+            // Remove one Article from articles array
+            $scope.articles.splice(elementIndex, 1);
+        });
     };
 }]);
