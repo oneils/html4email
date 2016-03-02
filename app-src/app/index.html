@@ -22,12 +22,35 @@
      <base href="/"/>
 </head>
 <body>
-<ul class="nav nav-pills">
-    <li role="presentation" ><a href="/#/">Home</a></li>
-    <li role="presentation"><a href="/#/article-list">Articles</a></li>
-    <li role="presentation"><a href="/#/digest">Digest</a></li>
-    <li role="presentation"><a href="/#/import-digest">Import Digest from JSON</a></li>
-</ul>
+
+<div ng-controller="AuthCtrl">
+    <div class="container text-danger" ng-show="AuthCtrl.error">
+        There was an error (bad credentials).
+    </div>
+
+
+    <div class="col-md-9">
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="/#/">Home</a></li>
+            <li role="presentation"><a href="/#/article-list">Articles</a></li>
+            <li role="presentation"><a href="/#/digest">Digest</a></li>
+            <li role="presentation"><a href="/#/import-digest">Import Digest from JSON</a></li>
+        </ul>
+    </div>
+
+    <!--<div class="col-md-4">-->
+        <div class="col-md-2">
+            Logged in as: <span><strong>{{user}}</strong></span>
+        </div>
+        <!--<div class="col-md-1">-->
+            <!--<button ng-click="logout()" class="btn btn-primary">Logout</button>-->
+        <!--</div>-->
+
+        <!--<ul class="nav nav-pills">-->
+        <!--<li role="presentation"><a href="/#/">Log out</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+</div>
 
 <div data-ng-view></div>
 

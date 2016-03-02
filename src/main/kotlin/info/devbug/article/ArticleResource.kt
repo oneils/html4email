@@ -16,7 +16,7 @@ import java.net.URI
  */
 @RestController
 @RequestMapping(value = "/v1/articles")
-class ArticleResource {
+open class ArticleResource {
     private val articleService: ArticleService
 
     @Autowired constructor(articleService: ArticleService) {
