@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.oauth2.client.OAuth2ClientContext
 
 /**
@@ -26,12 +27,8 @@ open class ApiSecurityConfig : WebSecurityConfigurerAdapter() {
     @Autowired private var userDetailsService: UserDetailsService? = null
 
     override fun configure(auth: AuthenticationManagerBuilder) {
-//        auth.userDetailsService(userDetailsService)
-//                .passwordEncoder(BCryptPasswordEncoder())
-        auth.inMemoryAuthentication()
-        .withUser("user").password("user").roles("USER").and()
-        .withUser("admin").password("admin").roles("USER", "ADMIN")
-
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(BCryptPasswordEncoder())
     }
 
     override fun configure(http: HttpSecurity) {
