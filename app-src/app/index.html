@@ -33,11 +33,10 @@
         <ul class="nav nav-pills">
             <li role="presentation"><a href="/#/">Home</a></li>
             <li role="presentation"><a href="/#/article-list">Articles</a></li>
-            <li role="presentation"><a href="/#/digest">Digest</a></li>
-            <li role="presentation"><a href="/#/import-digest">Import Digest from JSON</a></li>
+            <li role="presentation" ng-show="isDisplayed"><a href="/#/digest">Digest</a></li>
+            <li role="presentation" ng-show="isDisplayed"><a href="/#/import-digest">Import Digest from JSON</a></li>
         </ul>
     </div>
-
     <!--<div class="col-md-4">-->
         <div class="col-md-2">
             Logged in as: <span><strong>{{user}}</strong></span>
