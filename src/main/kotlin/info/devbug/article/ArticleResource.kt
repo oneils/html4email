@@ -1,5 +1,6 @@
 package info.devbug.article
 
+import info.devbug.api.RestException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
@@ -37,7 +38,7 @@ open class ArticleResource {
     fun save(@RequestBody article: ArticleDto): ResponseEntity<ArticleDto> {
         val savedArticle = articleService.save(article)
 
-        val responseHeaders: HttpHeaders = HttpHeaders()
+        val responseHeaders = HttpHeaders()
         val newPollUri: URI = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")

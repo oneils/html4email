@@ -27,7 +27,7 @@ open class DigestServiceImpl : DigestService{
     /**
      * Returns the [DigestDto] object according to specified the digest file path.
      */
-    fun getDigest(filePath: String): DigestDto {
+    fun readDigestFromFile(filePath: String): DigestDto {
         return digestReader.readDigest(filePath)
     }
 
