@@ -10,7 +10,7 @@ import java.io.FileNotFoundException
  */
 class JsonDigestReaderTest {
 
-    private var digestReader: DigestReader? = null
+    lateinit private var digestReader: DigestReader
 
     @Before
     fun setUp() {
@@ -19,18 +19,18 @@ class JsonDigestReaderTest {
 
     @Test
     fun `readDigest should return DigestDto with 2 topics`() {
-        val result = digestReader!!.readDigest("src/test/resources/digest.json")
+        val result = digestReader.readDigest("src/test/resources/digest.json")
 
         assert(result.topics.size == 2)
     }
 
     @Test(expected = FileNotFoundException::class)
     fun `readDigest should throw Exception for incorrect file name or path`() {
-        digestReader!!.readDigest("unknown_file_path.json")
+        digestReader.readDigest("unknown_file_path.json")
     }
 
     @Test(expected = JsonSyntaxException::class)
     fun `readDigest should throw Exception for invalid JSON`() {
-        digestReader!!.readDigest("src/test/resources/invalid-json.json")
+        digestReader.readDigest("src/test/resources/invalid-json.json")
     }
 }

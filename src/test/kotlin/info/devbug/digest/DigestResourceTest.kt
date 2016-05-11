@@ -34,7 +34,7 @@ class DigestResourceTest {
 
     private var digestResource: DigestResource = DigestResource(digestServiceMock)
 
-    private var mockMvc: MockMvc? = null
+    lateinit private var mockMvc: MockMvc
 
 
     @Before
@@ -46,11 +46,11 @@ class DigestResourceTest {
     fun `getDigest should return 200 status for correct endpoint`() {
         given(digestServiceMock.findAll(1, 10)).willReturn(PageImpl<DigestDto>(listOf(DigestDto(), DigestDto())))
 
-        mockMvc?.perform(get("/v1/digests"))?.andExpect(status().isOk())
+        mockMvc.perform(get("/v1/digests"))?.andExpect(status().isOk())
     }
 
     @Test
     fun `getDigest should return 404 status for incorrect endpoint`() {
-        mockMvc?.perform(get("/v1/digests/nonexists"))?.andExpect(status().isNotFound())
+        mockMvc.perform(get("/v1/digests/nonexists"))?.andExpect(status().isNotFound())
     }
 }

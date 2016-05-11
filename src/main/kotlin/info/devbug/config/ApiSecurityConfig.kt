@@ -22,7 +22,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 @Order(1)
 open class ApiSecurityConfig : WebSecurityConfigurerAdapter() {
 
-    @Autowired private var userDetailsService: UserDetailsService? = null
+    @Autowired
+    lateinit private var userDetailsService: UserDetailsService
 
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userDetailsService)
