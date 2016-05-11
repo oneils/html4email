@@ -3,6 +3,7 @@ package info.devbug.digest.service
 import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.util.DigestParser
 import info.devbug.digest.repository.DigestRepository
+import info.devbug.digest.util.DigestReader
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
@@ -16,21 +17,22 @@ import org.springframework.stereotype.Service
 open class DigestServiceImpl : DigestService{
 
     private val digestRepository: DigestRepository
+    private val digestReader: DigestReader
 
-    @Autowired constructor(digestRepository: DigestRepository) {
+    @Autowired constructor(digestRepository: DigestRepository, digestReader: DigestReader) {
         this.digestRepository = digestRepository
+        this.digestReader = digestReader
     }
 
     /**
-     * Returns the Digest object according to specified the digest file path.
+     * Returns the [DigestDto] object according to specified the digest file path.
      */
     fun getDigest(filePath: String): DigestDto {
-        val digestParser = DigestParser()
-        return digestParser.getDigest(filePath)
+        return digestReader.readDigest(filePath)
     }
 
     /**
-     * Parses [Digest] title and returns current digest number.
+     * Parses [DigestDto] title and returns current digest number.
      */
     fun getDigestNumber(digestTitle: String): String {
         val digestParser = DigestParser()

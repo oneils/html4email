@@ -14,17 +14,17 @@ class DigestParserSpec extends Specification {
     parser = new DigestParser()
   }
 
-  def "getDigest should return a Digest object for specified file path"() {
-    given:
-    def digestFilePath = "src/test/resources/digest.json"
-
-    expect:
-    DigestDto digest = parser.getDigest(digestFilePath)
-
-    digest.title == "Digest #4"
-    digest.contributeTo == "your_company@mail.com"
-    digest.topics.size() == 2
-  }
+//  def "getDigest should return a Digest object for specified file path"() {
+//    given:
+//    def digestFilePath = "src/test/resources/digest.json"
+//
+//    expect:
+//    DigestDto digest = parser.getDigest(digestFilePath)
+//
+//    digest.title == "Digest #4"
+//    digest.contributeTo == "your_company@mail.com"
+//    digest.topics.size() == 2
+//  }
 
   def "getDigestNumber should return current digest number"() {
     given:

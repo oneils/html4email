@@ -1,7 +1,5 @@
 package info.devbug.digest.util
 
-import kotlin.text.Regex
-
 /**
  * @author Aliaksei Bahdanau.
  */
