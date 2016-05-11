@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.oauth2.client.OAuth2ClientContext
 
 /**
  *
@@ -23,7 +22,6 @@ import org.springframework.security.oauth2.client.OAuth2ClientContext
 @Order(1)
 open class ApiSecurityConfig : WebSecurityConfigurerAdapter() {
 
-    @Autowired private var oauth2ClientContext: OAuth2ClientContext? = null
     @Autowired private var userDetailsService: UserDetailsService? = null
 
     override fun configure(auth: AuthenticationManagerBuilder) {
@@ -37,10 +35,9 @@ open class ApiSecurityConfig : WebSecurityConfigurerAdapter() {
         .csrf().disable()
         .authorizeRequests()
         .antMatchers("/login", "/logout").permitAll()
-                .antMatchers(HttpMethod.POST, "/v1/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/v1/digests").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/v1/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/v1/**").
-                hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/v1/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
     }
 }
