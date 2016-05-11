@@ -1,5 +1,7 @@
-package info.devbug.topic
+package info.devbug.topic.service
 
+import info.devbug.topic.TopicDto
+import info.devbug.topic.TopicRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -8,18 +10,18 @@ import org.springframework.stereotype.Service
  */
 
 @Service
-class TopicService {
+open class TopicServiceImpl : TopicService{
     private val topicRepository: TopicRepository
 
     @Autowired constructor(topicRepository: TopicRepository) {
         this.topicRepository = topicRepository
     }
 
-    fun findAll(): List<TopicDto> {
+    override fun findAll(): List<TopicDto> {
         return topicRepository.findAll()
     }
 
-    fun findById(topicId: Int): TopicDto {
+    override fun findById(topicId: Int): TopicDto {
         return topicRepository.findOne(topicId)
     }
 }
