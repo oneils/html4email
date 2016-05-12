@@ -1,6 +1,7 @@
 digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope, $http) {
     var digest = {};
     $scope.toggle = true;
+    $scope.hideDigestJsonValidation = true;
 
     $scope.isCollapsed = false;
     digest.title = "BackEnd Digest #";
@@ -23,6 +24,14 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope,
         var digest = {};
         digest.title = $scope.digest.title;
 
+        if (!isJsonValid($scope.jsonDigest)) {
+            var message = 'Invalide Digest JSON';
+            $scope.hideDigestJsonValidation = false;
+            return;
+        }
+
+        $scope.hideDigestJsonValidation = true;
+
         $http({
             method: 'POST',
             url: '/v1/digests',
@@ -39,4 +48,13 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope,
         $scope.saveJsonForm.$setPristine();
         $scope.saveJsonForm.$setUntouched();
     };
+
+    function isJsonValid(digestJson) {
+        try {
+            JSON.parse(digestJson)
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
 }]);

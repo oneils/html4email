@@ -38,13 +38,17 @@
                                 <form role="form" name="saveJsonForm">
                                     <div class="form-group">
                                         <label for="digest-json">Digest as JSON:</label>
-                                        <textArea rows="6" class="form-control" id="digest-json" name="description"
+                                        <textArea rows="6" class="form-control" id="digest-json" name="jsonDigest"
                                         ng-model="jsonDigest"></textArea>
 
                                     </div>
 
                                     <button type="button" class="btn btn-default" ng-click="saveJsonDigest()">Save</button>
 
+                                    <div class="alert alert-danger" role="alert"
+                                         ng-hide="hideDigestJsonValidation">
+                                        Invalid Digest JSON!
+                                    </div>
                                 </form>
                             </div>
                         </div>
