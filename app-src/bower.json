@@ -31,6 +31,7 @@
     "angular-sanitize": "~1.4.x",
     "angular-animate": "~1.4.x",
     "angular-bootstrap": "~1.1.2",
+    "angular-messages": "~1.4.x",
     "jquery": "2.2.0"
   }
 }

@@ -5,7 +5,8 @@ var digestApp = angular.module('digestApp', [
     'ngSanitize',
     'digestControllers',
     'digestServices',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngMessages'
 ]);
 
 digestApp.config(['$routeProvider',
