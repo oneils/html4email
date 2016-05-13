@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface DigestRepository : PagingAndSortingRepository<DigestDto, Int> {
 
+    fun findByTitle(title: String): DigestDto?
 }

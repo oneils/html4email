@@ -45,6 +45,9 @@ open class DigestServiceImpl : DigestService{
     }
 
     override fun save(digest: DigestDto): DigestDto {
+        val existingDigest = digestRepository.findByTitle(digest.title)
+
+        if (existingDigest != null && existingDigest.title == digest.title) throw Exception("Already exists")
         return digestRepository.save(digest)
     }
 }

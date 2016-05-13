@@ -1,5 +1,6 @@
 package info.devbug.digest
 
+import info.devbug.api.RestException
 import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.service.DigestService
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,7 +30,13 @@ class DigestResource @Autowired constructor(val digestService: DigestService) {
     @RequestMapping(method = arrayOf(RequestMethod.POST),
             consumes = arrayOf("application/json"))
     fun save(@RequestBody digest: DigestDto): ResponseEntity<DigestDto> {
-        val savedDigest = digestService.save(digest)
+        val savedDigest: DigestDto
+        try {
+            savedDigest = digestService.save(digest)
+        } catch(e: Exception) {
+            throw RestException(0, "Error while saving Digest",
+                    "Digest with such title already exists.")
+        }
 
         val responseHeaders: HttpHeaders = HttpHeaders()
         val newPollUri: URI = ServletUriComponentsBuilder

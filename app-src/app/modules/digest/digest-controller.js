@@ -41,6 +41,9 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope,
             data: $scope.jsonDigest
         }).then(function successCallback(response) {
             $scope.jsonDigest = null;
+            console.log(response);
+        }, function errorCallback(response) {
+            console.log(response);
         });
 
         $scope.digests.push(digest);
