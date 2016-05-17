@@ -35,6 +35,5 @@ node_modules/
 *.log
 
 public/
-src/main/resources/static/
 
 rebel.xml
