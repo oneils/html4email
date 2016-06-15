@@ -1,14 +1,12 @@
-<div class="container" ng-controller="ArchiveCtrl">
+<div ng-controller="ArchiveCtrl">
 
-
-    <div class="col-md-12 col-xs-12">
-        <h1>Digests archive</h1>
-        <ul>
+    <div class="col m12 s12">
+        <h2 class="blue-grey-text center">Digests archive</h2>
+        <ul class="collection">
             <li ng-repeat="digest in digests | orderBy:'-digest.title'"
-                class="thumbnail article-listing">
+                class="collection-item article-listing">
 
-
-                <h3 class="digest_title">{{digest.title}}</h3>
+                <div class="digest_title">{{digest.title}}</div>
                 <p class="digest_info">{{digest.publishedDate | date:'yyyy-MM-dd'}}</p>
 
                 <a href="javascript:;" data-target="#digest-{{digest.id}}"
@@ -18,16 +16,16 @@
                     <div ng-show="digest.articles.length == 0" class="animate-show">
                         <span class="label label-warning">There are no articles for selected Digest</span>
                     </div>
-                    <ul>
-                        <li ng-repeat="topic in digest.topics" class="topic-listing">
-                            <h4>{{topic.topic}}</h4>
+                    <ul class="collection z-depth-3">
+                        <li ng-repeat="topic in digest.topics" class="collection-item ">
+                            <div class="title">{{topic.topic}}</div>
 
                             <ul>
                                 <li ng-repeat="article in topic.articles" class="article-listing">
 
                                     <a href="{{article.url}}" target="_blank">{{article.title}}</a>
                                     <!--<p>{{article.description}}</p>-->
-                                    <p ng-bind-html="article.description"></p>
+                                    <p class="article-description" ng-bind-html="article.description"></p>
 
                                 </li>
                             </ul>
