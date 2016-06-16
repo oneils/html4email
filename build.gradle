@@ -58,6 +58,14 @@ sourceSets {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14'
+
+    def jvmOpts = "-Xmx256m"
+    inputs.property("jvmOpts", jvmOpts)
+    doLast {
+        def optsEnvVar = "DEFAULT_JVM_OPTS"
+        scriptFile.write scriptFile.text.replace("$optsEnvVar=\"\"", "$optsEnvVar=\"$jvmOpts\"")
+        batchScript.write batchScript.text.replace("set $optsEnvVar=", "set $optsEnvVar=$jvmOpts")
+    }
 }
 
 release {
