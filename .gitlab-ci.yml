@@ -1,2 +1,4 @@
+before_script:
+  - export JAVA_OPTS="-Xmx256m"
 build:
   script: "./gradlew clean build"
