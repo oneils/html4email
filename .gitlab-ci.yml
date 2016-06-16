@@ -1,4 +1,4 @@
 before_script:
-  - export GRADLE_OPTS=-Xmx256m
+  - export GRADLE_OPTS=-Xmx128m
 build:
   script: "./gradlew clean build"
