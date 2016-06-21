@@ -1,0 +1,8 @@
+language: java
+jdk: oraclejdk8
+before_install:
+- chmod +x gradlew
+#before_deploy:
+#- chmod +x deploy.sh
+script:
+- bash ./gradlew clean build
