@@ -4,3 +4,7 @@ build:
 print:
   script:
   - echo $CI_BUILD_ID
+
+stages:
+  - build
+  - print
