@@ -1,0 +1,18 @@
+app:
+  name: html4email
+  description: ${app.name} is application for generating content
+
+logging:
+  file: app.log
+
+server:
+  port: 8181
+
+
+security:
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acmesecret
+      scope: read,write
+      auto-approve-scopes: '.*'
