@@ -1,6 +1,6 @@
-<div class="container" ng-controller="ArticleListCtrl">
+<div ng-controller="ArticleListCtrl">
     <div class="row">
-        <h1>Articles List</h1>
+        <h1 class="blue-grey-text center">Articles List</h1>
 
         <p class="text-info">If you have any interesting <i>News, Articles, Video, Podcast, etc</i> you can save them.
             The will be
@@ -8,33 +8,32 @@
             in one of the future Digests.</p>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col l5 m12">
                 <form role="form" name="saveArticleForm">
-                    <div class="form-group">
+                    <div class="input-field">
                         <label for="title">Title:</label>
                         <input type="text" class="form-control" id="title" name="title" required
                                ng-model="article.title">
                     </div>
-                    <div class="form-group">
+                    <div class="input-field">
                         <label for="url">URL:</label>
-                        <input type="URL" class="form-control" id="url" name="url" required
+                        <input type="text" class="validate" id="url" name="url" required
                                ng-model="article.url">
                     </div>
-                    <div class="form-group">
+                    <div class="input-field">
                         <label for="description">Description:</label>
-                    <textArea rows="6" class="form-control" id="description" name="description"
+                    <textArea rows="6" class="materialize-textarea" id="description" name="description"
                               ng-model="article.description"></textArea>
-
                     </div>
 
-                    <button type="button" class="btn btn-default" ng-click="saveArticle()">Save</button>
+                    <button type="button" class="btn waves-effect waves-light" ng-click="saveArticle()">Save</button>
 
                 </form>
                 <br/>
                 <pre ng-bind="article | json"></pre>
             </div>
 
-            <div class="col-md-8">
+            <div class="col l7 m12">
 
                 <ul>
                     <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
@@ -44,11 +43,11 @@
                             <p><label>Created: {{article.createdDate |
                                 date:'yyyy-MM-dd'}}</label></p>
                             <div class="btn-group" role="group" aria-label="...">
-                                <div class="col-md-4">
-                                    <button type="button" class="btn btn-default disabled">Edit</button>
+                                <div class="col s4">
+                                    <button type="button" class="btn disabled">Edit</button>
                                 </div>
-                                <div class="col-md-4">
-                                    <button type="button" class="btn btn-danger" ng-click="deleteArticle(article)">
+                                <div class="col s4">
+                                    <button type="button" class="btn  red lighten-1 waves-effect waves-light" ng-click="deleteArticle(article)">
                                         Delete
                                     </button>
                                 </div>

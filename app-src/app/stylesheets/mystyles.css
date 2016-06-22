@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic);
-
 @import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic&subset=latin,cyrillic);
 
 html {
@@ -12,6 +10,7 @@ html {
 body {
     padding-top: 20px;
     font-family: "PT Sans", Arial, sans-serif;
+    background-color: #fcfcfc !important;
 }
 
 .article-images {
@@ -57,13 +56,12 @@ img.article:first-child {
     display: block;
 }
 
-
 ul.article-thumbs {
     margin: 0;
     list-style: none;
 }
 
-.digest-details{
+.digest-details {
     background: rgba(200, 200, 200, 0.1);
     font-size: 16px;
     padding-top: 5px;
@@ -72,6 +70,12 @@ ul.article-thumbs {
 
 .topic-listing {
     list-style: none;
+}
+
+.topic-title {
+    font-weight: 500;
+    color: #212121;
+    text-transform: uppercase;
 }
 
 .article-listing {
@@ -95,7 +99,6 @@ ul.article-thumbs img:hover {
     cursor: pointer;
 }
 
-
 ul.specs {
     clear: both;
     margin: 0;
@@ -103,13 +106,13 @@ ul.specs {
     list-style: none;
 }
 
-ul.specs > li{
+ul.specs > li {
     display: inline-block;
     width: 200px;
     vertical-align: top;
 }
 
-ul.specs > li > span{
+ul.specs > li > span {
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -131,9 +134,9 @@ a {
     outline: none;
 }
 
-a:hover{
+a:hover {
     border-color: rgba(224, 80, 32, 0.9);
-    color: #e05020;
+    color: #004d40;
     fill: #e05020;
     -webkit-transition: all 0ms;
     transition: all 0ms;
@@ -147,14 +150,23 @@ a:hover{
     margin-right: 60px;
     border-color: rgba(0, 0, 0, 0.2);
     color: #000;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 600;
     font-family: "PT Serif", Georgia, sans-serif;
+    text-transform: uppercase;
 }
+
 .digest_info {
     margin-top: 4px;
     margin-bottom: 3px;
     color: #666;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
+}
+
+.article-description {
+    font-family: "PT Sans", Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    padding: 2px;
 }

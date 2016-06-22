@@ -5,15 +5,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head
-    content must come *after* these tags -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>Digests</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Bootstrap -->
     <!-- build:css styles/main.css -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">-->
+    <link href="../bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet" media="screen,projection">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!--<link href="stylesheets/yeti-bootstrap.min.css" rel="stylesheet">-->
     <link href="stylesheets/mystyles.css" rel="stylesheet">
     <!-- endbuild -->
 
@@ -21,37 +27,29 @@
 
      <base href="/"/>
 </head>
-<body>
-
+<body style="background-color: #fcfcfc;">
+<div class="container" >
 <div ng-controller="AuthCtrl">
-    <div class="container text-danger" ng-show="AuthCtrl.error">
+    <div class="row text-danger" ng-show="AuthCtrl.error">
         There was an error (bad credentials).
     </div>
 
-
-    <div class="col-md-9">
-        <ul class="nav nav-pills">
-            <li role="presentation"><a href="/#/">Home</a></li>
-            <li role="presentation"><a href="/#/article-list">Articles</a></li>
-            <li role="presentation" ng-show="isDisplayed"><a href="/#/digest">Digest</a></li>
-            <li role="presentation" ng-show="isDisplayed"><a href="/#/import-digest">Import Digest from JSON</a></li>
-        </ul>
-    </div>
-    <!--<div class="col-md-4">-->
-        <div class="col-md-2">
-            Logged in as: <span><strong>{{user}}</strong></span>
+    <div class="col s12">
+    <nav>
+        <div class="nav-wrapper  green lighten-3">
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/#/">Home</a></li>
+                <li ng-show="isDisplayed"><a href="/#/article-list">Articles</a></li>
+                <li ng-show="isDisplayed"><a href="/#/digest">Digest</a></li>
+                <li ng-show="isDisplayed"><a href="/#/import-digest">Import Digest from JSON</a></li>
+            </ul>
         </div>
-        <!--<div class="col-md-1">-->
-            <!--<button ng-click="logout()" class="btn btn-primary">Logout</button>-->
-        <!--</div>-->
-
-        <!--<ul class="nav nav-pills">-->
-        <!--<li role="presentation"><a href="/#/">Log out</a></li>-->
-        <!--</ul>-->
-    <!--</div>-->
+    </nav>
+    </div>
 </div>
 
 <div data-ng-view></div>
+    </div>
 
 <!-- build:js({.,app}) scripts/vendor.js -->
 <!-- bower:js -->
@@ -63,7 +61,7 @@
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="../bower_components/angular-messages/angular-messages.js"></script>
-<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- endbower -->
 <script src="../bower_components/angular-i18n/angular-locale_ru.js"></script>
 <!-- endbuild -->
@@ -71,23 +69,17 @@
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <!-- app -->
 <!-- app -->
+
 <script src="modules/app.js"></script>
 <script src="modules/controllers.js"></script>
 <script src="modules/digest/digest-controller.js"></script>
 <script src="modules/archive/archive-controller.js"></script>
 <script src="modules/articles/articles-list-controller.js"></script>
 
-
 <!-- <script src="js/filters.js"></script> -->
 <script src="modules/services.js"></script>
-
-
- <!--<script src="modules/drafts/draft.js"></script>-->
-<!-- <script src="modules/documents/documents-controllers.js"></script> -->
-
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
 <!-- endbuild -->
+
 </body>
 </html>
