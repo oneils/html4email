@@ -1,10 +1,12 @@
 build:
-  script: "./gradlew clean build"
-
-print:
   script:
+  - ./gradlew clean build
   - echo $CI_BUILD_ID
+  - ls -la build/libs
 
-stages:
-  - build
-  - print
+deploy:
+  stage: deploy
+  script:
+    - echo 'Deployed'
+  only:
+    - master
