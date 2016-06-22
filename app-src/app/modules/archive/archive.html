@@ -2,7 +2,7 @@
 
     <div class="col m12 s12">
         <h2 class="blue-grey-text center">Digests archive</h2>
-        <ul class="collection">
+        <ul class="collection" data-collapsible="accordion" watch>
             <li ng-repeat="digest in digests | orderBy:'-digest.title'"
                 class="collection-item article-listing">
 
@@ -22,11 +22,8 @@
 
                             <ul>
                                 <li ng-repeat="article in topic.articles" class="article-listing">
-
                                     <a href="{{article.url}}" target="_blank">{{article.title}}</a>
-                                    <!--<p>{{article.description}}</p>-->
                                     <p class="article-description" ng-bind-html="article.description"></p>
-
                                 </li>
                             </ul>
                         </li>
@@ -35,7 +32,7 @@
                 </div>
             </li>
         </ul>
-        <div>
+        <div class="row">
             <uib-pager total-items="totalItems" ng-model="currentPage"></uib-pager>
         </div>
     </div>

@@ -2,7 +2,6 @@
 
 
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic);
-
 @import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic&subset=latin,cyrillic);
 
 html {
@@ -133,7 +132,7 @@ a {
 
 a:hover{
     border-color: rgba(224, 80, 32, 0.9);
-    color: #e05020;
+    color: #627f63;
     fill: #e05020;
     -webkit-transition: all 0ms;
     transition: all 0ms;

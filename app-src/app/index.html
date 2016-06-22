@@ -8,12 +8,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head
     content must come *after* these tags -->
     <title>Digests</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Bootstrap -->
     <!-- build:css styles/main.css -->
-    <link href="../bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet">
-    <!--<link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">-->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet" media="screen,projection">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!--<link href="stylesheets/yeti-bootstrap.min.css" rel="stylesheet">-->
     <link href="stylesheets/mystyles.css" rel="stylesheet">
     <!-- endbuild -->
 
@@ -29,7 +32,7 @@
     </div>
 
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper  green lighten-3">
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="/#/">Home</a></li>
                 <li><a href="/#/article-list">Articles</a></li>
@@ -53,7 +56,7 @@
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="../bower_components/angular-messages/angular-messages.js"></script>
-<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- endbower -->
 <script src="../bower_components/angular-i18n/angular-locale_ru.js"></script>
 <!-- endbuild -->
@@ -61,22 +64,17 @@
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <!-- app -->
 <!-- app -->
+
 <script src="modules/app.js"></script>
 <script src="modules/controllers.js"></script>
 <script src="modules/digest/digest-controller.js"></script>
 <script src="modules/archive/archive-controller.js"></script>
 <script src="modules/articles/articles-list-controller.js"></script>
 
-
 <!-- <script src="js/filters.js"></script> -->
 <script src="modules/services.js"></script>
-
-
- <!--<script src="modules/drafts/draft.js"></script>-->
-<!-- <script src="modules/documents/documents-controllers.js"></script> -->
-
-<script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
-
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>
