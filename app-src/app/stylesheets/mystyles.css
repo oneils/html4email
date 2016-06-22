@@ -74,6 +74,12 @@ ul.article-thumbs {
     list-style: none;
 }
 
+.topic-title{
+    font-weight: 500;
+    color: #212121;
+    text-transform: uppercase;
+}
+
 .article-listing {
     list-style: none;
 }

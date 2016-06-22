@@ -5,8 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head
-    content must come *after* these tags -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>Digests</title>
 
     <!--Import Google Icon Font-->
@@ -31,19 +34,21 @@
         There was an error (bad credentials).
     </div>
 
+    <div class="col s12">
     <nav>
         <div class="nav-wrapper  green lighten-3">
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="/#/">Home</a></li>
-                <li><a href="/#/article-list">Articles</a></li>
+                <li ng-show="isDisplayed"><a href="/#/article-list">Articles</a></li>
                 <li ng-show="isDisplayed"><a href="/#/digest">Digest</a></li>
                 <li ng-show="isDisplayed"><a href="/#/import-digest">Import Digest from JSON</a></li>
             </ul>
         </div>
     </nav>
+    </div>
 </div>
 
-<div data-ng-view class="row"></div>
+<div data-ng-view></div>
     </div>
 
 <!-- build:js({.,app}) scripts/vendor.js -->
