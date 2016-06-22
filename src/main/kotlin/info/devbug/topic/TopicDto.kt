@@ -11,14 +11,14 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "topics")
 class TopicDto() {
     constructor(name: String, orderPriority: Int) : this() {
-        this.name = name
+        this.topic = name
         this.orderPriority = orderPriority
     }
 
     @Id
     var id: String = ""
 
-    var name: String = ""
+    var topic: String = ""
 
     var orderPriority: Int = 0
 

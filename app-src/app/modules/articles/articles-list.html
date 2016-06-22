@@ -1,8 +1,13 @@
-<div class="container">
+<div class="container" ng-controller="ArticleListCtrl">
     <div class="row">
-        <h1>Article List</h1>
+        <h1>Articles List</h1>
 
-        <div class="row" ng-controller="SaveArticleCtrl">
+        <p class="text-info">If you have any interesting <i>News, Articles, Video, Podcast, etc</i> you can save them.
+            The will be
+            published
+            in one of the future Digests.</p>
+
+        <div class="row">
             <div class="col-md-4">
                 <form role="form" name="saveArticleForm">
                     <div class="form-group">
@@ -21,15 +26,11 @@
                               ng-model="article.description"></textArea>
 
                     </div>
-                    <div class="form-group">
-                        <select name="repeatSelect" id="repeatSelect" ng-model="topics.repeatSelect">
-                            <option ng-repeat="option in topics.data" value="{{option.id}}">{{option.name}}</option>
-                        </select>
-                    </div>
 
                     <button type="button" class="btn btn-default" ng-click="saveArticle()">Save</button>
 
                 </form>
+                <br/>
                 <pre ng-bind="article | json"></pre>
             </div>
 
@@ -38,10 +39,9 @@
                 <ul>
                     <li ng-repeat="article in articles | orderBy:'-id'" class="thumbnail article-listing">
                         <form name="deleteArticleForm" role="form">
-                            <p>ID: {{article.id}}</p>
                             <a href="{{article.url}}">{{article.title}}</a>
                             <p>{{article.description}}</p>
-                            <p><label>Topic ID: {{article.topicId}} | Created: {{article.createdDate |
+                            <p><label>Created: {{article.createdDate |
                                 date:'yyyy-MM-dd'}}</label></p>
                             <div class="btn-group" role="group" aria-label="...">
                                 <div class="col-md-4">
@@ -57,6 +57,9 @@
                         </form>
                     </li>
                 </ul>
+
+                <uib-pagination direction-links="false" boundary-links="true" total-items="totalItems"
+                                ng-model="currentPage"></uib-pagination>
 
             </div>
         </div>

@@ -1,30 +1,51 @@
 package info.devbug.digest
 
-import info.devbug.article.ArticleService
+import info.devbug.api.RestException
+import info.devbug.digest.repository.DigestDto
+import info.devbug.digest.service.DigestService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder
+import java.net.URI
 
 /**
  * @author Aliaksei Bahdanau
  */
 @RestController
 @RequestMapping(value = "/v1/digests")
-class DigestResource {
-    private val digestService: DigestService
-    private val articleService: ArticleService
-
-    @Autowired constructor(digestService: DigestService, articleService: ArticleService) {
-        this.digestService = digestService
-        this.articleService = articleService
-    }
+class DigestResource @Autowired constructor(val digestService: DigestService) {
 
     @RequestMapping(method = arrayOf(RequestMethod.GET))
-    fun digests(): ResponseEntity<List<DigestDto>> {
-        val digests = digestService.findAll()
+    fun digests(@RequestParam(value = "page", required = false, defaultValue = "0") page: Int,
+                @RequestParam(value = "size", required = false, defaultValue = "10") size: Int):
+            ResponseEntity<Page<DigestDto>> {
+        val digests = digestService.findAll(page, size)
         return ResponseEntity(digests, HttpStatus.OK)
+    }
+
+    @RequestMapping(method = arrayOf(RequestMethod.POST),
+            consumes = arrayOf("application/json"))
+    fun save(@RequestBody digest: DigestDto): ResponseEntity<DigestDto> {
+        val savedDigest: DigestDto
+        try {
+            savedDigest = digestService.save(digest)
+        } catch(e: Exception) {
+            throw RestException(0, "Error while saving Digest",
+                    "Digest with such title already exists.")
+        }
+
+        val responseHeaders: HttpHeaders = HttpHeaders()
+        val newPollUri: URI = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedDigest.id)
+                .toUri();
+        responseHeaders.location = newPollUri;
+
+        return ResponseEntity(savedDigest, responseHeaders, HttpStatus.CREATED)
     }
 }

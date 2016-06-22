@@ -1,0 +1,44 @@
+<div class="container" ng-controller="ArchiveCtrl">
+
+
+    <div class="col-md-12 col-xs-12">
+        <h1>Digests archive</h1>
+        <ul>
+            <li ng-repeat="digest in digests | orderBy:'-digest.title'"
+                class="thumbnail article-listing">
+
+
+                <h3 class="digest_title">{{digest.title}}</h3>
+                <p class="digest_info">{{digest.publishedDate | date:'yyyy-MM-dd'}}</p>
+
+                <a href="javascript:;" data-target="#digest-{{digest.id}}"
+                   data-toggle="collapse"  ng-click="toggle = !toggle">{{toggle && 'Show more' || 'Hide'}}</a>
+
+                <div id="digest-{{digest.id}}" class="collapse digest-details">
+                    <div ng-show="digest.articles.length == 0" class="animate-show">
+                        <span class="label label-warning">There are no articles for selected Digest</span>
+                    </div>
+                    <ul>
+                        <li ng-repeat="topic in digest.topics" class="topic-listing">
+                            <h4>{{topic.topic}}</h4>
+
+                            <ul>
+                                <li ng-repeat="article in topic.articles" class="article-listing">
+
+                                    <a href="{{article.url}}" target="_blank">{{article.title}}</a>
+                                    <!--<p>{{article.description}}</p>-->
+                                    <p ng-bind-html="article.description"></p>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <div>
+            <uib-pager total-items="totalItems" ng-model="currentPage"></uib-pager>
+        </div>
+    </div>
+</div>

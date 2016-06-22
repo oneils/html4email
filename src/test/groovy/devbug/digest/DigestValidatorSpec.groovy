@@ -1,7 +1,8 @@
 package devbug.digest
 
 import groovy.transform.TypeChecked
-import info.devbug.digest.DigestValidator
+import DigestValidator
+import info.devbug.digest.util.DigestValidator
 import spock.lang.Specification
 
 /**

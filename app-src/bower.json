@@ -30,8 +30,8 @@
     "angular-i18n": "~1.4.x",
     "angular-sanitize": "~1.4.x",
     "angular-animate": "~1.4.x",
-    "angular-bootstrap": "~0.13.0",
-    "angular-resource": "1.4.x",
+    "angular-bootstrap": "~1.1.2",
+    "angular-messages": "~1.4.x",
     "jquery": "2.2.0"
   }
 }
