@@ -11,6 +11,7 @@ html {
 body {
     padding-top: 20px;
     font-family: "PT Sans", Arial, sans-serif;
+    background-color: #fcfcfc !important;
 }
 
 .article-images {
