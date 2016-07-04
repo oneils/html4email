@@ -78,6 +78,10 @@ collections:
 
 ## How to build UI
 
+Node.js and NPM should be already installed.
+
+How to install Node.js see official documentation: https://nodejs.org/en/download/package-manager/
+
 #### Install Bower and Grunt:
 ```
 npm install -g grunt-cli
