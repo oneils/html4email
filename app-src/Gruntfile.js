@@ -32,7 +32,7 @@ module.exports = function (grunt) {
             dist: {
                 cwd: 'app',
                 src: [ '**','!styles/**/*.css','!scripts/**/*.js' ],
-                dest: '../public',
+                dest: '../src/main/resources/static',
                 expand: true
             },
             fonts: {
@@ -43,28 +43,28 @@ module.exports = function (grunt) {
                         dot: true,
                         cwd: 'bower_components/bootstrap/dist',
                         src: ['fonts/*.*'],
-                        dest: '../public'
+                        dest: '../src/main/resources/static'
                     }, {
                         //for font-awesome
                         expand: true,
                         dot: true,
                         cwd: 'bower_components/font-awesome',
                         src: ['fonts/*.*'],
-                        dest: '../public'
+                        dest: '../src/main/resources/static'
                     }
                 ]
             }
         },
         clean: {
             build:{
-                src: [ '../public/']
+                src: [ '../src/main/resources/static/']
             }
         },
 
         useminPrepare: {
             html: 'app/index.html',
             options: {
-                dest: '../public'
+                dest: '../src/main/resources/static'
             }
         },
         // Concat
@@ -95,8 +95,8 @@ module.exports = function (grunt) {
                 // in dist directory
                 files: [{
                     src: [
-                        '../public/scripts/*.js',
-                        '../public/styles/*.css',
+                        '../src/main/resources/static/scripts/*.js',
+                        '../src/main/resources/static/styles/*.css',
                     ]
                 }]
             }
@@ -106,10 +106,10 @@ module.exports = function (grunt) {
         // options.assetDirs contains the directories for finding the assets
         // according to their relative paths
         usemin: {
-            html: ['../public/*.html'],
-            css: ['../public/styles/*.css'],
+            html: ['../src/main/resources/static/*.html'],
+            css: ['../src/main/resources/static/styles/*.css'],
             options: {
-                assetsDirs: ['../public', '../public/styles']
+                assetsDirs: ['../src/main/resources/static', '../src/main/resources/static/styles']
             }
         },
 
@@ -148,7 +148,7 @@ module.exports = function (grunt) {
         options: {
           open: true,
           base:{
-               path: '../public',
+               path: '../src/main/resources/static',
             options: {
                 index: 'index.html',
                 maxAge: 300000
