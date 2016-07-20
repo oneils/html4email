@@ -87,7 +87,7 @@ How to install Node.js see official documentation: https://nodejs.org/en/downloa
 npm install -g grunt-cli
 npm install -g bower
 ```
-Go to the `/app-src`
+Go to the `/web-src`
 
 Run the commands:
 
