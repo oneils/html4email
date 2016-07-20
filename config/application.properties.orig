@@ -1,6 +1,0 @@
-app.name=html4email
-app.description=${app.name} is application for generating content
-logging.file=app.log
-logging.level.info.devbug=error
-
-#server.port=80
