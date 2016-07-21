@@ -1,12 +1,40 @@
+cache:
+  key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
+  paths:
+  - .gradle
+
+stages:
+  - build
+  - test
+  - deploy
+
 build:
+  stage: build
+  artifacts:
+    paths:
+      - build/libs/*.jar
   script:
   - ./gradlew clean build
   - echo $CI_BUILD_ID
   - ls -la build/libs
 
-deploy:
+deploy_to_prod:
   stage: deploy
   script:
-    - echo 'Deployed'
+    - echo 'Deploy to PROD server'
   only:
     - master
+  except:
+      - branches
+  environment: production
+
+deploy_to_qa:
+    stage: deploy
+    script:
+      - echo 'Deploying to QA server'
+      - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:@QA_DEPLOY_PATH
+#    only:
+#      - master
+#    except:
+#        - branches
+    environment: qa
