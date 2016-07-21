@@ -40,9 +40,11 @@ deploy_to_qa:
       - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
       - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
       - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - ssh $QA_USER@$QA_HOST
       - ./shutdown.sh
       - ./update_symlink.sh
       - ./startup.sh
+      - exit
 #    only:
 #      - development
 #    except:
