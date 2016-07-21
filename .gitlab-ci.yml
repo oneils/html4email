@@ -22,6 +22,9 @@ deploy_to_prod:
   stage: deploy
   script:
     - echo 'Deploy to PROD server'
+    - scp build/libs/html4email*.jar $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - ./shutdown.sh
+    - ./startup.sh
   only:
     - master
   except:
@@ -33,8 +36,16 @@ deploy_to_qa:
     script:
       - echo 'Deploying to QA server'
       - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp version.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - ./shutdown.sh
+      - ./update_symlink.sh
+      - ./startup.sh
 #    only:
-#      - master
+#      - development
 #    except:
 #        - branches
+#        - master
     environment: qa
