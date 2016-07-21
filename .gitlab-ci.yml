@@ -1,12 +1,56 @@
+cache:
+  key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
+  paths:
+  - .gradle
+
+stages:
+  - build
+  - test
+  - deploy
+
 build:
+  stage: build
+  artifacts:
+    paths:
+      - build/libs/*.jar
   script:
   - ./gradlew clean build
   - echo $CI_BUILD_ID
   - ls -la build/libs
 
-deploy:
+deploy_to_prod:
   stage: deploy
   script:
-    - echo 'Deployed'
+    - echo 'Deploying to PROD server'
+    - scp build/libs/html4email*.jar $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp shutdown.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp startup.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp update_symlink.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp version.txt $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - ssh $PROD_USER@$PROD_HOST ./shutdown.sh
+    - ssh $PROD_USER@$PROD_HOST ./update_symlink.sh
+    - ssh $PROD_USER@$PROD_HOST ./startup.sh
   only:
     - master
+  except:
+      - branches
+  environment: production
+
+deploy_to_qa:
+    stage: deploy
+    script:
+      - echo 'Deploying to QA server'
+      - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - ssh $QA_USER@$QA_HOST ./shutdown.sh
+      - ssh $QA_USER@$QA_HOST ./update_symlink.sh
+      - ssh $QA_USER@$QA_HOST ./startup.sh
+    only:
+      - development
+    except:
+        - branches
+        - master
+    environment: qa
