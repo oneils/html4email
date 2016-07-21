@@ -32,7 +32,7 @@ deploy_to_qa:
     stage: deploy
     script:
       - echo 'Deploying to QA server'
-      - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:@QA_DEPLOY_PATH
+      - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
 #    only:
 #      - master
 #    except:
