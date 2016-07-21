@@ -21,10 +21,15 @@ build:
 deploy_to_prod:
   stage: deploy
   script:
-    - echo 'Deploy to PROD server'
+    - echo 'Deploying to PROD server'
     - scp build/libs/html4email*.jar $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
-    - ./shutdown.sh
-    - ./startup.sh
+    - scp shutdown.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp startup.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp update_symlink.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp version.txt $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - ssh $PROD_USER@$PROD_HOST ./shutdown.sh
+    - ssh $PROD_USER@$PROD_HOST ./update_symlink.sh
+    - ssh $PROD_USER@$PROD_HOST ./startup.sh
   only:
     - master
   except:
@@ -43,9 +48,9 @@ deploy_to_qa:
       - ssh $QA_USER@$QA_HOST ./shutdown.sh
       - ssh $QA_USER@$QA_HOST ./update_symlink.sh
       - ssh $QA_USER@$QA_HOST ./startup.sh
-#    only:
-#      - development
-#    except:
-#        - branches
-#        - master
+    only:
+      - development
+    except:
+        - branches
+        - master
     environment: qa
