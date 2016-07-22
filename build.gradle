@@ -51,6 +51,19 @@ dependencies {
 
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
+
+    integrationTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+
+    // override destination for reports for the integration tests
+    reports.html.destination = file("${reporting.baseDir}/integrationTests")
 }
 
 task wrapper(type: Wrapper) {
@@ -70,4 +83,9 @@ release {
   push = true // 'true' would e.g. be useful when triggering the release task on a CI server
   versionSuffix = '' // '.DEV' or '' (empty) could be useful alternatives
   tagPrefix = 'v' // 'r' or '' (empty) could be useful alternatives
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
 }
