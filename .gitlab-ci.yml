@@ -18,6 +18,10 @@ build:
   - echo $CI_BUILD_ID
   - ls -la build/libs
 
+integration tests:
+  stage: test
+  script ./gradlew integrationTest
+
 deploy_to_prod:
   stage: deploy
   script:
