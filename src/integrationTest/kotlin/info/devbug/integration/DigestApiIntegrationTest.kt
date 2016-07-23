@@ -12,7 +12,7 @@ import org.junit.Test
  *
  * @author Aliaksei Bahdanau.
  */
-class DigestApiIntegrationTest : BaseIntegrationTest() {
+class DigestApiIntegrationTest : AbstractIntegrationTest() {
 
     val digestApiUrl = "/v1/digests/"
 
@@ -21,7 +21,7 @@ class DigestApiIntegrationTest : BaseIntegrationTest() {
     fun `resource doesn't exist`() {
         // Given
         val name = RandomStringUtils.randomAlphabetic(8)
-        val request = HttpGet("http://localhost/v1/digests/" + name)
+        val request = HttpGet("$protocol://$serverHost:$serverPort$digestApiUrl$name")
 
         // When
         val httpResponse = HttpClientBuilder.create().build().execute(request)
@@ -34,7 +34,7 @@ class DigestApiIntegrationTest : BaseIntegrationTest() {
     @Throws(Exception::class)
     fun `all digest returned as JSON`() {
         // Given
-        val request = HttpGet("http://$serverHost:$serverPort$digestApiUrl")
+        val request = HttpGet("$protocol://$serverHost:$serverPort$digestApiUrl")
         val jsonMimeType = "application/json"
 
         // When
