@@ -5,7 +5,7 @@ import org.junit.Test
 /**
  * @author Aliaksei Bahdanau.
  */
-class MainPageIntegrationTest : BaseFluentIntegrationTest(){
+class MainPageIntegrationTest : AbstractFluentIntegrationTest(){
 
     @Test
     fun hasPageTitle() {
