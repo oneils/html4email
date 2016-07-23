@@ -3,9 +3,11 @@ package info.devbug.selenium
 import org.junit.Test
 
 /**
+ * Selenium test for main page.
+ *
  * @author Aliaksei Bahdanau.
  */
-class MainPageIntegrationTest : AbstractFluentIntegrationTest(){
+class MainPageIntegrationTest : AbstractFluentIntegrationTest() {
 
     @Test
     fun hasPageTitle() {

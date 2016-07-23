@@ -8,11 +8,11 @@ import org.apache.http.impl.client.HttpClientBuilder
 import org.junit.Test
 
 /**
- * Integration test for [DigestResource]
+ * Integration test for DigestResource
  *
  * @author Aliaksei Bahdanau.
  */
-class DigestApiIntegrationTest : AbstractIntegrationTest() {
+class DigestResourceIntegrationTest : AbstractIntegrationTest() {
 
     val digestApiUrl = "/v1/digests/"
 
