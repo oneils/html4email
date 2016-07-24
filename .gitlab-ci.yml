@@ -20,7 +20,8 @@ build:
 
 integration tests:
   stage: test
-  script ./gradlew integrationTest
+  script:
+    - ./gradlew integrationTest
 
 deploy_to_prod:
   stage: deploy
