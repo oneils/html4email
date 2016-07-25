@@ -1,6 +1,7 @@
 package info.devbug.integration
 
 import info.devbug.HomeController
+import org.junit.Ignore
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.SpringApplicationConfiguration
@@ -12,10 +13,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
  *
  * @author Aliaksei Bahdanau.
  */
+@Ignore
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringApplicationConfiguration(classes = arrayOf(HomeController::class))
 @WebIntegrationTest(randomPort = true)
-open class AbstractIntegrationTest {
+abstract class AbstractIntegrationTest {
 
     @Value("\${local.server.port}")
     protected var serverPort: Int = 0

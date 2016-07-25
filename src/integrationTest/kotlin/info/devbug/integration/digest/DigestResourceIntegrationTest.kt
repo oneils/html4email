@@ -1,5 +1,6 @@
-package info.devbug.integration
+package info.devbug.integration.digest
 
+import info.devbug.integration.AbstractIntegrationTest
 import org.apache.commons.lang3.RandomStringUtils
 import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
