@@ -2,6 +2,8 @@ cache:
   key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
   paths:
   - .gradle
+  - web-src/bower_compponents
+  - web-src/node_modules
 
 stages:
   - build
