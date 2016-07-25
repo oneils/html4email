@@ -24,6 +24,11 @@ build:
 integration tests:
   stage: test
   script:
+    - cd web-src
+    - npm instal
+    - bower install
+    - grunt build --force
+    - cd ..
     - ./gradlew integrationTest
 
 deploy_to_prod:
