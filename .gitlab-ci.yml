@@ -14,9 +14,12 @@ build:
     paths:
       - build/libs/*.jar
   script:
+  - cd web-src
+  - npm instal
+  - bower install
+  - grunt build --force
+  - cd ..
   - ./gradlew clean build
-  - echo $CI_BUILD_ID
-  - ls -la build/libs
 
 integration tests:
   stage: test
