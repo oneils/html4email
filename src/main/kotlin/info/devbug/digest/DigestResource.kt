@@ -13,12 +13,21 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.net.URI
 
 /**
+ * Endpoint for Digest.
+ *
  * @author Aliaksei Bahdanau
  */
 @RestController
 @RequestMapping(value = "/v1/digests")
 class DigestResource @Autowired constructor(val digestService: DigestService) {
 
+    /**
+     * Retrieves all [DigestDto]s with pagination support.
+     *
+     * @param page to be returned.
+     * @param size number of items to be returned.
+     * @return [ResponseEntity]
+     */
     @RequestMapping(method = arrayOf(RequestMethod.GET))
     fun digests(@RequestParam(value = "page", required = false, defaultValue = "0") page: Int,
                 @RequestParam(value = "size", required = false, defaultValue = "10") size: Int):
@@ -27,8 +36,14 @@ class DigestResource @Autowired constructor(val digestService: DigestService) {
         return ResponseEntity(digests, HttpStatus.OK)
     }
 
-    @RequestMapping(method = arrayOf(RequestMethod.POST),
-            consumes = arrayOf("application/json"))
+    /**
+     * Saves the specified digest.
+     *
+     * @param digest [DigestDto] for saving.
+     * @throws Exception in case when Digest saving failed.
+     * @return [ResponseEntity] with saved Digest and status '201 Created' in case when Digest is saved successfully.
+     */
+    @RequestMapping(method = arrayOf(RequestMethod.POST), consumes = arrayOf("application/json"))
     fun save(@RequestBody digest: DigestDto): ResponseEntity<DigestDto> {
         val savedDigest: DigestDto
         try {
@@ -43,8 +58,8 @@ class DigestResource @Autowired constructor(val digestService: DigestService) {
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedDigest.id)
-                .toUri();
-        responseHeaders.location = newPollUri;
+                .toUri()
+        responseHeaders.location = newPollUri
 
         return ResponseEntity(savedDigest, responseHeaders, HttpStatus.CREATED)
     }
