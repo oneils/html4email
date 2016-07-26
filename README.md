@@ -1,4 +1,4 @@
-https://gitlab.com/oneils/html4email/badges/master/build.svg
+[![Build Status](https://gitlab.com/oneils/html4email/badges/master/build.svg)](https://gitlab.com/oneils/html4email/badges/master/build.svg)
 
 ## html4email-kotlin  ##
 Currently this is a prototype of the application for generating Digest email template from JSON file.
