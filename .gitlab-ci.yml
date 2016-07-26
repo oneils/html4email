@@ -7,22 +7,29 @@ cache:
   - node_modules
   - src/main/resources/static
 
+before_script:
+  - ./gradlew clean
+  - cd web-src
+  - npm install
+  - bower install
+  - grunt build --force
+  - cd ..
+
 stages:
-  - prepare
   - test
   - build
   - deploy
   - release
 
-compile:
-  stage: prepare
+unit tests:
+  stage: test
   script:
-    - cd web-src
-    - npm install
-    - bower install
-    - grunt build --force
-    - cd ..
-    - ./gradlew clean compile
+    - ./gradlew test
+
+integration tests:
+  stage: test
+  script:
+    - ./gradlew integrationTest
 
 build jar file:
   stage: build
@@ -31,11 +38,6 @@ build jar file:
       - build/libs/*.jar
   script:
   - ./gradlew build -Dskip.tests
-
-integration tests:
-  stage: test
-  script:
-    - ./gradlew integrationTest
 
 deploy_to_prod:
   stage: deploy
