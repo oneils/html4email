@@ -18,7 +18,7 @@ compile:
   stage: prepare
   script:
     - cd web-src
-    - npm instal
+    - npm install
     - bower install
     - grunt build --force
     - cd ..
