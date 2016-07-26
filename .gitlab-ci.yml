@@ -2,34 +2,42 @@ cache:
   key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
   paths:
   - .gradle
+  - build
+  - bower_components
+  - node_modules
+  - src/main/resources/static
+
+before_script:
+  - ./gradlew clean
+  - cd web-src
+  - npm install
+  - bower install
+  - grunt build --force
+  - cd ..
 
 stages:
-  - build
   - test
+  - build
   - deploy
+  - release
 
-build:
+unit tests:
+  stage: test
+  script:
+    - ./gradlew test
+
+integration tests:
+  stage: test
+  script:
+    - ./gradlew integrationTest
+
+build jar file:
   stage: build
   artifacts:
     paths:
       - build/libs/*.jar
   script:
-  - cd web-src
-  - npm instal
-  - bower install
-  - grunt build --force
-  - cd ..
-  - ./gradlew clean build
-
-integration tests:
-  stage: test
-  script:
-    - cd web-src
-    - npm instal
-    - bower install
-    - grunt build --force
-    - cd ..
-    - ./gradlew integrationTest
+  - ./gradlew build -Dskip.tests
 
 deploy_to_prod:
   stage: deploy
@@ -67,3 +75,12 @@ deploy_to_qa:
         - branches
         - master
     environment: qa
+
+release:
+  stage: release
+  script:
+    - ./gradlew release
+  only:
+    - master
+  except:
+    - branches
