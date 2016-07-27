@@ -2,6 +2,7 @@ package info.devbug.digest.repository
 
 import info.devbug.topic.TopicDto
 import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 
@@ -13,6 +14,7 @@ import java.util.*
 data class DigestDto(@Id
                      var id: String? = null,
                      var title: String = "",
+                     @Indexed
                      var publishedDate: Date = Date(),
                      var createdDate: Date = Date(),
                      var topics: List<TopicDto> = emptyList(),
