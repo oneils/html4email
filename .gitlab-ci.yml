@@ -7,19 +7,22 @@ cache:
   - node_modules
   - src/main/resources/static
 
-before_script:
-  - ./gradlew clean
-  - cd web-src
-  - npm install
-  - bower install
-  - grunt build --force
-  - cd ..
-
 stages:
+  - prepare
   - test
   - build
   - deploy
   - release
+
+prepare:
+  stage: prepare
+  script:
+    - ./gradlew clean
+    - cd web-src
+    - npm install
+    - bower install
+    - grunt build --force
+    - cd ..
 
 unit tests:
   stage: test
@@ -54,27 +57,28 @@ deploy_to_prod:
   only:
     - master
   except:
-      - branches
-#  environment: production
+    - branches
+  environment: production
 
 deploy_to_qa:
-    stage: deploy
-    script:
-      - echo 'Deploying to QA server'
-      - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-      - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-      - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-      - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-      - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-      - ssh $QA_USER@$QA_HOST ./shutdown.sh
-      - ssh $QA_USER@$QA_HOST ./update_symlink.sh
-      - ssh $QA_USER@$QA_HOST ./startup.sh
-    only:
-      - development
-    except:
-        - branches
-        - master
-#    environment: qa
+  stage: deploy
+  script:
+    - echo 'Deploying to QA server'
+    - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+    - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+    - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+    - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+    - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+    - ssh $QA_USER@$QA_HOST ./shutdown.sh
+    - ssh $QA_USER@$QA_HOST ./update_symlink.sh
+    - ssh $QA_USER@$QA_HOST ./startup.sh
+  only:
+    - branches
+#    - development
+  except:
+    - master
+#    - branches
+  environment: qa
 
 release:
   stage: release
