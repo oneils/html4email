@@ -3,20 +3,18 @@ cache:
   paths:
   - .gradle
   - build
-  - bower_components
-  - node_modules
-  - src/main/resources/static
 
 before_script:
-  - ./gradlew clean
   - cd web-src
   - npm install
   - bower install
   - grunt build --force
   - cd ..
 
+after_script:
+  ./gradlew clean
+
 stages:
-  - prepare
   - test
   - build
   - deploy
@@ -76,6 +74,7 @@ deploy_to_qa:
   except:
     - master
 #    - branches
+#    - /^Issue-.*$/
   environment: qa
 
 release:
