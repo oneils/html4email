@@ -55,7 +55,7 @@ deploy_to_prod:
     - master
   except:
       - branches
-  environment: production
+#  environment: production
 
 deploy_to_qa:
     stage: deploy
@@ -74,7 +74,7 @@ deploy_to_qa:
     except:
         - branches
         - master
-    environment: qa
+#    environment: qa
 
 release:
   stage: release
