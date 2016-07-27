@@ -60,6 +60,9 @@ deploy_to_qa:
   stage: deploy
   script:
     - echo 'Deploying to QA server'
+    - pwd
+    - echo
+    - ls -lh
     - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
     - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
     - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
