@@ -11,9 +11,6 @@ before_script:
   - grunt build --force
   - cd ..
 
-after_script:
-  - ./gradlew clean
-
 stages:
   - test
   - build
