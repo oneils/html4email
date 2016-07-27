@@ -69,12 +69,11 @@ deploy_to_qa:
     - ssh $QA_USER@$QA_HOST ./update_symlink.sh
     - ssh $QA_USER@$QA_HOST ./startup.sh
   only:
-    - branches
-#    - development
+    - development
   except:
     - master
-#    - branches
-#    - /^Issue-.*$/
+    - /^Issue-.*$/
+    - /^issue-.*$/
   environment: qa
 
 release:
