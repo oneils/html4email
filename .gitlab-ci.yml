@@ -1,12 +1,86 @@
-build:
-  script:
-  - ./gradlew clean build
-  - echo $CI_BUILD_ID
-  - ls -la build/libs
+cache:
+  key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
+  paths:
+  - .gradle
+  - build
+  - bower_components
+  - node_modules
+  - src/main/resources/static
 
-deploy:
+before_script:
+  - ./gradlew clean
+  - cd web-src
+  - npm install
+  - bower install
+  - grunt build --force
+  - cd ..
+
+stages:
+  - test
+  - build
+  - deploy
+  - release
+
+unit tests:
+  stage: test
+  script:
+    - ./gradlew test
+
+integration tests:
+  stage: test
+  script:
+    - ./gradlew integrationTest
+
+build jar file:
+  stage: build
+  artifacts:
+    paths:
+      - build/libs/*.jar
+  script:
+  - ./gradlew build -Dskip.tests
+
+deploy_to_prod:
   stage: deploy
   script:
-    - echo 'Deployed'
+    - echo 'Deploying to PROD server'
+    - scp build/libs/html4email*.jar $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp shutdown.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp startup.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp update_symlink.sh $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - scp version.txt $PROD_USER@$PROD_HOST:$PROD_DEPLOY_PATH
+    - ssh $PROD_USER@$PROD_HOST ./shutdown.sh
+    - ssh $PROD_USER@$PROD_HOST ./update_symlink.sh
+    - ssh $PROD_USER@$PROD_HOST ./startup.sh
   only:
     - master
+  except:
+      - branches
+  environment: production
+
+deploy_to_qa:
+    stage: deploy
+    script:
+      - echo 'Deploying to QA server'
+      - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+      - ssh $QA_USER@$QA_HOST ./shutdown.sh
+      - ssh $QA_USER@$QA_HOST ./update_symlink.sh
+      - ssh $QA_USER@$QA_HOST ./startup.sh
+    only:
+      - development
+    except:
+        - branches
+        - master
+    environment: qa
+
+release:
+  stage: release
+  script:
+    - ./gradlew release
+  only:
+    - master
+  except:
+    - branches

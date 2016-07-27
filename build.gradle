@@ -47,10 +47,27 @@ dependencies {
     compile('io.springfox:springfox-swagger-ui:2.2.2')
     compile("io.springfox:springfox-swagger2:2.2.2")
 
+    // dependencies for integration tests
+    testCompile 'org.fluentlenium:fluentlenium-assertj:0.13.1'
+    testCompile 'com.codeborne:phantomjsdriver:1.3.0'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.53.1'
 }
 
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
+
+    integrationTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+
+    // override destination for reports for the integration tests
+    reports.html.destination = file("${reporting.baseDir}/integrationTests")
 }
 
 task wrapper(type: Wrapper) {
@@ -70,4 +87,17 @@ release {
   push = true // 'true' would e.g. be useful when triggering the release task on a CI server
   versionSuffix = '' // '.DEV' or '' (empty) could be useful alternatives
   tagPrefix = 'v' // 'r' or '' (empty) could be useful alternatives
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+
+    testCompile {
+        exclude module: 'selenium-safari-driver'
+        exclude module: 'selenium-ie-driver'
+        exclude module: 'selenium-firefox-driver'
+        exclude module: 'selenium-htmlunit-driver'
+        exclude module: 'selenium-chrome-driver'
+    }
 }
