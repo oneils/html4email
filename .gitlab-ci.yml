@@ -12,7 +12,7 @@ before_script:
   - cd ..
 
 after_script:
-  ./gradlew clean
+  - ./gradlew clean
 
 stages:
   - test
