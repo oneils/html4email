@@ -1,6 +1,5 @@
 package info.devbug.article
 
-import info.devbug.api.RestException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
@@ -13,10 +12,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.net.URI
 
 /**
+ * Endpoint for Article.
+ *
  * @author Aliaksei Bahdanau.
  */
 @RestController
-@RequestMapping(value = "/v1/articles")
+@RequestMapping(value = "/api/v1/articles")
 open class ArticleResource {
     private val articleService: ArticleService
 
@@ -28,7 +29,7 @@ open class ArticleResource {
     fun articles(@RequestParam(value = "page", required = false, defaultValue = "0") page: Int,
                  @RequestParam(value = "size", required = false, defaultValue = "10") size: Int):
             ResponseEntity<Page<ArticleDto>> {
-        val pageRequest: PageRequest = PageRequest(page, size, Sort.Direction.DESC, "creationDate");
+        val pageRequest: PageRequest = PageRequest(page, size, Sort.Direction.DESC, "creationDate")
         val articles = articleService.findAll(pageRequest)
         return ResponseEntity(articles, HttpStatus.OK)
     }
@@ -44,7 +45,7 @@ open class ArticleResource {
                 .path("/{id}")
                 .buildAndExpand(savedArticle.id)
                 .toUri();
-        responseHeaders.location = newPollUri;
+        responseHeaders.location = newPollUri
 
         return ResponseEntity(savedArticle, responseHeaders, HttpStatus.CREATED)
     }

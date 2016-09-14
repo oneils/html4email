@@ -18,7 +18,7 @@ import java.net.URI
  * @author Aliaksei Bahdanau
  */
 @RestController
-@RequestMapping(value = "/v1/digests")
+@RequestMapping(value = "/api/v1/digests")
 class DigestResource @Autowired constructor(val digestService: DigestService) {
 
     /**

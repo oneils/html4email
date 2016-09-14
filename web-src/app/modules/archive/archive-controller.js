@@ -4,7 +4,7 @@ digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope
 
     $http({
         method: 'GET',
-        url: '/v1/digests'
+        url: '/api/v1/digests'
     }).then(function successCallback(response) {
         $scope.digests = response.data.content;
         $scope.totalItems = response.data.totalElements;
@@ -17,7 +17,7 @@ digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope
         $http({
             method: 'GET',
             // on backend pages start from 0
-            url: '/v1/digests?page=' + (page - 1 )
+            url: '/api/v1/digests?page=' + (page - 1 )
         }).then(function successCallback(response) {
             $scope.digests = response.data.content;
             $scope.totalItems = response.data.totalElements;
