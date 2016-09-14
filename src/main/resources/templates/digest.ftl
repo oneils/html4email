@@ -107,7 +107,9 @@
 
             <tr class="main-tr">
                 <td>
-                    <a href="mailto:${digest.contributeTo}">2015 ${digest.companyName}</a>
+                    <a href="mailto:${digest.contributeTo}">
+                        ${currentYear?string.yyyy} ${digest.companyName}
+                    </a>
                 </td>
             </tr>
         </table>
