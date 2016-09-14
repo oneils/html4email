@@ -36,6 +36,8 @@ build jar file:
   - ./gradlew build -Dskip.tests
 
 deploy_to_prod:
+  only:
+    - master
   stage: deploy
   script:
     - echo 'Deploying to PROD server'
@@ -47,19 +49,18 @@ deploy_to_prod:
     - ssh $PROD_USER@$PROD_HOST ./shutdown.sh
     - ssh $PROD_USER@$PROD_HOST ./update_symlink.sh
     - ssh $PROD_USER@$PROD_HOST ./startup.sh
-  only:
-    - master
-  except:
-    - branches
   environment: production
 
 deploy_to_qa:
+  only:
+    - development
+  except:
+    - master
+    - /^Issue-.*$/
+    - /^issue-.*$/
   stage: deploy
   script:
     - echo 'Deploying to QA server'
-    - pwd
-    - echo
-    - ls -lh
     - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
     - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
     - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
@@ -68,19 +69,11 @@ deploy_to_qa:
     - ssh $QA_USER@$QA_HOST ./shutdown.sh
     - ssh $QA_USER@$QA_HOST ./update_symlink.sh
     - ssh $QA_USER@$QA_HOST ./startup.sh
-  only:
-    - development
-  except:
-    - master
-    - /^Issue-.*$/
-    - /^issue-.*$/
   environment: qa
 
 release:
   stage: release
-  script:
-    - ./gradlew release
   only:
     - master
-  except:
-    - branches
+  script:
+    - ./gradlew release

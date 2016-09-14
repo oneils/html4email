@@ -164,6 +164,14 @@ a:hover {
     letter-spacing: 1px;
 }
 
+.hostname{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #777;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
 .article-description {
     font-family: "PT Sans", Arial, sans-serif;
     font-size: 0.9rem;
