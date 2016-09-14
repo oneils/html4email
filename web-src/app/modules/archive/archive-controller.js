@@ -24,4 +24,15 @@ digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope
         });
 
     }, true);
+
+    /**
+     * Returns a hostname from the URL specified.
+     * @param url to be parsed
+     * @returns hostname
+     */
+    $scope.getHostName = function getHostName(url){
+        var parser = document.createElement('a');
+        parser.href = url;
+        return parser.hostname;
+    };
 }]);

@@ -26,6 +26,7 @@
                                 <ul>
                                     <li ng-repeat="article in topic.articles" class="article-listing">
                                         <a href="{{article.url}}" target="_blank">{{article.title}}</a>
+                                        <p class="hostname">{{getHostName(article.url)}}</p>
                                         <p class="article-description" ng-bind-html="article.description"></p>
                                     </li>
                                 </ul>
