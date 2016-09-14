@@ -25,7 +25,6 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope,
         digest.title = $scope.digest.title;
 
         if (!isJsonValid($scope.jsonDigest)) {
-            var message = 'Invalide Digest JSON';
             $scope.hideDigestJsonValidation = false;
             return;
         }
@@ -34,7 +33,7 @@ digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope,
 
         $http({
             method: 'POST',
-            url: '/v1/digests',
+            url: '/api/v1/digests',
             headers: {
                 'Content-Type': "application/json"
             },

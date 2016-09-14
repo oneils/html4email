@@ -36,9 +36,9 @@ open class ApiSecurityConfig : WebSecurityConfigurerAdapter() {
         .csrf().disable()
         .authorizeRequests()
         .antMatchers("/login", "/logout").permitAll()
-                .antMatchers(HttpMethod.POST, "/v1/digests").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/v1/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/v1/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/v1/digests").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
     }
 }

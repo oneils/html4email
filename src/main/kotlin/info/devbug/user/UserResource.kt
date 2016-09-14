@@ -13,12 +13,12 @@ import java.security.Principal
 @RestController
 class UserResource {
 
-    @RequestMapping("/v1/user")
+    @RequestMapping("/api/v1/user")
     fun user(principal: Principal?) : Principal {
         if (null == principal) {
             return UsernamePasswordAuthenticationToken(User("guest", "", listOf(SimpleGrantedAuthority("ROLE_GUEST"))
             ), null)
         }
-        return principal;
+        return principal
     }
 }

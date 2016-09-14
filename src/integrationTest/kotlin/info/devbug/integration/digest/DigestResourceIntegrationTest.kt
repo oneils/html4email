@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired
  */
 class DigestResourceIntegrationTest : AbstractIntegrationTest() {
 
-    val digestApiUrl = "/v1/digests/"
+    val digestApiUrl = "/api/v1/digests/"
 
     lateinit private var digestReader: DigestReader
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
  * @author Aliaksei Bahdanau
  */
 @RestController
-@RequestMapping(value = "/v1/topics")
+@RequestMapping(value = "/api/v1/topics")
 class TopicResource {
 
     private val topicService: TopicService

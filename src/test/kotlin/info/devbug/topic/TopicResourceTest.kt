@@ -46,13 +46,13 @@ class TopicResourceTest {
     fun `topics should return a list of topics`() {
         given(topicServiceMock.findAll()).willReturn(listOf(TopicDto("NEWS", 0), TopicDto("Videos", 1)))
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/topics"))?.andExpect(MockMvcResultMatchers.status().isOk())
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/topics"))?.andExpect(MockMvcResultMatchers.status().isOk())
     }
 
     @Test
     fun `findTopicById should return 1 topic`() {
         given(topicServiceMock.findById(1)).willReturn(TopicDto("NEWS", 0))
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/topics/1"))?.andExpect(MockMvcResultMatchers.status().isOk())
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/topics/1"))?.andExpect(MockMvcResultMatchers.status().isOk())
     }
 }
