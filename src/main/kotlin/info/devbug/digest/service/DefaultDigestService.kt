@@ -53,8 +53,8 @@ open class DefaultDigestService : DigestService{
         return digestRepository.save(digest)
     }
 
-    override fun findById(id: String): DigestDto {
-        val digest = digestRepository.findById(id) ?: throw Exception("Digest was not found")
+    override fun findById(id: String): DigestDto? {
+        val digest = digestRepository.findById(id)
 
         return digest
     }

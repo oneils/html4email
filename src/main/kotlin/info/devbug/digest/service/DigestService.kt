@@ -19,5 +19,5 @@ interface DigestService {
      *
      * @return [DigestDto] if Digest is found, throws exception if Digest is not found
      */
-    fun findById(id: String): DigestDto
+    fun findById(id: String): DigestDto?
 }

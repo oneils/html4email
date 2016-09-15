@@ -51,7 +51,7 @@ class DigestResourceTest {
 
     @Test
     fun `getDigest should return 404 status for incorrect endpoint`() {
-        mockMvc.perform(get("/v1/digests/nonexists"))?.andExpect(status().isNotFound())
+        mockMvc.perform(get("/api/v1/digests/nonexists"))?.andExpect(status().isNotFound())
     }
 
     @Test
