@@ -2,36 +2,22 @@
 
     <div class="row">
         <div class="col s12">
-            <h4 class="blue-grey-text right">Digests archive</h4>
+            <h5 class="blue-grey-text center">Digests archive</h5>
         </div>
+
         <div class="col s12">
             <ul class="collection collapsible" data-collapsible="accordion" watch>
                 <li ng-repeat="digest in digests | orderBy:'-digest.title'"
                     class="collection-item article-listing">
 
-                    <div class="digest_title ">{{digest.title}}</div>
+                    <div class="digest_title"><a href="#/digest/{{digest.id}}">{{digest.title}}</a></div>
                     <p class="digest_info">{{digest.publishedDate | date:'yyyy-MM-dd'}}</p>
 
                     <a href="javascript:;" data-target="#digest-{{digest.id}}"
                        data-toggle="collapse" ng-click="toggle = !toggle">{{toggle && 'Show more' || 'Hide'}}</a>
 
-                    <div id="digest-{{digest.id}}" class="collapse digest-details">
-                        <div ng-show="digest.articles.length == 0" class="animate-show">
-                            <span class="label label-warning">There are no articles for selected Digest</span>
-                        </div>
-                        <ul class="collection z-depth-3">
-                            <li ng-repeat="topic in digest.topics" class="collection-item ">
-                                <div class="topic-title">{{topic.topic}}</div>
-
-                                <ul>
-                                    <li ng-repeat="article in topic.articles" class="article-listing">
-                                        <a href="{{article.url}}" target="_blank">{{article.title}}</a>
-                                        <p class="article-description" ng-bind-html="article.description"></p>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
+                    <div id="digest-{{digest.id}}" class="collapse">
+                        <div ng-include src="'modules/digest/digest-articles.html'"></div>
                     </div>
                 </li>
             </ul>

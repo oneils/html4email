@@ -6,7 +6,7 @@ digestControllers.controller('ArticleListCtrl', ['$scope', '$http', 'Article', f
 
     $http({
         method: 'GET',
-        url: '/v1/articles'
+        url: '/api/v1/articles'
     }).then(function successCallback(response) {
         $scope.articles = response.data.content;
         $scope.totalItems = response.data.totalElements;
@@ -18,7 +18,7 @@ digestControllers.controller('ArticleListCtrl', ['$scope', '$http', 'Article', f
     $scope.$watch("currentPage", function (page) {
         $http({
             method: 'GET',
-            url: '/v1/articles?page=' + (page -1)
+            url: '/api/v1/articles?page=' + (page -1)
         }).then(function successCallback(response) {
             $scope.articles = response.data.content;
             $scope.totalItems = response.data.totalElements;

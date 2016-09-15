@@ -18,7 +18,7 @@ import java.net.URI
  * @author Aliaksei Bahdanau
  */
 @RestController
-@RequestMapping(value = "/v1/digests")
+@RequestMapping(value = "/api/v1/digests")
 class DigestResource @Autowired constructor(val digestService: DigestService) {
 
     /**
@@ -62,5 +62,11 @@ class DigestResource @Autowired constructor(val digestService: DigestService) {
         responseHeaders.location = newPollUri
 
         return ResponseEntity(savedDigest, responseHeaders, HttpStatus.CREATED)
+    }
+
+    @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.GET))
+    fun findById(@PathVariable("id") id: String): ResponseEntity<DigestDto> {
+        val digest = digestService.findById(id) ?: return ResponseEntity(HttpStatus.NOT_FOUND)
+        return ResponseEntity(digest, HttpStatus.OK)
     }
 }

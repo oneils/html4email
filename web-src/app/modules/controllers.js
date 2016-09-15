@@ -4,7 +4,7 @@ var digestControllers = angular.module('digestControllers', ['ngResource']);
 
 
 digestControllers.controller('AuthCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-    $http.get("/v1/user").success(function(data) {
+    $http.get("/api/v1/user").success(function(data) {
         $scope.user = data.name;
         $scope.authenticated = true;
         $scope.principal = data.principal;

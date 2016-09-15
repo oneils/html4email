@@ -12,6 +12,6 @@ class MainPageIntegrationTest : AbstractFluentIntegrationTest() {
     @Test
     fun hasPageTitle() {
         goTo("/")
-        assert(findFirst("h4").text == "Digests archive")
+        assert(findFirst("h5").text == "Digests archive")
     }
 }

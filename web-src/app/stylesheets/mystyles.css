@@ -64,8 +64,12 @@ ul.article-thumbs {
 .digest-details {
     background: rgba(200, 200, 200, 0.1);
     font-size: 16px;
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     padding-bottom: 5px;
+}
+
+.digest-header {
+    font-weight: 700;
 }
 
 .topic-listing {
@@ -156,10 +160,22 @@ a:hover {
     text-transform: uppercase;
 }
 
+.digest_title a {
+    color: #40505a;
+}
+
 .digest_info {
     margin-top: 4px;
     margin-bottom: 3px;
     color: #666;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.hostname{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #777;
     font-size: 0.8rem;
     letter-spacing: 1px;
 }
