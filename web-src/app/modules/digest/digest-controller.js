@@ -1,62 +1,23 @@
-digestControllers.controller('DigestCtrl', ['$scope', '$http', function ($scope, $http) {
-    var digest = {};
-    $scope.toggle = true;
-    $scope.hideDigestJsonValidation = true;
+digestControllers.controller('DigestCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+    var digestId = $routeParams.id;
+    $scope.digest = {};
 
-    $scope.isCollapsed = false;
-    digest.title = "BackEnd Digest #";
-    $scope.digest = digest;
+    $http({
+        method: 'GET',
+        url: '/api/v1/digests/' + digestId
+    }).then(function successCallback(response) {
+        $scope.digest = response.data;
+    });
 
-    $scope.digests = [];
-
-    $scope.createDigest = function () {
-        var digest = {};
-        digest.title = $scope.digest.title;
-
-        $scope.digests.push(digest);
-
-        $scope.newDigestForm.$setPristine();
-        $scope.newDigestForm.$setUntouched();
+    /**
+     * Returns a hostname from the URL specified.
+     * @param url to be parsed
+     * @returns hostname
+     */
+    $scope.getHostName = function getHostName(url){
+        var parser = document.createElement('a');
+        parser.href = url;
+        return parser.hostname;
     };
 
-
-    $scope.saveJsonDigest = function () {
-        var digest = {};
-        digest.title = $scope.digest.title;
-
-        if (!isJsonValid($scope.jsonDigest)) {
-            $scope.hideDigestJsonValidation = false;
-            return;
-        }
-
-        $scope.hideDigestJsonValidation = true;
-
-        $http({
-            method: 'POST',
-            url: '/api/v1/digests',
-            headers: {
-                'Content-Type': "application/json"
-            },
-            data: $scope.jsonDigest
-        }).then(function successCallback(response) {
-            $scope.jsonDigest = null;
-            console.log(response);
-        }, function errorCallback(response) {
-            console.log(response);
-        });
-
-        $scope.digests.push(digest);
-
-        $scope.saveJsonForm.$setPristine();
-        $scope.saveJsonForm.$setUntouched();
-    };
-
-    function isJsonValid(digestJson) {
-        try {
-            JSON.parse(digestJson)
-        } catch (e) {
-            return false;
-        }
-        return true;
-    }
 }]);

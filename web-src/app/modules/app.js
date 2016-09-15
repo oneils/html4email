@@ -20,9 +20,13 @@ function($routeProvider) {
         templateUrl: 'modules/articles/articles-list.html',
         controller: 'ArticleListCtrl'
     }).
-    when('/digest', {
+    when('/digest/:id', {
         templateUrl: 'modules/digest/digest.html',
         controller: 'DigestCtrl'
+    }).
+    when('/save-digest', {
+        templateUrl: 'modules/save-digest/save-digest.html',
+        controller: 'SaveDigestCtrl'
     }).
     when('/import-digest', {
         templateUrl: 'modules/import/import-digest.html'

@@ -25,6 +25,6 @@ class RestExceptionHandler : ResponseEntityExceptionHandler() {
                 e.toString())
         val headers = HttpHeaders()
         headers.contentType = MediaType.APPLICATION_JSON
-        return handleExceptionInternal(e, error, headers, HttpStatus.OK, request)
+        return handleExceptionInternal(e, error, headers, HttpStatus.valueOf(request.response.status), request)
     }
 }
