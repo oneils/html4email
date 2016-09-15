@@ -63,4 +63,10 @@ class DigestResource @Autowired constructor(val digestService: DigestService) {
 
         return ResponseEntity(savedDigest, responseHeaders, HttpStatus.CREATED)
     }
+
+    @RequestMapping(value = "/{id}", method = arrayOf(RequestMethod.GET))
+    fun findById(@PathVariable("id") id: String): ResponseEntity<DigestDto> {
+        val digest = digestService.findById(id)
+        return ResponseEntity(digest, HttpStatus.OK)
+    }
 }

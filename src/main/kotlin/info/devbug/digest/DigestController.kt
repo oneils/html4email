@@ -2,7 +2,7 @@ package info.devbug.digest
 
 import info.devbug.api.RestException
 import info.devbug.digest.repository.DigestDto
-import info.devbug.digest.service.DigestServiceImpl
+import info.devbug.digest.service.DefaultDigestService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -17,9 +17,9 @@ import java.util.*
  */
 @Controller
 class DigestController {
-    private val digestService: DigestServiceImpl
+    private val digestService: DefaultDigestService
 
-    @Autowired constructor(digestService: DigestServiceImpl) {
+    @Autowired constructor(digestService: DefaultDigestService) {
         this.digestService = digestService
     }
 

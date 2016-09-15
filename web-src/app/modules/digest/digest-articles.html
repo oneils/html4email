@@ -1,0 +1,23 @@
+<div id="digest-{{digest.id}}" class="digest-details">
+    <div ng-show="digest.articles.length == 0" class="animate-show">
+        <span class="label label-warning">There are no articles for selected Digest</span>
+    </div>
+    <ul class="collection z-depth-0">
+        <li ng-repeat="topic in digest.topics" class="collection-item ">
+            <div class="topic-title">
+                <i class="tiny material-icons">turned_in_not</i>
+                {{topic.topic}}
+            </div>
+
+            <ul>
+                <li ng-repeat="article in topic.articles" class="article-listing card-panel grey lighten-5 z-depth-1">
+                    <a href="{{article.url}}" target="_blank">{{article.title}}</a>
+                    <p class="hostname">{{getHostName(article.url)}}</p>
+                    <p class="article-description" ng-bind-html="article.description"></p>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+</div>

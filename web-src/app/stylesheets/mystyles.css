@@ -64,8 +64,12 @@ ul.article-thumbs {
 .digest-details {
     background: rgba(200, 200, 200, 0.1);
     font-size: 16px;
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     padding-bottom: 5px;
+}
+
+.digest-header {
+    font-weight: 700;
 }
 
 .topic-listing {
@@ -154,6 +158,10 @@ a:hover {
     font-weight: 600;
     font-family: "PT Serif", Georgia, sans-serif;
     text-transform: uppercase;
+}
+
+.digest_title a {
+    color: #40505a;
 }
 
 .digest_info {

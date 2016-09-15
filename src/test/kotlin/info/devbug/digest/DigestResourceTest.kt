@@ -2,7 +2,7 @@ package info.devbug.digest
 
 import info.devbug.HomeController
 import info.devbug.digest.repository.DigestDto
-import info.devbug.digest.service.DigestServiceImpl
+import info.devbug.digest.service.DefaultDigestService
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,7 +30,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetu
 class DigestResourceTest {
 
     @Mock
-    private var digestServiceMock: DigestServiceImpl = Mockito.mock(DigestServiceImpl::class.java, "digestService")
+    private var digestServiceMock: DefaultDigestService = Mockito.mock(DefaultDigestService::class.java, "digestService")
 
     private var digestResource: DigestResource = DigestResource(digestServiceMock)
 
@@ -39,7 +39,7 @@ class DigestResourceTest {
 
     @Before
     fun setUp() {
-        mockMvc = standaloneSetup(digestResource).build();
+        mockMvc = standaloneSetup(digestResource).build()
     }
 
     @Test
@@ -51,6 +51,14 @@ class DigestResourceTest {
 
     @Test
     fun `getDigest should return 404 status for incorrect endpoint`() {
-        mockMvc.perform(get("/api/v1/digests/nonexists"))?.andExpect(status().isNotFound())
+        mockMvc.perform(get("/v1/digests/nonexists"))?.andExpect(status().isNotFound())
+    }
+
+    @Test
+    fun `getDigest should return 200 status for digest by ID`() {
+        val digestID = "57d99e57090c9bfba32f0665"
+        given(digestServiceMock.findById(digestID)).willReturn(DigestDto())
+
+        mockMvc.perform(get("/api/v1/digests/$digestID"))?.andExpect(status().isOk())
     }
 }

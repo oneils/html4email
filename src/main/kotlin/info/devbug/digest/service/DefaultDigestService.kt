@@ -11,10 +11,12 @@ import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 /**
+ * Default implementation of [DigestService].
+ *
  * @author Aliaksei Bahdanau.
  */
 @Service
-open class DigestServiceImpl : DigestService{
+open class DefaultDigestService : DigestService{
 
     private val digestRepository: DigestRepository
     private val digestReader: DigestReader
@@ -49,5 +51,11 @@ open class DigestServiceImpl : DigestService{
 
         if (existingDigest != null && existingDigest.title == digest.title) throw Exception("Already exists")
         return digestRepository.save(digest)
+    }
+
+    override fun findById(id: String): DigestDto {
+        val digest = digestRepository.findById(id) ?: throw Exception("Digest was not found")
+
+        return digest
     }
 }
