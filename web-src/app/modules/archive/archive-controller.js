@@ -8,6 +8,10 @@ digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope
     }).then(function successCallback(response) {
         $scope.digests = response.data.content;
         $scope.totalItems = response.data.totalElements;
+        $scope.totalPages = response.data.totalPages;
+        $scope.numberOfElements = response.data.numberOfElements;
+        $scope.first = response.data.first;
+        $scope.last = response.data.last;
     });
 
     $scope.$watch("totalItems", true);
@@ -30,9 +34,23 @@ digestControllers.controller('ArchiveCtrl', ['$scope', '$http', function ($scope
      * @param url to be parsed
      * @returns hostname
      */
-    $scope.getHostName = function getHostName(url){
+    $scope.getHostName = function getHostName(url) {
         var parser = document.createElement('a');
         parser.href = url;
         return parser.hostname;
+    };
+
+    // Pagination functionality
+
+    $scope.pageBack = function () {
+        if ($scope.currentPage > 1) {
+            $scope.currentPage = $scope.currentPage - 1;
+        }
+    };
+
+    $scope.pageForward = function () {
+        if ($scope.currentPage < $scope.totalPages) {
+            $scope.currentPage = $scope.currentPage + 1;
+        }
     };
 }]);
