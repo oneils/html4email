@@ -5,7 +5,6 @@ var digestApp = angular.module('digestApp', [
     'ngSanitize',
     'digestControllers',
     'digestServices',
-    'ui.bootstrap',
     'ngMessages'
 ]);
 
