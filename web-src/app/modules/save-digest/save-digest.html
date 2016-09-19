@@ -16,11 +16,12 @@
 
                             <div class="col l12 s12">
                                 <form role="form" name="saveJsonForm">
-                                    <div class="form-group">
-                                        <label for="digest-json">Digest as JSON:</label>
-                                        <textArea rows="20" class="form-control" id="digest-json" name="jsonDigest"
-                                                  ng-model="jsonDigest">
+                                    <div class="input-field">
+                                        <i class="material-icons prefix">mode_edit</i>
+                                        <textArea rows="20" id="digest-json" name="jsonDigest"
+                                                  ng-model="jsonDigest" class="materialize-textarea">
                                         </textArea>
+                                        <label for="digest-json">Digest as JSON:</label>
                                     </div>
 
                                     <button type="button" class="btn btn-default" ng-click="saveJsonDigest()">
