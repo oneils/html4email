@@ -16,3 +16,5 @@ security:
       client-secret: acmesecret
       scope: read,write
       auto-approve-scopes: '.*'
+
+archiveHost: http://idgst.info
