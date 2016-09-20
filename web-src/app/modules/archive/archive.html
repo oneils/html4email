@@ -6,7 +6,7 @@
         </div>
 
         <div class="col s12">
-            <ul class="collection collapsible" data-collapsible="accordion" watch>
+            <ul class="collection">
                 <li ng-repeat="digest in digests | orderBy:'-digest.title'"
                     class="collection-item article-listing">
 
@@ -14,16 +14,31 @@
                     <p class="digest_info">{{digest.publishedDate | date:'yyyy-MM-dd'}}</p>
 
                     <a href="javascript:;" data-target="#digest-{{digest.id}}"
-                       data-toggle="collapse" ng-click="toggle = !toggle">{{toggle && 'Show more' || 'Hide'}}</a>
+                       ng-click="showDetails = !showDetails">{{showDetails && 'Hide' || 'Show more'}}</a>
 
-                    <div id="digest-{{digest.id}}" class="collapse">
+                    <div id="digest-{{digest.id}}" ng-class="{ 'vis': !showDetails}">
                         <div ng-include src="'modules/digest/digest-articles.html'"></div>
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="row">
-            <uib-pager total-items="totalItems" ng-model="currentPage"></uib-pager>
+
+        <!-- Pagination -->
+        <div class="col s12 m12 center">
+            <ul class="pagination">
+                <li class="waves-effect">
+                    <a href="javascript:;" ng-click="pageBack()">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                <li>{{currentPage}} of {{totalPages}} page(-s)</li>
+                <li class="waves-effect">
+                    <a href="javascript:;" ng-click="pageForward()">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            </ul>
         </div>
+
     </div>
 </div>

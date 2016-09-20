@@ -186,3 +186,7 @@ a:hover {
     margin-bottom: 5px;
     padding: 2px;
 }
+
+.vis {
+    display: none;
+}
