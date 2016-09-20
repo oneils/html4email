@@ -4,6 +4,7 @@ import info.devbug.topic.TopicDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -19,7 +20,7 @@ data class DigestDto(@Id
                      var createdDate: Date = Date(),
                      var topics: List<TopicDto> = emptyList(),
                      var contributeTo: String = "",
-                     var companyName: String = "") {
+                     var companyName: String = "") : Serializable {
 
     constructor(title: String) : this() {
         this.title = title
