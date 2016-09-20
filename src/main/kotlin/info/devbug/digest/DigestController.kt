@@ -1,5 +1,6 @@
 package info.devbug.digest
 
+import info.devbug.api.AppConfig
 import info.devbug.api.RestException
 import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.service.DefaultDigestService
@@ -18,9 +19,11 @@ import java.util.*
 @Controller
 class DigestController {
     private val digestService: DefaultDigestService
+    private val appConfig: AppConfig
 
-    @Autowired constructor(digestService: DefaultDigestService) {
+    @Autowired constructor(digestService: DefaultDigestService, appConfig: AppConfig) {
         this.digestService = digestService
+        this.appConfig = appConfig
     }
 
     @RequestMapping("/digest")
@@ -36,6 +39,7 @@ class DigestController {
         model.addAttribute("digest", digest)
         model.addAttribute("digestNumber", digestService.getDigestNumber(digest.title))
         model.addAttribute("currentYear", Date())
+        model.addAttribute("archiveHost", appConfig.archiveHost)
 
         return "digest"
     }

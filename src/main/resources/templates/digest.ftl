@@ -66,11 +66,19 @@
         background-color: #707070
     }
     .main .main-tr:last-child td {
-        text-align: center;
+        text-align: left;
     }
     .main .main-tr:last-child td a {
         font-size: 12px;
         color: #cdcdcd;
+    }
+
+    .main .main-tr:last-child td a:hover {
+        border-color: rgba(224, 80, 32, 0.9);
+        color: #ececec;
+        fill: #ececec;
+        -webkit-transition: all 0ms;
+        transition: all 0ms;
     }
     </style>
 </head>
@@ -107,9 +115,12 @@
 
             <tr class="main-tr">
                 <td>
-                    <a href="mailto:${digest.contributeTo}">
-                        ${currentYear?string.yyyy} ${digest.companyName}
-                    </a>
+                    <p style="margin: 5px">
+                        <a href="${archiveHost}" target="_blank">Архив дайджестов</a>
+                    </p> <br/><br/>
+                    <p style="margin: 5px">
+                        <a href="mailto:${digest.contributeTo}">${currentYear?string.yyyy} ${digest.companyName}</a>
+                    </p>
                 </td>
             </tr>
         </table>
