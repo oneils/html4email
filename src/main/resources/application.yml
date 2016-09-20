@@ -7,6 +7,9 @@ logging:
 
 server:
   port: 8181
+  tomcat:
+    compression: on
+    compressableMimeTypes: text/html,text/xml,text/css,text/plain,application/json,application/xml,application/javascrip
 
 
 security:
@@ -16,5 +19,10 @@ security:
       client-secret: acmesecret
       scope: read,write
       auto-approve-scopes: '.*'
+  headers: false
+
+spring:
+  resources:
+    cache-period: 259200
 
 archiveHost: http://idgst.info
