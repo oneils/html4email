@@ -1,10 +1,12 @@
 package info.devbug.digest.service
 
+import info.devbug.digest.DigestCache
 import info.devbug.digest.repository.DigestDto
 import info.devbug.digest.util.DigestParser
 import info.devbug.digest.repository.DigestRepository
 import info.devbug.digest.util.DigestReader
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
@@ -20,10 +22,12 @@ open class DefaultDigestService : DigestService{
 
     private val digestRepository: DigestRepository
     private val digestReader: DigestReader
+    private val digestCache: DigestCache
 
-    @Autowired constructor(digestRepository: DigestRepository, digestReader: DigestReader) {
+    @Autowired constructor(digestRepository: DigestRepository, digestReader: DigestReader, digestCache: DigestCache) {
         this.digestRepository = digestRepository
         this.digestReader = digestReader
+        this.digestCache = digestCache
     }
 
     /**
@@ -42,20 +46,18 @@ open class DefaultDigestService : DigestService{
     }
 
     override fun findAll(page: Int, size: Int): Page<DigestDto> {
-        val request: PageRequest =  PageRequest(page, size, Sort.Direction.DESC, "publishedDate");
-        return digestRepository.findAll(request)
+        return digestCache.fetch(page, size)
     }
 
     override fun save(digest: DigestDto): DigestDto {
-        val existingDigest = digestRepository.findByTitle(digest.title)
+        val existingDigest = digestCache.fetchByTitle(digest.title)
 
         if (existingDigest != null && existingDigest.title == digest.title) throw Exception("Already exists")
         return digestRepository.save(digest)
     }
 
+    @Cacheable("searches")
     override fun findById(id: String): DigestDto? {
-        val digest = digestRepository.findById(id)
-
-        return digest
+        return digestCache.fetch(id)
     }
 }
