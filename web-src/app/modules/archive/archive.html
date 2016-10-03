@@ -5,7 +5,11 @@
             <h5 class="blue-grey-text center">Digests archive</h5>
         </div>
 
-        <div class="col s12">
+        <div class="col s12" ng-show="digests.length == 0">
+            <div class="card-panel teal orange lighten-5 brown-text text-lighten-1">No records were found</div>
+        </div>
+        <div class="col s12" id="digest-collection" ng-hide="digests.length == 0">
+
             <ul class="collection">
                 <li ng-repeat="digest in digests | orderBy:'-digest.title'"
                     class="collection-item article-listing">
@@ -21,23 +25,23 @@
                     </div>
                 </li>
             </ul>
-        </div>
 
-        <!-- Pagination -->
-        <div class="col s12 m12 center">
-            <ul class="pagination">
-                <li class="waves-effect">
-                    <a href="javascript:;" ng-click="pageBack()">
-                        <i class="material-icons">chevron_left</i>
-                    </a>
-                </li>
-                <li>{{currentPage}} of {{totalPages}} page(-s)</li>
-                <li class="waves-effect">
-                    <a href="javascript:;" ng-click="pageForward()">
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </li>
-            </ul>
+            <!-- Pagination -->
+            <div class="col s12 m12 center">
+                <ul class="pagination">
+                    <li class="waves-effect">
+                        <a href="javascript:;" ng-click="pageBack()">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </li>
+                    <li>{{currentPage}} of {{totalPages}} page(-s)</li>
+                    <li class="waves-effect">
+                        <a href="javascript:;" ng-click="pageForward()">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>
