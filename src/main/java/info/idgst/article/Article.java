@@ -1,8 +1,8 @@
 package info.idgst.article;
 
 import com.google.common.base.Objects;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,8 +10,7 @@ import java.util.Date;
  *
  * @author Aliaksei Bahdanau
  */
-@Document(collection = "articles")
-public class Article {
+public class Article implements Serializable {
 
     private String title;
     private String description;

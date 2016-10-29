@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @author Aliaksei Bahdanau
  */
 @Document(collection = "digests")
-public class Digest {
+public class Digest implements Serializable {
     @Id
     private String id;
     private String title;
@@ -99,12 +100,9 @@ public class Digest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Digest digest = (Digest) o;
-        return Objects.equal(id, digest.id) &&
-                Objects.equal(title, digest.title) &&
-                Objects.equal(publishedDate, digest.publishedDate) &&
-                Objects.equal(createdDate, digest.createdDate) &&
-                Objects.equal(topics, digest.topics) &&
-                Objects.equal(contributeTo, digest.contributeTo) &&
+        return Objects.equal(id, digest.id) && Objects.equal(title, digest.title) &&
+                Objects.equal(publishedDate, digest.publishedDate) && Objects.equal(createdDate, digest.createdDate) &&
+                Objects.equal(topics, digest.topics) && Objects.equal(contributeTo, digest.contributeTo) &&
                 Objects.equal(companyName, digest.companyName);
     }
 
