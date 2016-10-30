@@ -1,7 +1,6 @@
 package info.idgst.topic;
 
 import com.google.common.base.Objects;
-import info.devbug.article.ArticleDto;
 import info.idgst.article.Article;
 
 import java.io.Serializable;
@@ -46,9 +45,8 @@ public class Topic implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Topic topic1 = (Topic) o;
-        return orderPriority == topic1.orderPriority &&
-                Objects.equal(topic, topic1.topic) &&
-                Objects.equal(articles, topic1.articles);
+        return orderPriority == topic1.orderPriority && Objects.equal(topic, topic1.topic) &&
+               Objects.equal(articles, topic1.articles);
     }
 
     @Override

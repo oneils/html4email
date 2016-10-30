@@ -101,9 +101,9 @@ public class Digest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Digest digest = (Digest) o;
         return Objects.equal(id, digest.id) && Objects.equal(title, digest.title) &&
-                Objects.equal(publishedDate, digest.publishedDate) && Objects.equal(createdDate, digest.createdDate) &&
-                Objects.equal(topics, digest.topics) && Objects.equal(contributeTo, digest.contributeTo) &&
-                Objects.equal(companyName, digest.companyName);
+               Objects.equal(publishedDate, digest.publishedDate) && Objects.equal(createdDate, digest.createdDate) &&
+               Objects.equal(topics, digest.topics) && Objects.equal(contributeTo, digest.contributeTo) &&
+               Objects.equal(companyName, digest.companyName);
     }
 
     @Override

@@ -35,10 +35,11 @@ public class DigestResource {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Page<Digest>> digests(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-                                                @RequestParam(value = "size", required = false, defaultValue = "10") int size,
-                                                @RequestParam(value = "sortDirection", required = false, defaultValue = "DESC") String sortDirection,
-                                                @RequestParam(value = "sortBy", required = false, defaultValue = "publishedDate") String sortBy) {
+    public ResponseEntity<Page<Digest>> digests(
+            @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(value = "size", required = false, defaultValue = "10") int size,
+            @RequestParam(value = "sortDirection", required = false, defaultValue = "DESC") String sortDirection,
+            @RequestParam(value = "sortBy", required = false, defaultValue = "publishedDate") String sortBy) {
         Page<Digest> digests = digestService.findAll(page, size, Sort.Direction.fromString(sortDirection), sortBy);
         if (!digests.hasContent()) {
             return new ResponseEntity<>(digests, HttpStatus.NOT_FOUND);
@@ -47,10 +48,9 @@ public class DigestResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Digest> findById(@PathVariable("id")String id) {
+    public ResponseEntity<Digest> findById(@PathVariable("id") String id) {
         Digest digest = digestService.findById(id);
-        if (digest == null)
-        {
+        if (digest == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -63,15 +63,13 @@ public class DigestResource {
         try {
             savedDigest = digestService.save(digest);
         } catch (DigestAlreadyExistsException e) {
-            throw new RestException(0, "Error while saving Digest",
-                    e.getMessage());
+            throw new RestException(0, "Error while saving Digest", e.getMessage());
         }
 
-        URI pollURI = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(savedDigest.getId())
-                .toUri();
+        URI pollURI = ServletUriComponentsBuilder.fromCurrentRequest()
+                                                 .path("/{id}")
+                                                 .buildAndExpand(savedDigest.getId())
+                                                 .toUri();
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(pollURI);
 

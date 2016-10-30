@@ -41,8 +41,9 @@ public class DefaultDigestService implements DigestService {
     public Digest save(Digest digest) {
         Digest existingDigest = digestCache.fetchByTitle(digest.getTitle());
         if (existingDigest != null) {
-            String msg = "Attempt of saving duplicated digest with title: " +
-                    digest.getTitle() + "Existing Digest ID: " + existingDigest.getId();
+            String msg =
+                    "Attempt of saving duplicated digest with title: " + digest.getTitle() + "Existing Digest ID: " +
+                    existingDigest.getId();
             logger.warn(msg);
             throw new DigestAlreadyExistsException(msg);
         }

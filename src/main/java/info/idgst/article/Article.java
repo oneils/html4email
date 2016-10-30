@@ -63,10 +63,8 @@ public class Article implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Article article = (Article) o;
-        return  Objects.equal(title, article.title) &&
-                Objects.equal(description, article.description) &&
-                Objects.equal(url, article.url) &&
-                Objects.equal(createdDt, article.createdDt);
+        return Objects.equal(title, article.title) && Objects.equal(description, article.description) &&
+               Objects.equal(url, article.url) && Objects.equal(createdDt, article.createdDt);
     }
 
     @Override

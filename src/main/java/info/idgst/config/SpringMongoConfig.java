@@ -14,7 +14,8 @@ import java.net.UnknownHostException;
  * @author Aliaksei Bahdanau
  */
 @Configuration
-@EnableMongoRepositories(basePackages = {"info.idgst.article", "info.idgst.digest", "info.idgst.topic", "info.idgst.user"})
+@EnableMongoRepositories(basePackages = {"info.idgst.article", "info.idgst.digest", "info.idgst.topic",
+        "info.idgst.user"})
 public class SpringMongoConfig {
 
     @Bean

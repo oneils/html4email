@@ -21,13 +21,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleInvalidRequest(RestException re, ServletWebRequest request) {
 
-        RestErrorMessage error =
-                new RestErrorMessage(HttpStatus.valueOf(request.getResponse().getStatus()), re.getCode(),
-                        re.getExceptionMessage(), re.getDetailedMessage(), re.toString());
+        RestErrorMessage error = new RestErrorMessage(HttpStatus.valueOf(request.getResponse()
+                                                                                .getStatus()), re.getCode(),
+                                                      re.getExceptionMessage(), re.getDetailedMessage(), re.toString());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return handleExceptionInternal(re, error, headers,
-                HttpStatus.valueOf(request.getResponse().getStatus()), request);
+        return handleExceptionInternal(re, error, headers, HttpStatus.valueOf(request.getResponse()
+                                                                                     .getStatus()), request);
     }
 }

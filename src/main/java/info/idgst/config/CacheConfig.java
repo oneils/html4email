@@ -20,10 +20,9 @@ public class CacheConfig {
     @Bean
     GuavaCacheManager cacheManager() {
         GuavaCacheManager cacheManager = new GuavaCacheManager("searches");
-        cacheManager.setCacheBuilder(CacheBuilder
-                .newBuilder()
-                .softValues()
-                .expireAfterWrite(14, TimeUnit.DAYS));
+        cacheManager.setCacheBuilder(CacheBuilder.newBuilder()
+                                                 .softValues()
+                                                 .expireAfterWrite(14, TimeUnit.DAYS));
         return cacheManager;
     }
 }

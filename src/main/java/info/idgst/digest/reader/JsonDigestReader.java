@@ -30,7 +30,8 @@ public class JsonDigestReader implements DigestReader {
         GsonBuilder builder = new GsonBuilder();
 
         // Register an adapter to manage the date types as long values
-        JsonDeserializer jsonDeserializer = (json, typeOfT, context) -> new Date(json.getAsJsonPrimitive().getAsLong());
+        JsonDeserializer jsonDeserializer = (json, typeOfT, context) -> new Date(json.getAsJsonPrimitive()
+                                                                                     .getAsLong());
         builder.registerTypeAdapter(Date.class, jsonDeserializer);
         Gson gson = builder.create();
 
