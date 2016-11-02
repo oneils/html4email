@@ -10,10 +10,10 @@ import info.idgst.digest.Digest;
 public interface DigestReader {
 
     /**
-     * Read the file by specified path and returns {@link Digest}.
+     * Converts specified bytes to {@link Digest}.
      *
-     * @param filePath path to the file form with to read digest
+     * @param bytes
      * @return {@link Digest}
      */
-    Digest readDigest(String filePath);
+    Digest readDigest(byte[] bytes);
 }

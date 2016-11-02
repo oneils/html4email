@@ -4,14 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import info.idgst.digest.Digest;
-import info.idgst.exception.IdgstException;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Date;
 
 /**
@@ -24,8 +21,9 @@ public class JsonDigestReader implements DigestReader {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Override
-    public Digest readDigest(String filePath) {
+
+    @NotNull
+    private Gson getGson() {
         // Creates the json object which will manage the information received
         GsonBuilder builder = new GsonBuilder();
 
@@ -33,21 +31,12 @@ public class JsonDigestReader implements DigestReader {
         JsonDeserializer jsonDeserializer = (json, typeOfT, context) -> new Date(json.getAsJsonPrimitive()
                                                                                      .getAsLong());
         builder.registerTypeAdapter(Date.class, jsonDeserializer);
-        Gson gson = builder.create();
-
-        String digestJsonText = jsonToText(filePath);
-        return gson.fromJson(digestJsonText, Digest.class);
+        return builder.create();
     }
 
-    private String jsonToText(String filePath) {
-        String digestJsonText = null;
-        try {
-            digestJsonText = new String(Files.readAllBytes(Paths.get(filePath)));
-        } catch (IOException e) {
-            String msg = "Error while reading specified file";
-            logger.error(msg, e);
-            throw new IdgstException(msg, e);
-        }
-        return digestJsonText;
+    @Override
+    public Digest readDigest(byte[] bytes) {
+        logger.debug("Deserializing Digest from json " + new String(bytes));
+        return getGson().fromJson(new String(bytes), Digest.class);
     }
 }

@@ -19,6 +19,10 @@ public class IdgstException extends RuntimeException {
         super(message, cause);
     }
 
+    public IdgstException(String message) {
+        super(message);
+    }
+
     public int getCode() {
         return code;
     }

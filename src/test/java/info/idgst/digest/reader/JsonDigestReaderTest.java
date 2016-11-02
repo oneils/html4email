@@ -3,8 +3,11 @@ package info.idgst.digest.reader;
 import com.google.gson.JsonSyntaxException;
 import info.idgst.AbstractTest;
 import info.idgst.digest.Digest;
-import info.idgst.exception.IdgstException;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -25,12 +28,12 @@ public class JsonDigestReaderTest extends AbstractTest {
     }
 
     @Test
-    public void readDigest_correctExecution() {
+    public void readDigest_correctExecution() throws IOException {
         // Setup
         String path = "src/test/resources/digest.json";
 
         // Run
-        Digest digest = digestReader.readDigest(path);
+        Digest digest = digestReader.readDigest(Files.readAllBytes(Paths.get(path)));
 
         // Verify
         assertThat(digest.getTopics(), hasSize(2));
@@ -39,12 +42,8 @@ public class JsonDigestReaderTest extends AbstractTest {
     }
 
     @Test(expected = JsonSyntaxException.class)
-    public void readDigest_invalidJson() {
-        digestReader.readDigest("src/test/resources/invalid-json.json");
-    }
-
-    @Test(expected = IdgstException.class)
-    public void readDigest_fileNotFound() {
-        digestReader.readDigest("unknown_file_path.json");
+    public void readDigest_invalidJson() throws IOException {
+        String path = "src/test/resources/invalid-json.json";
+        digestReader.readDigest(Files.readAllBytes(Paths.get(path)));
     }
 }
