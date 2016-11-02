@@ -56,19 +56,19 @@ public class Digest implements Serializable {
     }
 
     public Date getPublishedDate() {
-        return publishedDate;
+        return publishedDate != null ? new Date(publishedDate.getTime()) : null;
     }
 
     public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
+        this.publishedDate = new Date(publishedDate.getTime());
     }
 
     public Date getCreatedDate() {
-        return createdDate;
+        return createdDate != null ? new Date(createdDate.getTime()) : null;
     }
 
     public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+        this.createdDate = new Date(createdDate.getTime());
     }
 
     public List<Topic> getTopics() {

@@ -27,7 +27,7 @@ import java.net.URI;
 @RequestMapping(value = "/api/v1/digests")
 public class DigestResource {
 
-    private DigestService digestService;
+    private final DigestService digestService;
 
     @Autowired
     public DigestResource(DigestService digestService) {

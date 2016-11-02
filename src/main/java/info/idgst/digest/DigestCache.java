@@ -1,6 +1,5 @@
 package info.idgst.digest;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
@@ -17,7 +16,6 @@ public interface DigestCache {
      * @param title Digest's title to fetch by
      * @return {@link Digest}
      */
-    @Cacheable("searches")
     Digest fetchByTitle(String title);
 
     /**
@@ -26,7 +24,6 @@ public interface DigestCache {
      * @param digestID Digest's ID to fetch by
      * @return {@link Digest}
      */
-    @Cacheable("searches")
     Digest fetch(String digestID);
 
     /**
@@ -38,6 +35,5 @@ public interface DigestCache {
      * @param sortBy        by which field to sort retrieved {@link Digest}
      * @return {@link Page} of {@link Digest}s
      */
-    @Cacheable("searches")
     Page<Digest> fetch(int page, int size, Sort.Direction sortDirection, String sortBy);
 }

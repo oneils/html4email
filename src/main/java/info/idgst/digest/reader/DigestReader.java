@@ -12,7 +12,7 @@ public interface DigestReader {
     /**
      * Converts specified bytes to {@link Digest}.
      *
-     * @param bytes
+     * @param bytes to be converted to {@link Digest}
      * @return {@link Digest}
      */
     Digest readDigest(byte[] bytes);

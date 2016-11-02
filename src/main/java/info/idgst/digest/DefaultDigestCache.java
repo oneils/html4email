@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DefaultDigestCache implements DigestCache {
 
-    private DigestRepository digestRepository;
+    private final DigestRepository digestRepository;
 
     @Autowired
     public DefaultDigestCache(DigestRepository digestRepository) {

@@ -6,6 +6,7 @@ import info.idgst.exception.IdgstException;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +25,14 @@ import java.util.Date;
 @Controller
 public class DigestController {
 
-    protected static final String DIGEST_NUMBER_DELIMITER = "#";
-    private IdgstConfigReader idgstConfigReader;
-    private DigestReader digestReader;
-    private DigestService digestService;
+    private static final String DIGEST_NUMBER_DELIMITER = "#";
+    private final IdgstConfigReader idgstConfigReader;
+    private final DigestReader digestReader;
+    private final DigestService digestService;
 
     @Autowired
-    public DigestController(IdgstConfigReader idgstConfigReader, DigestReader digestReader, DigestService digestService) {
+    public DigestController(IdgstConfigReader idgstConfigReader, DigestReader digestReader,
+                            DigestService digestService) {
         this.idgstConfigReader = idgstConfigReader;
         this.digestReader = digestReader;
         this.digestService = digestService;
@@ -39,8 +41,7 @@ public class DigestController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    @RequestParam(value = "saveDigest", required = false) boolean saveDigest,
-                                   UsernamePasswordAuthenticationToken principal,
-                                   Model model) throws IOException {
+                                   UsernamePasswordAuthenticationToken principal, Model model) throws IOException {
 
         byte[] fileContent = file.getBytes();
         if (fileContent == null) {
@@ -48,16 +49,24 @@ public class DigestController {
         }
 
         final Digest digest = digestReader.readDigest(fileContent);
-        if (saveDigest && (principal != null && principal.isAuthenticated())) {
+        // TODO verify User is admin
+        if (saveDigest && hasAccessRights(principal)) {
             digestService.save(digest);
             return "redirect:/";
         }
 
         model.addAttribute("digest", digest);
-        int digestNumber = NumberUtils.toInt(digest.getTitle().split(DIGEST_NUMBER_DELIMITER)[1]);
+        int digestNumber = NumberUtils.toInt(digest.getTitle()
+                                                   .split(DIGEST_NUMBER_DELIMITER)[1]);
         model.addAttribute("digestNumber", digestNumber);
         model.addAttribute("currentYear", new Date());
         model.addAttribute("archiveHost", idgstConfigReader.getArchiveHost());
         return "digest";
+    }
+
+    private boolean hasAccessRights(UsernamePasswordAuthenticationToken principal) {
+        return principal != null && principal.isAuthenticated() && principal.getAuthorities()
+                                                                            .contains(new SimpleGrantedAuthority(
+                                                                                    "ROLE_ADMIN"));
     }
 }

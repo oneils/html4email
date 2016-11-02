@@ -18,8 +18,8 @@ public class DefaultDigestService implements DigestService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private DigestCache digestCache;
-    private DigestRepository digestRepository;
+    private final DigestCache digestCache;
+    private final DigestRepository digestRepository;
 
     @Autowired
     public DefaultDigestService(DigestCache digestCache, DigestRepository digestRepository) {

@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 /**
@@ -35,8 +36,14 @@ public class JsonDigestReader implements DigestReader {
     }
 
     @Override
-    public Digest readDigest(byte[] bytes) {
-        logger.debug("Deserializing Digest from json " + new String(bytes));
-        return getGson().fromJson(new String(bytes), Digest.class);
+    public Digest readDigest(byte[] bytes){
+        String jsonString = null;
+        try {
+            jsonString = new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            logger.error("Error while converting bytes to String", e);
+        }
+        logger.debug("Deserializing Digest from json " + jsonString);
+        return getGson().fromJson(jsonString, Digest.class);
     }
 }

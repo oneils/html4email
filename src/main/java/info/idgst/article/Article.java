@@ -51,11 +51,11 @@ public class Article implements Serializable {
     }
 
     public Date getCreatedDt() {
-        return createdDt;
+        return createdDt != null ? new Date(createdDt.getTime()) : null;
     }
 
     public void setCreatedDt(Date createdDt) {
-        this.createdDt = createdDt;
+        this.createdDt = new Date(createdDt.getTime());
     }
 
     @Override
