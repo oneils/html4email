@@ -27,7 +27,7 @@ public class DigestResourceTest extends AbstractWebTest {
     private DigestResource digestResource;// = new DigestResource(digestService);
 
     @Override
-    public void before() {
+    public void before() throws Exception {
         super.before();
 
         mockMvc = standaloneSetup(digestResource).build();

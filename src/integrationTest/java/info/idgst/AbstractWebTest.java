@@ -1,9 +1,9 @@
 package info.idgst;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,13 +19,19 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringApplicationConfiguration(classes = IdgstServer.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = MockServletContext.class)
-public class AbstractWebTest {
+public abstract class AbstractWebTest implements BaseWebTest{
 
     protected MockMvc mockMvc;
 
     @Before
-    public void before()
+    public void before() throws Exception
     {
         MockitoAnnotations.initMocks(this);
+    }
+
+    @After
+    @Override
+    public void after() throws Exception {
+
     }
 }

@@ -18,7 +18,7 @@ public class JsonDigestReaderTest extends AbstractTest {
     private DigestReader digestReader;
 
     @Override
-    public void before() {
+    public void before() throws Exception {
         super.before();
 
         digestReader = new JsonDigestReader();
