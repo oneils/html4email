@@ -36,7 +36,7 @@ public class JsonDigestReader implements DigestReader {
     }
 
     @Override
-    public Digest readDigest(byte[] bytes){
+    public Digest readDigest(byte[] bytes) {
         String jsonString = null;
         try {
             jsonString = new String(bytes, "UTF-8");
