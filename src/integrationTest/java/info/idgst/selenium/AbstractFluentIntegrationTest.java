@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = IdgstServer.class)
 @WebIntegrationTest(randomPort = true)
-public class AbstractFluentIntegrationTest extends FluentTest {
+public abstract class AbstractFluentIntegrationTest extends FluentTest {
 
     @Value("${local.server.port}")
     protected int serverPort;
