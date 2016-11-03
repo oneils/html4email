@@ -6,7 +6,7 @@ logging:
   file: app.log
 
 server:
-  port: 8181
+  port: 8282
   tomcat:
     compression: on
     compressableMimeTypes: text/html,text/xml,text/css,text/plain,application/json,application/xml,application/javascrip

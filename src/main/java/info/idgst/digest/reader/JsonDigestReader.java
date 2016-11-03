@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import info.idgst.digest.Digest;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,14 +22,13 @@ public class JsonDigestReader implements DigestReader {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    @NotNull
     private Gson getGson() {
         // Creates the json object which will manage the information received
         GsonBuilder builder = new GsonBuilder();
 
         // Register an adapter to manage the date types as long values
         JsonDeserializer jsonDeserializer = (json, typeOfT, context) -> new Date(json.getAsJsonPrimitive()
-                                                                                     .getAsLong());
+                .getAsLong());
         builder.registerTypeAdapter(Date.class, jsonDeserializer);
         return builder.create();
     }
