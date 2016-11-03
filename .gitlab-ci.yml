@@ -5,6 +5,7 @@ cache:
   - build
 
 before_script:
+  - ./gradlew clean
   - cd web-src
   - npm install
   - bower install
