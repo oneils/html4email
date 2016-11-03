@@ -18,7 +18,7 @@ public class DefaultDigestCache implements DigestCache {
     private final DigestRepository digestRepository;
 
     @Autowired
-    public DefaultDigestCache(DigestRepository digestRepository) {
+    public DefaultDigestCache(final DigestRepository digestRepository) {
         this.digestRepository = digestRepository;
     }
 

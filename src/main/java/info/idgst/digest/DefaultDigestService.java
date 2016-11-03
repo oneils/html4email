@@ -22,7 +22,7 @@ public class DefaultDigestService implements DigestService {
     private final DigestRepository digestRepository;
 
     @Autowired
-    public DefaultDigestService(DigestCache digestCache, DigestRepository digestRepository) {
+    public DefaultDigestService(final DigestCache digestCache, final DigestRepository digestRepository) {
         this.digestCache = digestCache;
         this.digestRepository = digestRepository;
     }

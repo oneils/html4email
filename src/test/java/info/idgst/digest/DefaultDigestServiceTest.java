@@ -22,26 +22,33 @@ import static org.mockito.Mockito.when;
  */
 public class DefaultDigestServiceTest extends AbstractTest {
 
-    @InjectMocks
     private DefaultDigestService defaultDigestService;
     @Mock
     private DigestCache digestCache;
     @Mock
     private DigestRepository digestRepository;
 
+    private static final String DIGEST_TITLE = "Digest title";
+
+    @Override
+    public void before() throws Exception {
+        super.before();
+
+        defaultDigestService = new DefaultDigestService(digestCache, digestRepository);
+    }
+
     @Test
     public void findByTitle_correctExecution() {
         // Setup
-        String title = "Digest title";
-        Digest digest = new Digest(title);
-        when(digestCache.fetchByTitle(title)).thenReturn(digest);
+        Digest digest = new Digest(DIGEST_TITLE);
+        when(digestCache.fetchByTitle(DIGEST_TITLE)).thenReturn(digest);
 
         // Run
-        Digest result = defaultDigestService.findByTitle(title);
+        Digest result = defaultDigestService.findByTitle(DIGEST_TITLE);
 
         // Verify
         assertThat(result, is(digest));
-        verify(digestCache).fetchByTitle(title);
+        verify(digestCache).fetchByTitle(DIGEST_TITLE);
     }
 
     @Test
@@ -63,8 +70,7 @@ public class DefaultDigestServiceTest extends AbstractTest {
     @Test
     public void save_correctExecution() {
         // Setup
-        String digestTitle = "Digest title";
-        Digest digest = new Digest(digestTitle);
+        Digest digest = new Digest(DIGEST_TITLE);
         when(digestRepository.save(digest)).thenReturn(digest);
 
         // Run
@@ -79,15 +85,14 @@ public class DefaultDigestServiceTest extends AbstractTest {
     @Test(expected = DigestAlreadyExistsException.class)
     public void save_alreadyExists() {
         // Setup
-        String digestTitle = "Digest title";
-        Digest digest = new Digest(digestTitle);
-        when(digestCache.fetchByTitle(digestTitle)).thenReturn(digest);
+        Digest digest = new Digest(DIGEST_TITLE);
+        when(digestCache.fetchByTitle(DIGEST_TITLE)).thenReturn(digest);
 
         // Run
         try {
             defaultDigestService.save(digest);
         } finally {
-            verify(digestCache).fetchByTitle(digestTitle);
+            verify(digestCache).fetchByTitle(DIGEST_TITLE);
         }
     }
 

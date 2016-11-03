@@ -30,7 +30,7 @@ public class DigestResource {
     private final DigestService digestService;
 
     @Autowired
-    public DigestResource(DigestService digestService) {
+    public DigestResource(final DigestService digestService) {
         this.digestService = digestService;
     }
 

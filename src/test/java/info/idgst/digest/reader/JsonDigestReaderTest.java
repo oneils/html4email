@@ -14,6 +14,8 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
+ * Test for {@link JsonDigestReader}.
+ *
  * @author Aliaksei Bahdanau
  */
 public class JsonDigestReaderTest extends AbstractTest {

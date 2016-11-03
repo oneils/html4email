@@ -23,11 +23,16 @@ import static org.mockito.Mockito.when;
  */
 public class DefaultDigestCacheTest extends AbstractTest {
 
-    @InjectMocks
     private DefaultDigestCache defaultDigestCache;
     @Mock
     private DigestRepository digestRepository;
 
+    @Override
+    public void before() throws Exception {
+        super.before();
+
+        defaultDigestCache = new DefaultDigestCache(digestRepository);
+    }
 
     @Test
     public void fetchByTitle_correctExecution() {

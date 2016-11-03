@@ -31,8 +31,8 @@ public class DigestController {
     private final DigestService digestService;
 
     @Autowired
-    public DigestController(IdgstConfigReader idgstConfigReader, DigestReader digestReader,
-                            DigestService digestService) {
+    public DigestController(final IdgstConfigReader idgstConfigReader, final DigestReader digestReader,
+                            final DigestService digestService) {
         this.idgstConfigReader = idgstConfigReader;
         this.digestReader = digestReader;
         this.digestService = digestService;
@@ -49,7 +49,7 @@ public class DigestController {
         }
 
         final Digest digest = digestReader.readDigest(fileContent);
-        // TODO verify User is admin
+
         if (saveDigest && hasAccessRights(principal)) {
             digestService.save(digest);
             return "redirect:/";
