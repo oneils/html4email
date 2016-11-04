@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Aliaksei Bahdanau
  */
-@EnableCaching
-@Configuration
+//@EnableCaching
+//@Configuration
 public class CacheConfig {
 
     @Bean
