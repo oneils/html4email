@@ -22,11 +22,15 @@ unit tests:
   stage: test
   script:
     - ./gradlew test
+  except:
+    - tags
 
 integration tests:
   stage: test
   script:
     - ./gradlew integrationTest
+  except:
+    - tags
 
 build jar file:
   stage: build
@@ -35,10 +39,14 @@ build jar file:
       - build/libs/*.jar
   script:
   - ./gradlew build -Dskip.tests
+  except:
+    - tags
 
 deploy_to_prod:
   only:
     - master
+  except:
+    - tags
   stage: deploy
   script:
     - echo 'Deploying to PROD server'
@@ -56,6 +64,7 @@ deploy_to_qa:
   only:
     - development
   except:
+    - tags
     - master
     - /^Issue-.*$/
     - /^issue-.*$/
@@ -76,5 +85,7 @@ release:
   stage: release
   only:
     - master
+  except:
+    - tags
   script:
     - ./gradlew release
