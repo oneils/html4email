@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -33,12 +32,12 @@ public class IdgstUserDetailService implements UserDetailsService {
 
         if (user == null) {
             throw new UsernameNotFoundException(
-                    String.format("User with the username %s doesn't 	" + "exist", username));
+                    String.format("User with the username %s doesn't exist", username));
         }
         if (user.isAdmin()) {
             List<GrantedAuthority> adminAuthorities = AuthorityUtils.createAuthorityList("ROLE_ADMIN");
             return new User(user.getUserName(), user.getPassword(), adminAuthorities);
         }
-        return new User(user.getUserName(), user.getPassword(), Collections.emptyList());
+        return new User(user.getUserName(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_USER"));
     }
 }

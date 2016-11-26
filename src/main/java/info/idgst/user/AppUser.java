@@ -31,6 +31,25 @@ public class AppUser {
     @NotEmpty
     private boolean admin;
 
+    /**
+     * Default constructor
+     */
+    public AppUser() {
+    }
+
+    /**
+     * Constructor for creating Application with specified parameters.
+     *
+     * @param username User's name
+     * @param password User's password
+     * @param isAdmin  indicated if user is administrator or not.
+     */
+    public AppUser(String username, String password, boolean isAdmin) {
+        this.userName = username;
+        this.password = password;
+        this.admin = isAdmin;
+    }
+
     public String getId() {
         return id;
     }
