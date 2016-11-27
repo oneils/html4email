@@ -6,9 +6,10 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 /**
  * Abstract test for Selenium tests.
@@ -16,8 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Aliaksei Bahdanau.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = IdgstServer.class)
-@WebIntegrationTest(randomPort = true)
+@SpringBootTest(classes = IdgstServer.class, webEnvironment = RANDOM_PORT)
 public abstract class AbstractFluentIntegrationTest extends FluentTest {
 
     @Value("${local.server.port}")
