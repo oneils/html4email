@@ -4,9 +4,10 @@ import info.idgst.BaseWebTest;
 import info.idgst.IdgstServer;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 /**
  * Abstract test for Integration tests.
@@ -15,8 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = IdgstServer.class)
-@WebIntegrationTest(randomPort = true)
+@SpringBootTest(classes = IdgstServer.class, webEnvironment = RANDOM_PORT)
 public abstract class AbstractIntegrationTest implements BaseWebTest {
     @Value("${local.server.port}")
     protected int serverPort;
