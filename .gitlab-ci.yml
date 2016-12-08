@@ -89,7 +89,5 @@ release:
   stage: release
   only:
     - master
-  except:
-    - tags
   script:
-    - ./gradlew release
+    - ./gradlew clean release
