@@ -36,6 +36,7 @@ build jar file:
     paths:
       - build/libs/*.jar
   script:
+    - ./gradlew clean
     - cd web-src
     - npm install
     - bower install
