@@ -5,6 +5,7 @@ cache:
   - build
 
 before_script:
+  - ./gradlew clean
   - cd web-src
   - npm install
   - bower install
@@ -21,11 +22,15 @@ unit tests:
   stage: test
   script:
     - ./gradlew test
+  except:
+    - tags
 
 integration tests:
   stage: test
   script:
     - ./gradlew integrationTest
+  except:
+    - tags
 
 build jar file:
   stage: build
@@ -34,10 +39,14 @@ build jar file:
       - build/libs/*.jar
   script:
   - ./gradlew build -Dskip.tests
+  except:
+    - tags
 
 deploy_to_prod:
   only:
     - master
+  except:
+    - tags
   stage: deploy
   script:
     - echo 'Deploying to PROD server'
@@ -51,29 +60,32 @@ deploy_to_prod:
     - ssh $PROD_USER@$PROD_HOST ./startup.sh
   environment: production
 
-deploy_to_qa:
-  only:
-    - development
-  except:
-    - master
-    - /^Issue-.*$/
-    - /^issue-.*$/
-  stage: deploy
-  script:
-    - echo 'Deploying to QA server'
-    - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-    - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-    - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-    - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-    - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
-    - ssh $QA_USER@$QA_HOST ./shutdown.sh
-    - ssh $QA_USER@$QA_HOST ./update_symlink.sh
-    - ssh $QA_USER@$QA_HOST ./startup.sh
-  environment: qa
+#deploy_to_qa:
+#  only:
+#    - development
+#  except:
+#    - tags
+#    - master
+#    - /^Issue-.*$/
+#    - /^issue-.*$/
+#  stage: deploy
+#  script:
+#    - echo 'Deploying to QA server'
+#    - scp build/libs/html4email*.jar $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+#    - scp shutdown.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+#    - scp startup.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+#    - scp update_symlink.sh $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+#    - scp version.txt $QA_USER@$QA_HOST:$QA_DEPLOY_PATH
+#    - ssh $QA_USER@$QA_HOST ./shutdown.sh
+#    - ssh $QA_USER@$QA_HOST ./update_symlink.sh
+#    - ssh $QA_USER@$QA_HOST ./startup.sh
+#  environment: qa
 
 release:
   stage: release
   only:
     - master
+  except:
+    - tags
   script:
     - ./gradlew release
