@@ -20,6 +20,11 @@ unit tests:
 integration tests:
   stage: test
   script:
+    - cd web-src
+    - npm install
+    - bower install
+    - grunt build --force
+    - cd ..
     - ./gradlew clean integrationTest
   except:
     - tags
@@ -30,11 +35,6 @@ build jar file:
     paths:
       - build/libs/*.jar
   script:
-    - cd web-src
-    - npm install
-    - bower install
-    - grunt build --force
-    - cd ..
     - ./gradlew build -Dskip.tests
   except:
     - tags
