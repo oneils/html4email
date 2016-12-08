@@ -1,16 +1,8 @@
 cache:
   key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
   paths:
-  - .gradle
-  - build
-
-before_script:
-  - ./gradlew clean
-  - cd web-src
-  - npm install
-  - bower install
-  - grunt build --force
-  - cd ..
+    - .gradle
+    - build
 
 stages:
   - test
@@ -21,14 +13,14 @@ stages:
 unit tests:
   stage: test
   script:
-    - ./gradlew test
+    - ./gradlew clean test
   except:
     - tags
 
 integration tests:
   stage: test
   script:
-    - ./gradlew integrationTest
+    - ./gradlew clean integrationTest
   except:
     - tags
 
@@ -38,7 +30,12 @@ build jar file:
     paths:
       - build/libs/*.jar
   script:
-  - ./gradlew build -Dskip.tests
+    - cd web-src
+    - npm install
+    - bower install
+    - grunt build --force
+    - cd ..
+    - ./gradlew build -Dskip.tests
   except:
     - tags
 
