@@ -20,12 +20,13 @@ unit tests:
 integration tests:
   stage: test
   script:
+    - ./gradlew clean
     - cd web-src
     - npm install
     - bower install
     - grunt build --force
     - cd ..
-    - ./gradlew clean integrationTest
+    - ./gradlew integrationTest
   except:
     - tags
 
