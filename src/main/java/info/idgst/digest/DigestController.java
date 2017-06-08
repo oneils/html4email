@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * Controller for generating Digest HTML template from the Json file.
@@ -41,32 +42,44 @@ public class DigestController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    @RequestParam(value = "saveDigest", required = false) boolean saveDigest,
+                                   @RequestParam(value = "sendEmail", required = false) boolean sendEmail,
                                    UsernamePasswordAuthenticationToken principal, Model model) throws IOException {
 
-        byte[] fileContent = file.getBytes();
-        if (fileContent == null) {
-            throw new IdgstException("Specified file is empty");
-        }
+        final Optional<byte[]> fileContent = Optional.ofNullable(file.getBytes());
 
-        final Digest digest = digestReader.readDigest(fileContent);
+        final Digest digest = digestReader.readDigest(fileContent.orElseThrow(
+                () -> new IdgstException("Specified file is empty")));
 
         if (saveDigest && hasAccessRights(principal)) {
             digestService.save(digest);
-            return "redirect:/";
         }
 
+        prepareModel(model, digest);
+        model.addAttribute("sendEmail", sendEmail);
+
+        if (sendEmail /*&& hasAccessRights(principal)*/) {
+            digestService.sendViaEmail(digest, model.asMap());
+        }
+
+        return "digest";
+    }
+
+    private void prepareModel(Model model, Digest digest) {
         model.addAttribute("digest", digest);
+
         int digestNumber = NumberUtils.toInt(digest.getTitle()
-                                                   .split(DIGEST_NUMBER_DELIMITER)[1]);
+                .split(DIGEST_NUMBER_DELIMITER)[1]);
         model.addAttribute("digestNumber", digestNumber);
+
         model.addAttribute("currentYear", new Date());
         model.addAttribute("archiveHost", idgstConfigReader.getArchiveHost());
-        return "digest";
+        model.addAttribute("contributeTo", idgstConfigReader.getContributeTo());
+        model.addAttribute("companyName", idgstConfigReader.getCompanyName());
     }
 
     private boolean hasAccessRights(UsernamePasswordAuthenticationToken principal) {
         return principal != null && principal.isAuthenticated() && principal.getAuthorities()
-                                                                            .contains(new SimpleGrantedAuthority(
-                                                                                    "ROLE_ADMIN"));
+                .contains(new SimpleGrantedAuthority(
+                        "ROLE_ADMIN"));
     }
 }

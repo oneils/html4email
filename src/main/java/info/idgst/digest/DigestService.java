@@ -3,6 +3,8 @@ package info.idgst.digest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
+import java.util.Map;
+
 /**
  * Default implementation of {@link DigestService}.
  *
@@ -45,4 +47,6 @@ public interface DigestService {
      * @return {@link Page}
      */
     Page<Digest> findAll(int page, int size, Sort.Direction sortDirection, String sortBy);
+
+    void sendViaEmail(Digest digest, Map<String, Object> stringObjectMap);
 }
