@@ -36,4 +36,6 @@ public interface DigestCache {
      * @return {@link Page} of {@link Digest}s
      */
     Page<Digest> fetch(int page, int size, Sort.Direction sortDirection, String sortBy);
+
+    Digest put(Digest digest);
 }
