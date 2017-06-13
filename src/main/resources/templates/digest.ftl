@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:c="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>${digest.title}</title>
     <style>
     body, html {
-        font-family: Calibri, Arial;
+        font-family: Arial, Calibri, serif;
         font-size: 0;
     }
     table {
@@ -27,7 +27,7 @@
         padding: 20px;
     }
     table tr td .topic {
-        font-family: Calibri, Arial;
+        font-family: Arial, Calibri, serif;
         margin: 0;
         font-size: 24px;
         font-weight: bold;
@@ -38,7 +38,7 @@
         text-align: justify;
     }
     table tr td .news-item .title {
-        font-family: Calibri, Arial;
+        font-family: Arial, Calibri, serif;
         margin: 0;
         padding: 0;
         font-size: 18px;
@@ -47,7 +47,7 @@
         text-decoration: none;
     }
     table tr td .news-item .description {
-        font-family: Calibri, Arial;
+        font-family: Arial, Calibri, serif;
         margin: 0;
         padding: 0;
         font-size: 14px;
@@ -87,7 +87,12 @@
         <table class="main">
             <tr class="main-tr">
                 <th>
+                <#if sendEmail>
+                    <img src="cid:image">
+                <#else>
                     <img src="/images/logos/${digestNumber}.png">
+                </#if>
+
                 </th>
             </tr>
 
@@ -101,9 +106,9 @@
 
                         <div class="news-item">
                             <table><tr><td style="padding: 0 0 10px 0"><a class="title" href="${article.url}" target="_blank">${article.title}</a></td></tr></table>
-                            <p class="description">
+                            <div class="description">
                                 ${article.description}
-                            </p>
+                            </div>
                         </div>
 
                     </td></tr></table>
@@ -119,7 +124,7 @@
                         <a href="${archiveHost}" target="_blank">Архив дайджестов</a>
                     </p> <br/><br/>
                     <p style="margin: 5px">
-                        <a href="mailto:${digest.contributeTo}">${currentYear?string.yyyy} ${digest.companyName}</a>
+                        <a href="mailto:${contributeTo}">${currentYear?string.yyyy} ${companyName}</a>
                     </p>
                 </td>
             </tr>

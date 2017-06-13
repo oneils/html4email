@@ -23,6 +23,8 @@ public class IdgstException extends RuntimeException {
         super(message);
     }
 
+//    public IdgstException() {}
+
     public int getCode() {
         return code;
     }
