@@ -3,7 +3,6 @@ package info.idgst.digest;
 import info.idgst.AbstractTest;
 import info.idgst.exception.DigestAlreadyExistsException;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -22,19 +21,16 @@ import static org.mockito.Mockito.when;
  */
 public class DefaultDigestServiceTest extends AbstractTest {
 
+    private static final String DIGEST_TITLE = "Digest title";
     private DefaultDigestService defaultDigestService;
     @Mock
     private DigestCache digestCache;
-    @Mock
-    private DigestRepository digestRepository;
-
-    private static final String DIGEST_TITLE = "Digest title";
 
     @Override
     public void before() throws Exception {
         super.before();
 
-        defaultDigestService = new DefaultDigestService(digestCache, digestRepository);
+        defaultDigestService = new DefaultDigestService(digestCache);
     }
 
     @Test
@@ -71,14 +67,15 @@ public class DefaultDigestServiceTest extends AbstractTest {
     public void save_correctExecution() {
         // Setup
         Digest digest = new Digest(DIGEST_TITLE);
-        when(digestRepository.save(digest)).thenReturn(digest);
+        when(digestCache.fetchByTitle(DIGEST_TITLE)).thenReturn(null);
+        when(digestCache.put(digest)).thenReturn(digest);
 
         // Run
         Digest result = defaultDigestService.save(digest);
 
         // Verify
         assertThat(result, is(digest));
-        verify(digestRepository).save(digest);
+        verify(digestCache).put(digest);
     }
 
 

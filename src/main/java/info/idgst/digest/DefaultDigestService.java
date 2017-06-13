@@ -19,12 +19,10 @@ public class DefaultDigestService implements DigestService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final DigestCache digestCache;
-    private final DigestRepository digestRepository;
 
     @Autowired
-    public DefaultDigestService(final DigestCache digestCache, final DigestRepository digestRepository) {
+    public DefaultDigestService(final DigestCache digestCache) {
         this.digestCache = digestCache;
-        this.digestRepository = digestRepository;
     }
 
     @Override
@@ -47,7 +45,7 @@ public class DefaultDigestService implements DigestService {
             logger.warn(msg);
             throw new DigestAlreadyExistsException(msg);
         }
-        return digestRepository.save(digest);
+        return digestCache.put(digest);
     }
 
     @Override
