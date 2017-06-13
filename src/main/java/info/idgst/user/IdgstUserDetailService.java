@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,10 +36,12 @@ public class IdgstUserDetailService implements UserDetailsService {
             throw new UsernameNotFoundException(
                     String.format("User with the username %s doesn't exist", username));
         }
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
         if (user.isAdmin()) {
             List<GrantedAuthority> adminAuthorities = AuthorityUtils.createAuthorityList("ROLE_ADMIN");
-            return new User(user.getUserName(), user.getPassword(), adminAuthorities);
+            return new User(user.getUserName(), hashedPassword, adminAuthorities);
         }
-        return new User(user.getUserName(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_USER"));
+        return new User(user.getUserName(), hashedPassword, AuthorityUtils.createAuthorityList("ROLE_USER"));
     }
 }
