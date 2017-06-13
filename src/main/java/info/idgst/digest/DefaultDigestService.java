@@ -1,12 +1,15 @@
 package info.idgst.digest;
 
 import info.idgst.exception.DigestAlreadyExistsException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * Default implementation of {@link DigestService}.
@@ -20,11 +23,17 @@ public class DefaultDigestService implements DigestService {
 
     private final DigestCache digestCache;
     private final DigestRepository digestRepository;
+    private final DigestTemplateProcessor digestTemplateProcessor;
+    private final DigestMailService digestMailService;
 
     @Autowired
-    public DefaultDigestService(final DigestCache digestCache, final DigestRepository digestRepository) {
+    public DefaultDigestService(final DigestCache digestCache, final DigestRepository digestRepository,
+                                final DigestTemplateProcessor digestTemplateProcessor,
+                                final DigestMailService digestMailService) {
         this.digestCache = digestCache;
         this.digestRepository = digestRepository;
+        this.digestTemplateProcessor = digestTemplateProcessor;
+        this.digestMailService = digestMailService;
     }
 
     @Override
@@ -43,7 +52,7 @@ public class DefaultDigestService implements DigestService {
         if (existingDigest != null) {
             String msg =
                     "Attempt of saving duplicated digest with title: " + digest.getTitle() + "Existing Digest ID: " +
-                    existingDigest.getId();
+                            existingDigest.getId();
             logger.warn(msg);
             throw new DigestAlreadyExistsException(msg);
         }
@@ -53,5 +62,17 @@ public class DefaultDigestService implements DigestService {
     @Override
     public Page<Digest> findAll(int page, int size, Sort.Direction sortDirection, String sortBy) {
         return digestCache.fetch(page, size, sortDirection, sortBy);
+    }
+
+    @Override
+    public void sendViaEmail(Digest digest, Map<String, Object> model) {
+        String digestTemplate = digestTemplateProcessor.generateDigest(model);
+
+        if (StringUtils.isNotEmpty(digestTemplate)) {
+            Integer digestNumber = (Integer) model.get("digestNumber");
+            digestMailService.sendDigest(digestTemplate, digest.getTitle(), digestNumber);
+        } else {
+            logger.warn("Digest was not sent via email because digest template is empty");
+        }
     }
 }
