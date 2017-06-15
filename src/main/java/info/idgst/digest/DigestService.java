@@ -47,6 +47,4 @@ public interface DigestService {
      * @return {@link Page}
      */
     Page<Digest> findAll(int page, int size, Sort.Direction sortDirection, String sortBy);
-
-    void sendViaEmail(Digest digest, Map<String, Object> stringObjectMap);
 }

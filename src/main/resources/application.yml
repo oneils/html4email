@@ -31,7 +31,6 @@ digest:
   companyName: "companyName"
   templateName: "digest.ftl"
   archiveHost: "http://idgst.info"
-  numberDelimiter: "#"
 
 # Email config
 email:
