@@ -16,5 +16,5 @@ public interface DigestTemplateProcessor {
      * @param model {@link Map}
      * @return {@link String} representation of the Digest
      */
-    String generateDigest(Map<String, Object> model);
+    String generateTemplateDigest(Map<String, Object> model);
 }

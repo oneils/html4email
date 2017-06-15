@@ -20,7 +20,7 @@ import java.util.Map;
  * @author Aliaksei Bahdanau
  */
 @Service
-public class FreemarkerDigestTemplatelProcessor implements DigestTemplateProcessor {
+public class FreemarkerDigestTemplateProcessor implements DigestTemplateProcessor {
 
     private final IdgstConfigReader idgstConfigReader;
     private final Configuration cfg;
@@ -28,13 +28,13 @@ public class FreemarkerDigestTemplatelProcessor implements DigestTemplateProcess
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    public FreemarkerDigestTemplatelProcessor(IdgstConfigReader idgstConfigReader, Configuration cfg) {
+    public FreemarkerDigestTemplateProcessor(IdgstConfigReader idgstConfigReader, Configuration cfg) {
         this.idgstConfigReader = idgstConfigReader;
         this.cfg = cfg;
     }
 
     @Override
-    public String generateDigest(Map<String, Object> model) {
+    public String generateTemplateDigest(Map<String, Object> model) {
         Writer out = new StringWriter();
         try {
             /* Get the template (uses cache internally) */

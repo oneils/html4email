@@ -84,11 +84,14 @@
 </head>
 <body>
     <div class="wrapper">
+        <div style="display:none;font-size:1px;color:#fff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+            BackEnd Digest of the latest news and interesting stuff from IT and near-Java world.
+        </div>
         <table class="main">
             <tr class="main-tr">
                 <th>
                 <#if sendEmail>
-                    <img src="cid:image">
+                    <img src="cid:digest-logo">
                 <#else>
                     <img src="/images/logos/${digestNumber}.png">
                 </#if>
