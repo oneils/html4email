@@ -25,4 +25,19 @@ spring:
   resources:
     cache-period: 259200
 
-archiveHost: http://idgst.info
+# Digest configuration
+digest:
+  contributeTo: "me@mail.com"
+  companyName: "companyName"
+  templateName: "digest.ftl"
+  archiveHost: "http://idgst.info"
+
+# Email config
+email:
+  replyTo: "m@main.com"
+  sendTo: "m@main.com"
+  login: "m@main.com"
+  password: "secret"
+  smtp:
+    host: "smtp.mail.com"
+    ttlsEnable: true

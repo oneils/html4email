@@ -11,10 +11,31 @@ import org.springframework.stereotype.Component;
 @Component
 public class IdgstConfigReader {
 
-    @Value("${archiveHost}")
+    @Value("${digest.archiveHost}")
     private String archiveHost;
+
+    @Value("${digest.templateName}")
+    private String templateName = "digest.ftl";
+
+    @Value("${digest.contributeTo}")
+    private String contributeTo;
+
+    @Value("${digest.companyName}")
+    private String companyName;
 
     public String getArchiveHost() {
         return archiveHost;
+    }
+
+    public String getTemplateName() {
+        return templateName;
+    }
+
+    public String getContributeTo() {
+        return contributeTo;
+    }
+
+    public String getCompanyName() {
+        return companyName;
     }
 }

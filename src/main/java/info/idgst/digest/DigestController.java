@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * Controller for generating Digest HTML template from the Json file.
@@ -29,44 +30,61 @@ public class DigestController {
     private final IdgstConfigReader idgstConfigReader;
     private final DigestReader digestReader;
     private final DigestService digestService;
+    private final DigestEmailService digestEmailService;
 
     @Autowired
     public DigestController(final IdgstConfigReader idgstConfigReader, final DigestReader digestReader,
-                            final DigestService digestService) {
+                            final DigestService digestService, DigestEmailService digestEmailService) {
         this.idgstConfigReader = idgstConfigReader;
         this.digestReader = digestReader;
         this.digestService = digestService;
+        this.digestEmailService = digestEmailService;
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    @RequestParam(value = "saveDigest", required = false) boolean saveDigest,
+                                   @RequestParam(value = "sendEmail", required = false) boolean sendEmail,
+                                   @RequestParam(value = "sendTo", required = false) String sendTo,
                                    UsernamePasswordAuthenticationToken principal, Model model) throws IOException {
 
-        byte[] fileContent = file.getBytes();
-        if (fileContent == null) {
-            throw new IdgstException("Specified file is empty");
-        }
+        final Optional<byte[]> fileContent = Optional.ofNullable(file.getBytes());
 
-        final Digest digest = digestReader.readDigest(fileContent);
+        final Digest digest = digestReader.readDigest(fileContent.orElseThrow(
+                () -> new IdgstException("Specified file is empty")));
 
         if (saveDigest && hasAccessRights(principal)) {
             digestService.save(digest);
-            return "redirect:/";
         }
 
+        prepareModel(model, digest);
+        model.addAttribute("sendEmail", sendEmail);
+        model.addAttribute("digestTitle", digest.getTitle());
+
+        if (sendEmail && hasAccessRights(principal)) {
+            model.addAttribute("sendTo", sendTo);
+            digestEmailService.sendViaEmail(model.asMap());
+        }
+
+        return "digest";
+    }
+
+    private void prepareModel(Model model, Digest digest) {
         model.addAttribute("digest", digest);
+
         int digestNumber = NumberUtils.toInt(digest.getTitle()
-                                                   .split(DIGEST_NUMBER_DELIMITER)[1]);
+                .split(DIGEST_NUMBER_DELIMITER)[1]);
         model.addAttribute("digestNumber", digestNumber);
+
         model.addAttribute("currentYear", new Date());
         model.addAttribute("archiveHost", idgstConfigReader.getArchiveHost());
-        return "digest";
+        model.addAttribute("contributeTo", idgstConfigReader.getContributeTo());
+        model.addAttribute("companyName", idgstConfigReader.getCompanyName());
     }
 
     private boolean hasAccessRights(UsernamePasswordAuthenticationToken principal) {
         return principal != null && principal.isAuthenticated() && principal.getAuthorities()
-                                                                            .contains(new SimpleGrantedAuthority(
-                                                                                    "ROLE_ADMIN"));
+                .contains(new SimpleGrantedAuthority(
+                        "ROLE_ADMIN"));
     }
 }
