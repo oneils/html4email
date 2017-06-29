@@ -27,17 +27,18 @@ spring:
 
 # Digest configuration
 digest:
-  contributeTo: "me@mail.com"
-  companyName: "companyName"
+  contributeTo: "info@idgst.info"
+  companyName: "idgst.info"
   templateName: "digest.ftl"
   archiveHost: "http://idgst.info"
 
 # Email config
 email:
-  replyTo: "m@main.com"
+  replyTo: "info@idgst.info"
   sendTo: "m@main.com"
-  login: "m@main.com"
+  login: "info@idgst.info"
   password: "secret"
+  provider: "provider"
   smtp:
     host: "smtp.mail.com"
     ttlsEnable: true
