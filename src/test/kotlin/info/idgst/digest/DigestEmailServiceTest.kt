@@ -46,7 +46,7 @@ class DigestEmailServiceTest : AbstractTest() {
         val digestHtmlTemplate = "generated html content"
         `when`(digestTemplateProcessor.generateTemplateDigest(any())).thenReturn(digestHtmlTemplate)
 
-        val digestLogoImg = FileSystemResource("web-src/app/images/logos/$digestNumber.png")
+        val digestLogoImg = FileSystemResource("images/logos/$digestNumber.png")
 
         // Run
         digestEmailService.sendViaEmail(model)
