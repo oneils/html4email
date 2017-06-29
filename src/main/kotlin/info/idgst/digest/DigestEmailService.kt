@@ -25,7 +25,7 @@ class DigestEmailService
             val digestTitle = model["digestTitle"] as String
             val sendToStr = model["sendTo"] as String
 
-            val digestLogoImg = FileSystemResource("web-src/app/images/logos/$digestNumber.png")
+            val digestLogoImg = FileSystemResource("images/logos/$digestNumber.png")
             val emailMessage = EmailMessage(digestHtmlContent, true, digestTitle,
                     EmailAttachment(digestLogoImg))
 
